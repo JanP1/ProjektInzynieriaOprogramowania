@@ -1,0 +1,129 @@
+Plan gry Cywilizacja 2077
+-------------------------------------------------------------------------------------------------------------------------
+1. Roboty
+
+Roboty są używane do obrony/ataku przeciwnika do exploracji świata oraz do zdobywania zasobów
+
+Pojawiają się w trzech stadiach:
+1) brak możliwości eksploracji trudnych terenów, wolniejsze podczas pozyskiwania zasobów, słabsze podczas ataku/obrony, mogą budować
+2) możliwość eksploracji trudnych terenów, prędkość wydobywania szybsza niż 1, atak/obrona te same co 1, mogą budować
+3) całkowity upgrade. Te roboty są silniejsze od 1 i 2, ale nie mogą być używane do pozyskiwania zasobów ani budować
+
+Posiadane roboty można ulepszać wydając na to uzyskane punkty
+-------------------------------------------------------------------------------------------------------------------------
+
+2. Budynki
+
+1) Główny budynek stanowiący serce cywilizacji, po zdobyciu tego budynku przez przeciwnika, odpadasz z gry
+
+--Następujące budynki można wybudować wielokrotnie, wydając na to posiadane punkty:
+
+2) Fabryka robotów
+a) typ 1: produkuje roboty typu 1
+b) typ 2: produkuje roboty typu 2
+
+nie ma możliwości produkcji robotów typu 3. Aby je uzyskać należy ulepszyć istniejące roboty typu 2
+
+Budynek Fabryki robotów można ulepszać wydając na to zdobyte punkty
+
+3) Kopalnie
+Kopalnie pozyskują konieczne do produkcji robotów materiały,
+kopalinie kożystać z pracy robotów typu 1 lub 2, w tym celu należy przeprowadzić daną ilość robotów na pole kopalnii
+
+4) Defensywne działa
+Chronią twoją cywilizację, możesz je rozstawiać w kontrolowanym polu i tylko wtedy gdy w obrębie 1 od tego są roboty zdolne je wybudować
+Mają zasięg 1 i jeżeli wrogie wojsko przesuwa się na pozycję 1 od działa, zaczynają atakować
+
+5) laboratoria
+
+Produkują punkty doświadczenia
+typy 1, 2, 3 każdy produkuje punkty w większej ilości
+
+
+typ 4 - drogie powinno być - oznacza wynalezienie nieograniczonego źródła energii - wygranie gry
+-------------------------------------------------------------------------------------------------------------------------
+
+3. Pola
+
+1) przyjazne pole, na nim każdy robot może się przemieszczać, można tam wybudować każdą strukturę
+2) trudny teren, na nim tylko roboty typu 1< mogą się poruszać, można tam postawić działo, lub kopalnię
+3) woda, teren niemożliwy do przekroczania przez roboty, nie da się tu nic wybudować
+4) ciemne pola. Pola odkrywają się przed graczem gdy ten zbliży się do nich na odległość 2 pól, cała reszta jest zasłonięta przed graczem
+
+Odkrywanie pól dodaje punktów
+-------------------------------------------------------------------------------------------------------------------------
+
+4. Wybór postaci:
+Cztery postacie do wyboru, każda postać ma różne zalety i wady
+
+
+Postać 1:
+
+CEO korporacji CyberMech Solutions
+Gracz zaczyna z większą ilością zasobów/budynków ma jednak mniej zaawansowane roboty, przez co są one w stadium 1
+
+Postać 2:
+
+Naukowiec, który opracował roboty typu 2
+Gracz zaczyna z mniejszą ilością zasobów/budynków. Wszystkie jego roboty są typu 2, fabryki typu 2
+
+Postać 3:
+
+Robot, który stał się świadomy i próbuje stworzyć własną cywilizację
+
+Posiada roboty typu 1 oraz niewielką ilość robotów typu 3, ma kopalnie i budynek główny (opuszczony przez ludzi), nie posiada fabryk, ma jednak laboratoria
+
+
+Postać 4:
+
+Kosmita próbujący założyć własną cywilizację na ziemi
+
+Posiada laboratoria typu 2, roboty typu 1, fabryki typu 1, nie posiada kopalń (musi je wybudować, żeby produkować roboty)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+5. Zasoby
+
+1) Roboty
+
+
+Na każdym polu mogą się znajdować roboty jednego typu, w różnych ilościach
+
+Maksymalna ilość robotów na danym polu to 8
+
+Aby rozdzielić/połączyć roboty należy wybrać pole w odległości 1 od obecnego, kosztuje to ruch (możemy jeszcze ruszać polem na którym pierwotnie roboty stały,
+jeśli są tam jeszcze roboty)
+Klikając dane pole pojawia się okienko z ilością i typem danych robotów na tym polu
+Aby przemieścić/zaatakować/bronić należy wybrać pole, zaznaczyć dane roboty, i zatwierdzić
+(jeżeli roboty są na atakowanym polu i nie wybieramy ich do obrony musimy przesunąć je na najbliższe pole, wróg zdobywa pole)
+
+2) Punkty
+Punkty można zdobyć przez eksplorację, oraz laboratoria
+
+3) Metal
+Zdobywany w kopalniach - potrzebny do budowy robotów
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------ROZGRYWKA------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+
+
+1) Wybieramy Postać
+
+
+2) Decydujemy się gdzie postawić budynki i roboty w obrębie naszego terenu
+
+
+3) Możemy w danym ruchu raz poruszyć każdą jednostką, wybudować nieograniczoną ilość budynków i mamy nieograniczoną ilość ulepszeń
+
+
+4) Możemy zaatakować przeciwnika, aby atak zadziałał należy poczekać do końca swojej rundy i dać przeciwnikowi wybór, czy chce się bronić, czy wycofać
+
+5) Gra kończy się gdy wyeliminujemy przeciwnika lub ulepszymy dane laboratorium do typu 4
