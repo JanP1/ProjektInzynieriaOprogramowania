@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhp1m4rdkvvpp"]
+
+[ext_resource type="Script" path="res://Stare/skrypt3.gd" id="1_5trrc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jby0d"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_jby0d")
+script = ExtResource("1_5trrc")

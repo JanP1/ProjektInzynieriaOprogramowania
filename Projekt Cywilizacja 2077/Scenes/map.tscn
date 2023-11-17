@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://boap0p6jbkcoy"]
+
+[ext_resource type="Script" path="res://Scripts/mapGenerator.gd" id="1_1iuoy"]
+[ext_resource type="MeshLibrary" uid="uid://ct8u7rj33iyhv" path="res://Scenes/cube.meshlib" id="2_gpicv"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_1iuoy")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_gpicv")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.429361, 0.903133, 0, -0.903133, 0.429361, 0, 5.22373, 5.43452)

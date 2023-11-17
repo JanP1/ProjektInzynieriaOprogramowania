@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugn147b8mxoj"]
+
+[ext_resource type="PackedScene" uid="uid://dhp1m4rdkvvpp" path="res://Stare/mesh_instance_3d_2.tscn" id="3_q2r8r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gqvh2"]
+
+[node name="Node3D" type="Node3D"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_gqvh2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952327, 0.30508, 0, -0.30508, 0.952327, 0, 0.6, 2)
+visible = false
+
+[node name="Node3D" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("3_q2r8r")]
+visible = false
+script = null

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://mh35kbeelo58"]
+
+[ext_resource type="Script" path="res://Stare/MapGeneration.gd" id="1_8pb4a"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nap2g"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1e-05, 1),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63)
+}]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_nap2g")
+script = ExtResource("1_8pb4a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984995, 0.172582, 0, -0.172582, 0.984995, -0.0351785, 0.611567, 2.09242)
