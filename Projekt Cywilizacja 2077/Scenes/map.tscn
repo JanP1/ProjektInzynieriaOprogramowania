@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=7 format=3 uid="uid://boap0p6jbkcoy"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dhuwgmqcoec88" path="res://Scenes/hexGrass.tres" id="2_8e2ch"]
 [ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sm87u"]
+sky_top_color = Color(0.627451, 0.690196, 0.776471, 1)
+sky_horizon_color = Color(0.32549, 0.721569, 0.776471, 1)
+ground_bottom_color = Color(0.168627, 0.00392157, 0.0509804, 1)
+
+[sub_resource type="Sky" id="Sky_8dajq"]
+sky_material = SubResource("ProceduralSkyMaterial_sm87u")
+
+[sub_resource type="Environment" id="Environment_dc21e"]
+background_mode = 2
+sky = SubResource("Sky_8dajq")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nm7ik")
@@ -10,17 +22,21 @@ script = ExtResource("1_nm7ik")
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_8e2ch")
 cell_size = Vector3(0.755, 1.01, 0.87)
-data = {
-"cells": PackedInt32Array(65531, 65534, 0, 65529, 65535, 0, 65529, 65533, 0, 65527, 65534, 0, 65527, 65532, 0, 65529, 65531, 0, 65512, 65534, 0, 65535, 65530, 0, 65534, 65530, 0, 65533, 65530, 0, 65535, 65532, 0, 65533, 65532, 0)
-}
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -7.88407e-08, 3.77741e-08, 0, 0.432086, 0.901833, -8.74228e-08, 0.901833, -0.432086, 0, 12.5668, -11.1106)
+transform = Transform3D(-1, -7.88407e-08, 3.77741e-08, 0, 0.432086, 0.901833, -8.74228e-08, 0.901833, -0.432086, -6.3059, 12.5668, -0.138784)
 
 [node name="GridMap2" type="GridMap" parent="."]
 mesh_library = ExtResource("3_scmjh")
 cell_size = Vector3(0.755, 1.01, 0.87)
-data = {
-"cells": PackedInt32Array(65534, 1, 0, 65532, 2, 0, 65530, 1, 0, 65530, 3, 0, 65532, 0, 0)
-}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25873, 2.79954, 4.76304)
+light_energy = 4.518
+light_size = 0.788
+light_specular = 0.0
+omni_range = 914.65
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dc21e")

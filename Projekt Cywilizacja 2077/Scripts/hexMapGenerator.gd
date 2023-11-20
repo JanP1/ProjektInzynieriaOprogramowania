@@ -42,10 +42,11 @@ func _ready():
 			list1.append(1)
 		
 	for i in range(3):
-		var waterX=randi_range(-grid_size,grid_size)	
-		var waterY=randi_range(-grid_size,grid_size)
-		#$GridMap2.set_cell_item(Vector3i(int(waterX),0, int(waterY)),0,0)
-		list1.append(Vector2(waterX,waterY))
+		var waterX=randi_range(0,grid_size)
+		var waterY=randi_range(0,grid_size)	
+		var hexV=cubeToHex(waterX,waterY)
+		$GridMap2.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+		list1.append(hexV)
 		
 		#$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
 	var dictionary={
@@ -55,11 +56,12 @@ func _ready():
 	#$GridMap2.set_cell_item(Vector3i(int(dictionary[str(0)][0]),0, int(dictionary[str(0)][1])),0,0)
 	
 	var test=cubeToHex(3,2)
-	$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
-	for i in range(10):
-		for j in range(10):
+	#$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
+	for i in range(11):
+		for j in range(11):
 			test=cubeToHex(i,j)
-			$GridMap.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
+			if test not in list1:
+				$GridMap.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
 	
 	grid_size*=2	
 	for y in range(grid_size+1):
