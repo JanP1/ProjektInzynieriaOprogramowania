@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://g7gjpc21s4r1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_koiwh"]
+
+[sub_resource type="Gradient" id="Gradient_c30cu"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6iykv"]
+gradient = SubResource("Gradient_c30cu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2w4d"]
+emission_enabled = true
+emission = Color(0.87451, 0, 0.894118, 1)
+emission_texture = SubResource("GradientTexture2D_6iykv")
+subsurf_scatter_strength = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_irfm8"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_koiwh")
+surface_material_override/0 = SubResource("StandardMaterial3D_k2w4d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_irfm8")

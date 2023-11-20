@@ -27,20 +27,29 @@ func _ready():
 		current_pos+=d
 		last_dir=d
 		if current_pos not in list1:
-			print(current_pos)
-			list1.append(current_pos)
+			#print(current_pos)
+			#list1.append(current_pos)
+			list1.append(1)
 		
 		
 		
-		$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
+		#$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
 	
 	grid_size*=2	
-	for i in range(-grid_size,grid_size+1):
-		for j in range(-grid_size,grid_size+1):
-			var c=Vector2(i,j)
-			if (c not in list1):
-				print(c)
-				$GridMap2.set_cell_item(Vector3i(int(i),0, int(j)),0,0)
+	for y in range(-grid_size,grid_size+1):
+		var y2=y
+		for x in range(-grid_size,grid_size+1):
+			print(x)
+			print(y)
+			if x%2!=0 and y%2!=0:
+				if (x+3)%6==0:
+					print(x)
+					y2+=1
+				var c=Vector2(x,y2)
+				if (c not in list1):
+					print(c)
+					$GridMap.set_cell_item(Vector3i(int(x),0, int(y2)),0,0)
+				#$GridMap2.set_cell_item(Vector3i(int(i),0, int(j)),0,0)
 	print(list1)
 
 
