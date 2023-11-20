@@ -1,5 +1,15 @@
 extends Node3D
 
+
+func cubeToHex(x,y):
+	var x2=x
+	x*=-2
+	y*=2
+	if x2%2==0:
+		y+=1
+	return Vector2(x,y)
+
+
 const dir=[Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
 
 const hexDir=["N","NE","SE","S","SW","NW"]
@@ -34,21 +44,27 @@ func _ready():
 	for i in range(3):
 		var waterX=randi_range(-grid_size,grid_size)	
 		var waterY=randi_range(-grid_size,grid_size)
-		$GridMap2.set_cell_item(Vector3i(int(waterX),0, int(waterY)),0,0)
+		#$GridMap2.set_cell_item(Vector3i(int(waterX),0, int(waterY)),0,0)
 		list1.append(Vector2(waterX,waterY))
 		
 		#$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
 	var dictionary={
 		"key1":"valueXY"
 	}
-	dictionary[str(0)]=[5,5]
-	$GridMap2.set_cell_item(Vector3i(int(dictionary[str(0)][0]),0, int(dictionary[str(0)][1])),0,0)
+	dictionary[str(0)]=[-5,5]
+	#$GridMap2.set_cell_item(Vector3i(int(dictionary[str(0)][0]),0, int(dictionary[str(0)][1])),0,0)
 	
+	var test=cubeToHex(3,2)
+	$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
+	for i in range(10):
+		for j in range(10):
+			test=cubeToHex(i,j)
+			$GridMap.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
 	
 	grid_size*=2	
-	for y in range(-grid_size,grid_size+1):
+	for y in range(grid_size+1):
 		var y2=y
-		for x in range(-grid_size,grid_size+1):
+		for x in range(0,-grid_size-1,-1):
 			if x%2!=0 and y%2!=0:
 				y2=y
 				if (x+3)%4==0:
@@ -57,7 +73,9 @@ func _ready():
 				var c=Vector2(x,y2)
 				if (c not in list1):
 					print(c)
-					$GridMap.set_cell_item(Vector3i(int(x),0, int(y2)),0,0)
+					#$GridMap.set_cell_item(Vector3i(int(x),0, int(y2)),0,0)
+				
+				
 				#$GridMap2.set_cell_item(Vector3i(int(i),0, int(j)),0,0)
 	print(list1)
 
