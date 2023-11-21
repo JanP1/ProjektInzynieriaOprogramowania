@@ -68,23 +68,23 @@ func _ready():
 			if hexV not in list1:
 				$GridMap.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 	
-	grid_size*=2	
-	for y in range(grid_size+1):
-		var y2=y
-		for x in range(0,-grid_size-1,-1):
-			if x%2!=0 and y%2!=0:
-				y2=y
-				if (x+3)%4==0:
-					print(x)
-					y2+=1
-				var c=Vector2(x,y2)
-				if (c not in list1):
-					print(c)
+#	grid_size*=2	
+#	for y in range(grid_size+1):
+#		var y2=y
+#		for x in range(0,-grid_size-1,-1):
+#			if x%2!=0 and y%2!=0:
+#				y2=y
+#				if (x+3)%4==0:
+#					print(x)
+#					y2+=1
+#				var c=Vector2(x,y2)
+#				if (c not in list1):
+#					print(c)
 					#$GridMap.set_cell_item(Vector3i(int(x),0, int(y2)),0,0)
 				
 				
 				#$GridMap2.set_cell_item(Vector3i(int(i),0, int(j)),0,0)
-	print(list1)
+#	print(list1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,21 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=9 format=3 uid="uid://boap0p6jbkcoy"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dhuwgmqcoec88" path="res://Scenes/hexGrass.tres" id="2_8e2ch"]
 [ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
+[ext_resource type="Texture2D" uid="uid://2xqoxudnp58x" path="res://HDRI/AdobeStock_218939235.jpeg" id="4_hawu3"]
 [ext_resource type="Script" path="res://Scenes/CameraNodeMovement.gd" id="4_w2jcx"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sm87u"]
-sky_top_color = Color(0.627451, 0.690196, 0.776471, 1)
-sky_horizon_color = Color(0.32549, 0.721569, 0.776471, 1)
-ground_bottom_color = Color(0.168627, 0.00392157, 0.0509804, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v6cnj"]
+panorama = ExtResource("4_hawu3")
 
 [sub_resource type="Sky" id="Sky_8dajq"]
-sky_material = SubResource("ProceduralSkyMaterial_sm87u")
+sky_material = SubResource("PanoramaSkyMaterial_v6cnj")
 
 [sub_resource type="Environment" id="Environment_dc21e"]
 background_mode = 2
 sky = SubResource("Sky_8dajq")
+sky_custom_fov = 89.1
+sky_rotation = Vector3(1.06465, -0.759218, -0.113446)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nm7ik")
