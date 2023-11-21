@@ -8,7 +8,17 @@ func _input(event):
 		
 
 func dragging_movement(event: InputEventScreenDrag):
-	global_position = Vector3(global_position[0] + event.relative[0] * swipe_speed,
+	var vecTest = Vector3(global_position[0] + event.relative[0] * swipe_speed,
 	global_position[1], global_position[2] + event.relative[1] * swipe_speed)
+	print(global_position)
 	
-
+	if vecTest[0] > 37.59:
+		vecTest[0] = 37.59
+	if vecTest[0] < -21.18:
+		vecTest[0] = -21.18
+	if vecTest[2] > 29.3:
+		vecTest[2] = 29.3
+	if vecTest[2] < -32.42:
+		vecTest[2] = -32.42
+	
+	global_position = vecTest
