@@ -18,7 +18,7 @@ func dragging_movement(event: InputEventScreenDrag):
 		vecTest[0] = -21.18
 	if vecTest[2] > 29.3:
 		vecTest[2] = 29.3
-	if vecTest[2] < -32.42:
-		vecTest[2] = -32.42
+	if vecTest[2] < -35:
+		vecTest[2] = -35
 	
 	global_position = vecTest
