@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=12 format=3 uid="uid://boap0p6jbkcoy"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dhuwgmqcoec88" path="res://Scenes/hexGrass.tres" id="2_8e2ch"]
 [ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
 [ext_resource type="Texture2D" uid="uid://2xqoxudnp58x" path="res://HDRI/AdobeStock_218939235.jpeg" id="4_hawu3"]
 [ext_resource type="Script" path="res://Scenes/CameraNodeMovement.gd" id="4_w2jcx"]
+[ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/sea.jpg" id="6_tpsjo"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v6cnj"]
 panorama = ExtResource("4_hawu3")
@@ -14,9 +15,18 @@ sky_material = SubResource("PanoramaSkyMaterial_v6cnj")
 
 [sub_resource type="Environment" id="Environment_dc21e"]
 background_mode = 2
+background_energy_multiplier = 1.96
 sky = SubResource("Sky_8dajq")
 sky_custom_fov = 89.1
 sky_rotation = Vector3(1.06465, -0.759218, -0.113446)
+ambient_light_color = Color(0.992157, 0.415686, 1, 1)
+ambient_light_energy = 2.26
+reflected_light_source = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q753y"]
+albedo_texture = ExtResource("6_tpsjo")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nm7ik")
@@ -30,13 +40,6 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 mesh_library = ExtResource("3_scmjh")
 cell_size = Vector3(0.755, 1.01, 0.87)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25873, 2.79954, 4.76304)
-light_energy = 4.518
-light_size = 0.788
-light_specular = 0.0
-omni_range = 914.65
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dc21e")
 
@@ -44,5 +47,10 @@ environment = SubResource("Environment_dc21e")
 script = ExtResource("4_w2jcx")
 
 [node name="Camera3D" type="Camera3D" parent="CameraNode"]
-transform = Transform3D(-1, 5.56077e-08, -6.74576e-08, 0, 0.771625, 0.636078, 8.74228e-08, 0.636078, -0.771625, -40, 25, 10)
+transform = Transform3D(-1, -5.61943e-08, 6.69697e-08, 0, 0.766045, 0.642788, -8.74228e-08, 0.642788, -0.766045, -40, 25, 10)
 fov = 18.9
+
+[node name="SeaMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, -15.8941, 0, 0)
+mesh = SubResource("PlaneMesh_64ajg")
+surface_material_override/0 = SubResource("StandardMaterial3D_q753y")
