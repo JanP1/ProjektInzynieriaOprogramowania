@@ -14,7 +14,7 @@ const dir=[Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
 
 const hexDir=["N","NE","SE","S","SW","NW"]
 
-var grid_size=10
+var grid_size=40
 var grid_steps=50
 var list1=[]
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +41,7 @@ func _ready():
 			#list1.append(current_pos)
 			list1.append(1)
 		
-	for i in range(3):
+	for i in range(20):
 		var waterX=randi_range(0,grid_size)
 		var waterY=randi_range(0,grid_size)	
 		var hexV=cubeToHex(waterX,waterY)
@@ -57,8 +57,8 @@ func _ready():
 	
 	var test=cubeToHex(3,2)
 	#$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
-	for i in range(11):
-		for j in range(11):
+	for i in range(40):
+		for j in range(40):
 			test=cubeToHex(i,j)
 			if test not in list1:
 				$GridMap.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=8 format=3 uid="uid://boap0p6jbkcoy"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dhuwgmqcoec88" path="res://Scenes/hexGrass.tres" id="2_8e2ch"]
 [ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
+[ext_resource type="Script" path="res://Scenes/CameraNodeMovement.gd" id="4_w2jcx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sm87u"]
 sky_top_color = Color(0.627451, 0.690196, 0.776471, 1)
@@ -24,9 +25,6 @@ mesh_library = ExtResource("2_8e2ch")
 cell_size = Vector3(0.755, 1.01, 0.87)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -7.88407e-08, 3.77741e-08, 0, 0.432086, 0.901833, -8.74228e-08, 0.901833, -0.432086, -6.3059, 12.5668, -0.138784)
-
 [node name="GridMap2" type="GridMap" parent="."]
 mesh_library = ExtResource("3_scmjh")
 cell_size = Vector3(0.755, 1.01, 0.87)
@@ -40,3 +38,10 @@ omni_range = 914.65
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_dc21e")
+
+[node name="CameraNode" type="Node3D" parent="."]
+script = ExtResource("4_w2jcx")
+
+[node name="Camera3D" type="Camera3D" parent="CameraNode"]
+transform = Transform3D(-1, 5.56077e-08, -6.74576e-08, 0, 0.771625, 0.636078, 8.74228e-08, 0.636078, -0.771625, -40, 25, 10)
+fov = 18.9

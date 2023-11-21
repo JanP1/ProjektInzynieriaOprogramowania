@@ -19,6 +19,10 @@ config/icon="res://Stare/icon.svg"
 
 project/assembly_name="Cywilizacja 2077"
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 renderer/rendering_method="mobile"
