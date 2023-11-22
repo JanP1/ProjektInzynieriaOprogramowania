@@ -1,27 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=11 format=3 uid="uid://boap0p6jbkcoy"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dhuwgmqcoec88" path="res://Scenes/hexGrass.tres" id="2_8e2ch"]
 [ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
-[ext_resource type="Texture2D" uid="uid://2xqoxudnp58x" path="res://HDRI/AdobeStock_218939235.jpeg" id="4_hawu3"]
 [ext_resource type="Script" path="res://Scenes/CameraNodeMovement.gd" id="4_w2jcx"]
 [ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/sea.jpg" id="6_tpsjo"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v6cnj"]
-panorama = ExtResource("4_hawu3")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
+sky_top_color = Color(0.298039, 0.831373, 0.909804, 1)
+sky_horizon_color = Color(0.729412, 0.705882, 0.709804, 1)
 
-[sub_resource type="Sky" id="Sky_8dajq"]
-sky_material = SubResource("PanoramaSkyMaterial_v6cnj")
+[sub_resource type="Sky" id="Sky_xw1ns"]
+sky_material = SubResource("ProceduralSkyMaterial_n4pwy")
 
-[sub_resource type="Environment" id="Environment_dc21e"]
+[sub_resource type="Environment" id="Environment_3wksv"]
 background_mode = 2
-background_energy_multiplier = 1.96
-sky = SubResource("Sky_8dajq")
-sky_custom_fov = 89.1
-sky_rotation = Vector3(1.06465, -0.759218, -0.113446)
-ambient_light_color = Color(0.992157, 0.415686, 1, 1)
-ambient_light_energy = 2.26
-reflected_light_source = 2
+sky = SubResource("Sky_xw1ns")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
 
@@ -41,7 +35,7 @@ mesh_library = ExtResource("3_scmjh")
 cell_size = Vector3(0.755, 1.01, 0.87)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_dc21e")
+environment = SubResource("Environment_3wksv")
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("4_w2jcx")
