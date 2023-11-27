@@ -67,7 +67,19 @@ func _ready():
 			hexV=cubeToHex(i,j)
 			if hexV not in list1:
 				$GridMap.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-				$GridMapGrassCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+				
+			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+#	$GridMapCollision.set_navigation_map(RID(10))
+	var cos2=$GridMapCollision.get_navigation_map()
+	var cos3=$GridMapCollision.get_cell_item(Vector3i(0,0,3))
+	print(cos3)
+	
+#	print(cos2)
+#	var grid_map=$GridMapCollision
+#	for x in range(grid_map.get_used_cells().size()):
+#		var cell_pos = grid_map.get_used_cells()[x]
+#		var rid = grid_map.get_cell_item_id(cell_pos.x, cell_pos.y, cell_pos.z)
+#		print("RID at position", cell_pos, "is", rid)
 	
 #	grid_size*=2	
 #	for y in range(grid_size+1):
