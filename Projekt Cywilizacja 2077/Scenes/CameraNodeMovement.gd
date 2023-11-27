@@ -3,15 +3,29 @@ extends Node3D
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
 
+const RAY_LENGTH = 1000
+
+
 func _input(event):
 	if event is InputEventScreenDrag:
 		dragging_movement(event)
+		
+#	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
+#		var camera3d = $Camera3D
+#		var from = camera3d.project_ray_origin(event.position)
+#		var to = from + camera3d.project_ray_normal(event.position) * RAY_LENGTH
+			
+	if event is InputEventMouse:
+		mouse = event.position
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			get_selection()
 		
 
 func dragging_movement(event: InputEventScreenDrag):
 	var vecTest = Vector3(global_position[0] + event.relative[0] * swipe_speed,
 	global_position[1], global_position[2] + event.relative[1] * swipe_speed)
-	print(global_position)
+#	print(global_position)
 	
 	if vecTest[0] > 37.59:
 		vecTest[0] = 37.59
@@ -26,7 +40,35 @@ func dragging_movement(event: InputEventScreenDrag):
 
 
 
+
+#func _physics_process(delta):
+#	var space_state = get_world_3d().direct_space_state
+#	var cam = $Camera3D
+#	var mousepos = get_viewport().get_mouse_position()
 #
+#	var origin = cam.project_ray_origin(mousepos)
+#	var end = origin + cam.project_ray_normal(mousepos) * RAY_LENGTH
+#	var query = PhysicsRayQueryParameters3D.create(origin, end)
+#	query.collide_with_areas = true
+#
+#	var result = space_state.intersect_ray(query)
+##	if result:
+#	print(result)
+
+func get_selection():
+	var worldspace = get_world_3d().direct_space_state
+#	var start = project_ray_origin(mouse)
+#	var end = project_position(mouse, 1000)
+	var cam = $Camera3D
+	var mousepos = get_viewport().get_mouse_position()
+
+	var start = cam.project_ray_origin(mousepos)
+	var end = start + cam.project_ray_normal(mousepos) * RAY_LENGTH
+	
+	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
+	print(result)
+
+
 #func _process(delta):
 #	if Input.is_action_just_pressed("mouse_left"):
 #		var mouse_pos = get_viewport().get_mouse_position()
@@ -43,10 +85,10 @@ func dragging_movement(event: InputEventScreenDrag):
 #
 #		# Uzyskaj kierunek raycastu od kamery w kierunku pozycji myszy
 #		var to = from + global_transform.basis.z * 1000  # Mnożnik (1000) to długość raycastu
-#
-#		var space_state = get_world_3d().direct_space_state
-#		var query = PhysicsRayQueryParameters3D.create(RayOrigin, RayEnd);
-#		var Intersection = SpaceState.intersect_ray(query)
+#		var worldspace = get_world_3d().direct_space_state
+##		var space_state = get_world_3d().direct_space_state
+#		var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
+##		var Intersection = SpaceState.intersect_ray(query)
 #		#var result = space_state.intersect_ray(P(from, to))
 #
 #		# Sprawdź, czy raycast trafił w coś

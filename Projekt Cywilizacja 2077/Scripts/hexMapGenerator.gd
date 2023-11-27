@@ -67,6 +67,7 @@ func _ready():
 			hexV=cubeToHex(i,j)
 			if hexV not in list1:
 				$GridMap.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+				$GridMapGrassCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 	
 #	grid_size*=2	
 #	for y in range(grid_size+1):
