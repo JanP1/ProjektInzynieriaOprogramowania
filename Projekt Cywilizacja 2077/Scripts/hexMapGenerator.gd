@@ -1,5 +1,15 @@
 extends Node3D
 
+const dir=[Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
+
+const hexDir=["N","NE","SE","S","SW","NW"]
+
+var grid_size=40
+var grid_steps=50
+var list1=[]
+var listWater=[]
+var hexV=cubeToHex(0,0)
+var hexI
 
 func cubeToHex(x,y):
 	var x2=x
@@ -8,16 +18,11 @@ func cubeToHex(x,y):
 	if x2%2==0:
 		y+=1
 	return Vector2(x,y)
+	
+func indexHex(x,y):
+	return y+x*grid_size
 
 
-const dir=[Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
-
-const hexDir=["N","NE","SE","S","SW","NW"]
-
-var grid_size=40
-var grid_steps=50
-var list1=[]
-var hexV=cubeToHex(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -45,13 +50,15 @@ func _ready():
 	for i in range(20):
 		var waterX=randi_range(0,grid_size)
 		var waterY=randi_range(0,grid_size)	
-		for waterX2 in range(grid_size+1):
-			for waterY2 in range(grid_size+1):
+		for waterX2 in range(grid_size):
+			for waterY2 in range(grid_size):
 				var radius=randi_range(4,7)
 				if (waterX2-waterX)**2+(waterY2-waterY)**2<radius:
 					hexV=cubeToHex(waterX2,waterY2)
+					hexI=indexHex(waterX2,waterY2)
 					$GridMap2.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 					list1.append(hexV)
+					listWater.append(hexI)
 		
 		#$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
 	var dictionary={
@@ -62,8 +69,8 @@ func _ready():
 	
 	hexV=cubeToHex(3,2)
 	#$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
-	for i in range(grid_size+1):
-		for j in range(grid_size+1):
+	for i in range(grid_size):
+		for j in range(grid_size):
 			hexV=cubeToHex(i,j)
 			if hexV not in list1:
 				$GridMap.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)

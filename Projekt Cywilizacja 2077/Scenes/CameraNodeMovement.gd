@@ -3,7 +3,7 @@ extends Node3D
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
 
-const RAY_LENGTH = 1000
+const RAY_LENGTH = 2000
 
 
 func _input(event):
@@ -65,24 +65,29 @@ func get_selection():
 	var start = cam.project_ray_origin(mousepos)
 	var end = start + cam.project_ray_normal(mousepos) * RAY_LENGTH
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
-	print(result)
+	#print(result)
 #	result.costam = true
 #	print(str(result["rid"]).get_slice("(", ")"))
-	if "rid" in result:
-		var rid_string = str(result["rid"])  # Konwersja RID do stringa
-		var rid_parts = rid_string.split("(")  # Podział stringa względem znaku '('
-		
-		var rid_number = rid_parts[1].replace(")", "")  # Usunięcie ')' ze stringa
+#	if "rid" in result:
+#		var rid_string = str(result["rid"])  # Konwersja RID do stringa
+#		var rid_parts = rid_string.split("(")  # Podział stringa względem znaku '('
+#
+#		var rid_number = rid_parts[1].replace(")", "")  # Usunięcie ')' ze stringa
+	if "shape" in result:
+		var shape=result["shape"]
+		var listWater=get_node("/root/Node3D").listWater#("res://Scripts/hexMapGenerator.gd").listWater
+		if shape in listWater:
+			print(shape)
 #		print(result["rid"].get_id())
 #		print(int(rid_number)-3474628542521) 
 	
-	var map=get_node("/root/Node3D/GridMapCollision")#$GridMapCollision
-#	var map=load("res://Scenes/map.tscn").instance()
-	if map:
-		print(map)
-		var point =result["position"]#map.world_to_map(result["position"])
-		var tile=map.get_cell_item(Vector3i(point.x,point.y,point.z))
-		print(tile)
+#	var map=get_node("/root/Node3D/GridMapCollision")#$GridMapCollision
+##	var map=load("res://Scenes/map.tscn").instance()
+#	if map:
+#		print(map)
+#		var point =result["position"]#map.world_to_map(result["position"])
+#		var tile=map.get_cell_item(Vector3i(point.x,point.y,point.z))
+#		print(tile)
 
 
 #func _process(delta):

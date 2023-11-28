@@ -44,6 +44,7 @@ cell_size = Vector3(0.755, 1.01, 0.87)
 [node name="GridMapCollision" type="GridMap" parent="."]
 mesh_library = ExtResource("6_dukto")
 cell_size = Vector3(0.755, 1.01, 0.87)
+cell_octant_size = 100
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3wksv")
