@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0osw1j6l1ofc"]
+
+[ext_resource type="PackedScene" uid="uid://debmdikuo2al" path="res://Models/HexSkins/hexagonWater.glb" id="1_76o34"]
+
+[node name="Cube" type="Node3D"]
+
+[node name="hexagonWater" parent="." instance=ExtResource("1_76o34")]

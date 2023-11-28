@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://g7gjpc21s4r1"]
+
+[ext_resource type="PackedScene" uid="uid://ev8f17yqvqp5" path="res://Models/HexSkins/hexagon2.glb" id="1_bq84s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mjli1"]
+points = PackedVector3Array(0.565, 0, 0.895, -0.515, 0, 0.895, 1.045, 0, 0.01, 0.515, 0, -0.91, -0.535, 0, -0.89, -1.035, 0, -0.015)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="hexagon2" parent="StaticBody3D" instance=ExtResource("1_bq84s")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mjli1")

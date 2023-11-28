@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://boap0p6jbkcoy"]
+[gd_scene load_steps=12 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
-[ext_resource type="MeshLibrary" uid="uid://1bqht2pfsluf" path="res://Scenes/hexGrass.meshlib" id="2_funsi"]
-[ext_resource type="MeshLibrary" uid="uid://rg80u3fp3vci" path="res://Scenes/hexWater.tres" id="3_scmjh"]
-[ext_resource type="Script" path="res://Scenes/CameraNodeMovement.gd" id="4_w2jcx"]
-[ext_resource type="MeshLibrary" uid="uid://dvu0p27lsmg53" path="res://Scenes/hexGrassCollision2.meshlib" id="6_dukto"]
-[ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/sea.jpg" id="6_tpsjo"]
+[ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
+[ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
+[ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
+[ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
+[ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="6_claf3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.298039, 0.831373, 0.909804, 1)
@@ -21,28 +21,22 @@ sky = SubResource("Sky_xw1ns")
 [sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q753y"]
-albedo_texture = ExtResource("6_tpsjo")
-
-[sub_resource type="BoxMesh" id="BoxMesh_cjqtp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gnqpm"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_enau5"]
+albedo_texture = ExtResource("6_claf3")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nm7ik")
 
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("2_funsi")
+[node name="GridMapGrass" type="GridMap" parent="."]
+mesh_library = ExtResource("2_h658d")
 cell_size = Vector3(0.755, 1.01, 0.87)
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="GridMap2" type="GridMap" parent="."]
-mesh_library = ExtResource("3_scmjh")
+[node name="GridMapWater" type="GridMap" parent="."]
+mesh_library = ExtResource("3_2khim")
 cell_size = Vector3(0.755, 1.01, 0.87)
 
 [node name="GridMapCollision" type="GridMap" parent="."]
-mesh_library = ExtResource("6_dukto")
+mesh_library = ExtResource("4_lgd71")
 cell_size = Vector3(0.755, 1.01, 0.87)
 cell_octant_size = 100
 
@@ -50,7 +44,7 @@ cell_octant_size = 100
 environment = SubResource("Environment_3wksv")
 
 [node name="CameraNode" type="Node3D" parent="."]
-script = ExtResource("4_w2jcx")
+script = ExtResource("5_5fq2g")
 
 [node name="Camera3D" type="Camera3D" parent="CameraNode"]
 transform = Transform3D(-1, -5.61943e-08, 6.69697e-08, 0, 0.766045, 0.642788, -8.74228e-08, 0.642788, -0.766045, -40, 25, 10)
@@ -60,24 +54,3 @@ fov = 18.9
 transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, -15.8941, 0, 0)
 mesh = SubResource("PlaneMesh_64ajg")
 surface_material_override/0 = SubResource("StandardMaterial3D_q753y")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_cjqtp")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
-transform = Transform3D(1.405, 0, 0, 0, 1.405, 0, 0, 0, 1.405, 0, 0, 0)
-shape = SubResource("BoxShape3D_gnqpm")
-disabled = true
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
-transform = Transform3D(4.45, 0, 0, 0, 4.45, 0, 0, 0, 4.45, 0, 0, 0)
-shape = SubResource("BoxShape3D_enau5")
-disabled = true

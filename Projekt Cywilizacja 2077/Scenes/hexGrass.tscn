@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyen20jdmoa1"]
+
+[ext_resource type="PackedScene" uid="uid://ev8f17yqvqp5" path="res://Models/HexSkins/hexagon2.glb" id="1_g6l67"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="hexagon2" parent="." instance=ExtResource("1_g6l67")]
