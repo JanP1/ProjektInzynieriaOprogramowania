@@ -2,6 +2,8 @@ extends Node3D
 
 #const dir=[Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
 
+@onready var index_lable = get_node("Menu/Control/MarginContainer/Labelndex")
+
 const hexDir=["N","NE","SE","S","SW","NW"]
 
 var grid_size=40
@@ -26,6 +28,11 @@ func indexHex(x,y):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	
+	
+	
+	
 #	randomize()
 #	var current_pos=Vector2(0,0)
 	
@@ -92,3 +99,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_camera_node_clicked_map_index_changed(map_ind):
+	index_lable.text = str(map_ind)
+	

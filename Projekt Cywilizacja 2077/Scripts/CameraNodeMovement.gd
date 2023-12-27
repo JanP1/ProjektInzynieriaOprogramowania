@@ -3,6 +3,9 @@ extends Node3D
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
 
+signal clicked_map_index_changed(map_ind:int)
+
+
 const RAY_LENGTH = 2000
 
 
@@ -57,5 +60,6 @@ func get_selection():
 
 func clickOnlyGrassAndOnce(index):
 	if index in listGrass:
+		clicked_map_index_changed.emit(index)
 		print(index)
-		listGrass.remove_at(listGrass.find(index))
+		

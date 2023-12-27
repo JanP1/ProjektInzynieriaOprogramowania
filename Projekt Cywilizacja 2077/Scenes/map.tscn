@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=13 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
 [ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
 [ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
 [ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
+[ext_resource type="PackedScene" uid="uid://byjtepionmf18" path="res://Scenes/Menu.tscn" id="5_pivbd"]
 [ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="6_claf3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
@@ -43,6 +44,8 @@ cell_octant_size = 100
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3wksv")
 
+[node name="Menu" parent="." instance=ExtResource("5_pivbd")]
+
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("5_5fq2g")
 
@@ -54,3 +57,5 @@ fov = 18.9
 transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, -15.8941, 0, 0)
 mesh = SubResource("PlaneMesh_64ajg")
 surface_material_override/0 = SubResource("StandardMaterial3D_q753y")
+
+[connection signal="clicked_map_index_changed" from="CameraNode" to="." method="_on_camera_node_clicked_map_index_changed"]
