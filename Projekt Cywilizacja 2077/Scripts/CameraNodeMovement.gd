@@ -11,7 +11,8 @@ const RAY_LENGTH = 2000
 
 func _input(event):
 	if event is InputEventScreenDrag:
-		dragging_movement(event)
+		if event.position[0] < 750:
+			dragging_movement(event)
 		
 	if event is InputEventMouse:
 		mouse = event.position
