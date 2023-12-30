@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=18 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
 [ext_resource type="PackedScene" uid="uid://byjtepionmf18" path="res://Scenes/Menu.tscn" id="5_pivbd"]
 [ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="6_claf3"]
+[ext_resource type="Script" path="res://Scripts/GridContainerBuilding.gd" id="6_ewnod"]
+[ext_resource type="Theme" uid="uid://cfphnhpxu5cx0" path="res://Models/Textures/Buttons.tres" id="7_ng67w"]
+[ext_resource type="Script" path="res://Scenes/GridContainerMenu.gd" id="8_77o42"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.298039, 0.831373, 0.909804, 1)
@@ -18,6 +21,11 @@ sky_material = SubResource("ProceduralSkyMaterial_n4pwy")
 [sub_resource type="Environment" id="Environment_3wksv"]
 background_mode = 2
 sky = SubResource("Sky_xw1ns")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkgif"]
+bg_color = Color(1, 0.333333, 0.364706, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6fhg0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
 
@@ -36,15 +44,135 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 mesh_library = ExtResource("3_2khim")
 cell_size = Vector3(0.755, 1.01, 0.87)
 
+[node name="GridMapPath" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01316, 0)
+mesh_library = ExtResource("2_h658d")
+cell_size = Vector3(0.755, 1.01, 0.87)
+data = {
+"cells": PackedInt32Array(65517, 8, 0, 65517, 7, 0, 65518, 7, 0, 65518, 6, 0, 65517, 6, 0, 65516, 6, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
 [node name="GridMapCollision" type="GridMap" parent="."]
 mesh_library = ExtResource("4_lgd71")
 cell_size = Vector3(0.755, 1.01, 0.87)
 cell_octant_size = 100
 
+[node name="GridMapBacklight" type="GridMap" parent="."]
+mesh_library = ExtResource("3_2khim")
+cell_size = Vector3(0.755, 1.01, 0.87)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3wksv")
 
 [node name="Menu" parent="." instance=ExtResource("5_pivbd")]
+
+[node name="GridContainerBuilding" type="GridContainer" parent="Menu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 3
+script = ExtResource("6_ewnod")
+
+[node name="Button" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+text = "Castle 1"
+
+[node name="Button2" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button3" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button4" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button5" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button6" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button7" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button8" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button9" type="Button" parent="Menu/GridContainerBuilding"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_kkgif")
+text = "Back"
+
+[node name="GridContainerMenu" type="GridContainer" parent="Menu"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 2
+script = ExtResource("8_77o42")
+
+[node name="Button" type="Button" parent="Menu/GridContainerMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Building"
+
+[node name="Button2" type="Button" parent="Menu/GridContainerMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button3" type="Button" parent="Menu/GridContainerMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button4" type="Button" parent="Menu/GridContainerMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = SubResource("CanvasTexture_6fhg0")
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("5_5fq2g")

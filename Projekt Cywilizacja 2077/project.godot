@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Cywilizacja 2077"
 run/main_scene="res://Stare/node_3d.tscn"
-config/features=PackedStringArray("4.1", "Mobile")
+config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://Stare/icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/Global.gd"
 
 [dotnet]
 

@@ -88,6 +88,9 @@ func _ready():
 #					listGrass.remove_at(listGrass.find(hexI))
 				
 			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+			Global.listCollision.append(hexV)
+			#var gridMapPath=get_node("/root/Node3D/GridMapPath")
+			#gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 #	var cos2=$GridMapCollision.get_navigation_map()
 #	var cos3=$GridMapCollision.get_cell_item(Vector3i(0,0,3))
 #	print(cos3)
