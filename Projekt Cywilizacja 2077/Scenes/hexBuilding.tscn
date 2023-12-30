@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvwlrrwue7v5t"]
+
+[ext_resource type="PackedScene" uid="uid://debmdikuo2al" path="res://Models/HexSkins/hexagonWater.glb" id="2_25q25"]
+[ext_resource type="PackedScene" uid="uid://dsqosb8j3jtr8" path="res://Models/Building/tower.glb" id="3_6y8pi"]
+[ext_resource type="PackedScene" uid="uid://bdu2k51im1ulx" path="res://Models/Building/castle.glb" id="3_goh81"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="castle" parent="." instance=ExtResource("3_goh81")]
+
+[node name="tower" parent="." instance=ExtResource("3_6y8pi")]
+
+[node name="hexagonWater" parent="." instance=ExtResource("2_25q25")]

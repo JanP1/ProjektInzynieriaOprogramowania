@@ -4,15 +4,19 @@ var gridBuilding
 var gridMenu
 var gridPath
 var gridBacklight
+
 var lastBacklight=Vector3(0,0,0)
 var listCollision=[]
+var actualGridBuilding=0
+
+var breakClick=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gridBuilding=get_node("/root/Node3D/Menu/GridContainerBuilding")
-	gridMenu=get_node("/root/Node3D/Menu/GridContainerMenu")
-	gridPath=get_node("/root/Node3D/GridMapPath")
-	gridPath=get_node("/root/Node3D/GridMapBacklight")
+	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
+	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
+	gridPath=get_node("/root/Node3D/GridMapSetObject")
+	gridBacklight=get_node("/root/Node3D/GridMapBacklight")
 	pass # Replace with function body.
 	
 func cubeToHex(x,y):
@@ -22,6 +26,13 @@ func cubeToHex(x,y):
 	if x2%2==0:
 		y+=1
 	return Vector2(x,y)
+	
+func get_item_index_by_name(mesh_library, item_name):
+	var count = mesh_library.get_item_list().size()
+	for i in range(count):
+		if mesh_library.get_item_name(i) == item_name:
+			return i
+	return -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

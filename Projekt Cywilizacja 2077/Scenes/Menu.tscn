@@ -23,13 +23,13 @@ script = SubResource("GDScript_ka151")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 0.681
+anchor_left = 0.674
 anchor_right = 1.0
 anchor_bottom = 0.961
-offset_left = 41.4879
-offset_top = 64.0
-offset_right = -69.0
-offset_bottom = -93.728
+offset_left = -731.448
+offset_top = 19.0
+offset_right = -461.0
+offset_bottom = -536.728
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -37,8 +37,8 @@ grow_vertical = 2
 layout_mode = 2
 offset_left = -16.0
 offset_top = -39.0
-offset_right = 301.0
-offset_bottom = 544.0
+offset_right = 674.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.666667, 0.8, 1, 1)

@@ -4,7 +4,7 @@ extends Node3D
 
 @onready var index_lable = get_node("Menu/Control/MarginContainer/Labelndex")
 
-const hexDir=["N","NE","SE","S","SW","NW"]
+#const hexDir=["N","NE","SE","S","SW","NW"]
 
 var grid_size=40
 var grid_steps=50
@@ -28,11 +28,6 @@ func indexHex(x,y):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
-	
-	
-	
 #	randomize()
 #	var current_pos=Vector2(0,0)
 	
@@ -67,16 +62,8 @@ func _ready():
 					list1.append(hexV)
 					hexI=indexHex(waterX2,waterY2)
 					listWater.append(hexI)
-		
-		#$GridMap.set_cell_item(Vector3i((current_pos.x),0, (current_pos.y)),0,0)
-	var dictionary={
-		"key1":"valueXY"
-	}
-	dictionary[str(0)]=[-5,5]
-	#$GridMap2.set_cell_item(Vector3i(int(dictionary[str(0)][0]),0, int(dictionary[str(0)][1])),0,0)
-	
+
 	hexV=cubeToHex(3,2)
-	#$GridMap2.set_cell_item(Vector3i(int(test[0]),0, int(test[1])),0,0)
 	for i in range(grid_size):
 		for j in range(grid_size):
 			hexV=cubeToHex(i,j)
@@ -84,24 +71,11 @@ func _ready():
 				$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 				hexI=indexHex(i,j)
 				listGrass.append(hexI)
-#				if hexI in listGrass and hexI<1500:
+#				if hexI in listGrass and hexI<1500:  #przydatne, nie usuwac
 #					listGrass.remove_at(listGrass.find(hexI))
 				
 			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 			Global.listCollision.append(hexV)
-			#var gridMapPath=get_node("/root/Node3D/GridMapPath")
-			#gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-#	var cos2=$GridMapCollision.get_navigation_map()
-#	var cos3=$GridMapCollision.get_cell_item(Vector3i(0,0,3))
-#	print(cos3)
-	
-#	print(cos2)
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_camera_node_clicked_map_index_changed(map_ind):
