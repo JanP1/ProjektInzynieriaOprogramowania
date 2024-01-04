@@ -62,15 +62,47 @@ func _ready():
 					list1.append(hexV)
 					hexI=indexHex(waterX2,waterY2)
 					listWater.append(hexI)
+	
+	hexV=cubeToHex(3,2)
+	for i in range(grid_size):
+		var GrassX=randi_range(7,grid_size-7)
+		var GrassY=randi_range(7,grid_size-7)
+		hexV=cubeToHex(GrassX,GrassY)
+		while hexV not in list1:
+			GrassX=randi_range(7,grid_size-7)
+			GrassY=randi_range(7,grid_size-7)	
+			hexV=cubeToHex(GrassX,GrassY)
+		hexI=indexHex(GrassX,GrassY)
+		listGrass.append(hexI)
+		list1.append(hexV)
+		$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+		var radius=10
+		for grassX2 in range(grid_size):
+			for grassY2 in range(grid_size):
+				if (grassX2-GrassX)**2+(grassY2-GrassY)**2<radius:	
+					hexV=cubeToHex(grassX2,grassY2)
+					if hexV not in list1:
+						$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+						hexI=indexHex(grassX2,grassY2)
+						listGrass.append(hexI)
+						list1.append(hexV)
+
+		#for j in range(grid_size):
+			#hexV=cubeToHex(i,j)
+			#if hexV not in list1:
+				#$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+				#hexI=indexHex(i,j)
+				#listGrass.append(hexI)
+				
 
 	hexV=cubeToHex(3,2)
 	for i in range(grid_size):
 		for j in range(grid_size):
 			hexV=cubeToHex(i,j)
 			if hexV not in list1:
-				$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+				$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 				hexI=indexHex(i,j)
-				listGrass.append(hexI)
+				#listGrass.append(hexI)
 #				if hexI in listGrass and hexI<1500:  #przydatne, nie usuwac
 #					listGrass.remove_at(listGrass.find(hexI))
 				

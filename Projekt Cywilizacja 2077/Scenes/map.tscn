@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=20 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
+[ext_resource type="MeshLibrary" uid="uid://cvbtnjgc67u31" path="res://Models/HexGodot/hexDesert.meshlib" id="2_uqmr3"]
 [ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
 [ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
 [ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
@@ -13,14 +14,14 @@
 [ext_resource type="Script" path="res://Scenes/GridContainerMenu.gd" id="8_77o42"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
-sky_top_color = Color(0.298039, 0.831373, 0.909804, 1)
-sky_horizon_color = Color(0.729412, 0.705882, 0.709804, 1)
+sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
 
 [sub_resource type="Sky" id="Sky_xw1ns"]
 sky_material = SubResource("ProceduralSkyMaterial_n4pwy")
 
 [sub_resource type="Environment" id="Environment_3wksv"]
 background_mode = 2
+background_energy_multiplier = 1.49
 sky = SubResource("Sky_xw1ns")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkgif"]
@@ -35,6 +36,11 @@ albedo_texture = ExtResource("6_claf3")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_nm7ik")
+
+[node name="GridMapDesert" type="GridMap" parent="."]
+mesh_library = ExtResource("2_uqmr3")
+cell_size = Vector3(0.755, 1.01, 0.87)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="GridMapGrass" type="GridMap" parent="."]
 mesh_library = ExtResource("2_h658d")
