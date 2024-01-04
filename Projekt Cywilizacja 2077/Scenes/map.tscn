@@ -48,9 +48,6 @@ cell_size = Vector3(0.755, 1.01, 0.87)
 [node name="GridMapSetObject" type="GridMap" parent="."]
 mesh_library = ExtResource("6_r7xsy")
 cell_size = Vector3(0.755, 1.01, 0.87)
-data = {
-"cells": PackedInt32Array(65517, 8, 0, 65517, 7, 0, 65518, 7, 0, 65518, 6, 0, 65517, 6, 0, 65516, 6, 0)
-}
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="GridMapCollision" type="GridMap" parent="."]

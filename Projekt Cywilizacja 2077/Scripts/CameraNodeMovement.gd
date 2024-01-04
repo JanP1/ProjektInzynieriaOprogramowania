@@ -75,6 +75,7 @@ func get_selection():
 func _process(delta):
 	var mousepos = get_viewport().get_mouse_position()
 	var result=Xray()
+	viewport_rect = get_viewport().get_visible_rect()
 	if viewport_rect.size.x*2/3>mousepos.x:
 		if "shape" in result:
 			var index=result["shape"]
