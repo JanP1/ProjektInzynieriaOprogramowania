@@ -98,13 +98,19 @@ func _process(delta):
 		
 	
 
+var money=5
 func clickOnlyGrassAndOnce(index):
 	if index in listGrass and index not in listGrassClicked:
 		var listCollision=Global.listCollision
 		var gridXY=listCollision[index]
 		var gridMapPath=Global.gridPath
 		var hexV=gridXY
-		gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+		if money>0:
+			gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+			if Global.actualGridBuildingName=="Kostka":
+				money-=1
+			elif Global.actualGridBuildingName=="Okrąg":
+				money-=3
 		
 		clicked_map_index_changed.emit(index)
 		print(index)

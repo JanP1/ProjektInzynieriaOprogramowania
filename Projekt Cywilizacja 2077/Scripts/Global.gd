@@ -8,6 +8,7 @@ var gridBacklight
 var lastBacklight=Vector3(0,0,0)
 var listCollision=[]
 var actualGridBuilding=0
+var actualGridBuildingName=""
 
 var breakClick=0
 

@@ -12,6 +12,8 @@ func changeBuilding(nameBuilding):
 	var gridMap=Global.gridBacklight
 	var indexItem = Global.get_item_index_by_name(gridMap.mesh_library, nameBuilding)
 	Global.actualGridBuilding=indexItem
+	Global.actualGridBuildingName=nameBuilding
+	
 	
 	
 func _on_button_pressed():
