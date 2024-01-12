@@ -14,17 +14,10 @@ func changeBuilding(nameBuilding):
 	Global.actualGridBuilding=indexItem
 	Global.actualGridBuildingName=nameBuilding
 	
-	Global.listBuilding[Global.indexClicked]=nameBuilding
-	var hexV=Global.listCollision[Global.indexClicked]
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-	Global.gridBuilding.visible=false
-	
 	
 	
 func _on_button_pressed():
-	
-	changeBuilding("Kostka")
-	
+	pass
 	
 	
 func _on_button2_pressed():

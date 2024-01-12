@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=21 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -11,7 +11,8 @@
 [ext_resource type="Script" path="res://Scripts/GridContainerBuilding.gd" id="6_ewnod"]
 [ext_resource type="MeshLibrary" uid="uid://cypuyuhmmssek" path="res://Models/Building/building.meshlib" id="6_r7xsy"]
 [ext_resource type="Theme" uid="uid://cfphnhpxu5cx0" path="res://Models/Textures/Buttons.tres" id="7_ng67w"]
-[ext_resource type="Script" path="res://Scenes/GridContainerMenu.gd" id="8_77o42"]
+[ext_resource type="Script" path="res://Scripts/GridContainerMenu.gd" id="8_77o42"]
+[ext_resource type="Script" path="res://Scenes/GridContainerUpdating.gd" id="10_m3avn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
@@ -192,7 +193,7 @@ offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 2
 columns = 3
-script = ExtResource("6_ewnod")
+script = ExtResource("10_m3avn")
 
 [node name="Button" type="Button" parent="ActionMenu/GridContainerUpdating"]
 layout_mode = 2
