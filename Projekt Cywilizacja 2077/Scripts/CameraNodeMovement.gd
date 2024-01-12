@@ -1,6 +1,12 @@
 extends Node3D
 
 
+# Signals --------
+signal constructed_item_clicked(name:String, descr:String) # To set lables as visible and pass values
+signal constructed_item_unclicked() # To set lable for name and desc as invisible
+
+# ----------------
+
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
 
@@ -121,6 +127,7 @@ func clickOnlyGrassAndOnce(index):
 		if Global.listBuilding[index]!="":
 			if Global.listBuilding[index]=="Kostka":
 				Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+				constructed_item_clicked.emit("Kostka", "Opis")
 
 				
 				#Global.actualGridBuildingName="Kostka"
@@ -130,6 +137,7 @@ func clickOnlyGrassAndOnce(index):
 		else:
 			Global.gridBuilding.visible=true
 			Global.gridUpdating.visible=false
+			constructed_item_unclicked.emit()
 			#Global.actualGridBuildingName=listBuilding[index]
 		Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
 			

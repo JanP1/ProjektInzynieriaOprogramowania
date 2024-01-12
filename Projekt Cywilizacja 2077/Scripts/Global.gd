@@ -13,6 +13,9 @@ var cameraNode
 #Players Money
 @onready var moneyLable
 var currentMoneyPlayer = 1000
+#Other Menu Lables
+@onready var nameLable
+@onready var descLable
 
 
 var lastBacklight=Vector3(0,0,0)
@@ -35,11 +38,17 @@ func _ready():
 	cameraNode=get_node("/root/Node3D/CameraNode")
 	
 	#Top Menu Containing players money
-	moneyLable=get_node("/root/Node3D/Menu/Control/MarginContainer/Labelndex")
-	moneyLable.text = str(currentMoneyPlayer)
+	moneyLable=get_node("/root/Node3D/Menu/Control/MarginContainer/LabelIndex")
 	
-	#Connecting to the signal sent by the builder
+	#Item clicked
+	nameLable = get_node("/root/Node3D/Menu/Control/MarginContainer4/LabelName")
+	descLable = get_node("/root/Node3D/Menu/Control/MarginContainer3/Description")
+	moneyLable.text = str(currentMoneyPlayer) + "$"
+	
+	#Connecting to the signals
 	gridBuilding.money_changed.connect(_on_money_change)
+	cameraNode.constructed_item_clicked.connect(_on_const_it_click)
+	cameraNode.constructed_item_unclicked.connect(_on_const_it_unclick)
 	
 	for i in range(10000):
 		listBuilding.append("")
@@ -66,4 +75,15 @@ func _process(delta):
 
 #Function called every time the value of currentMoneyPlayer changes
 func _on_money_change(newMoneyValue):
-	moneyLable.text = str(newMoneyValue)
+	moneyLable.text = str(newMoneyValue) + "$"
+
+
+func _on_const_it_click(name, description):
+	nameLable.visible = true
+	descLable.visible = true
+	nameLable.text = name
+	descLable.text = description
+
+func _on_const_it_unclick():
+	nameLable.visible = false
+	descLable.visible = false

@@ -69,6 +69,8 @@ cell_size = Vector3(0.755, 1.01, 0.87)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3wksv")
 
+[node name="Menu" parent="." instance=ExtResource("5_pivbd")]
+
 [node name="ActionMenu" type="CanvasLayer" parent="."]
 
 [node name="GridContainerBuilding" type="GridContainer" parent="ActionMenu"]
@@ -251,8 +253,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_kkgif")
 text = "Back"
-
-[node name="Menu" parent="." instance=ExtResource("5_pivbd")]
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("5_5fq2g")
