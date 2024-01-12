@@ -19,13 +19,20 @@ func changeBuilding(nameBuilding):
 func _on_button_pressed():
 	changeBuilding("Kostka")
 	
+	Global.listBuilding[Global.indexClicked]="Kostka"
+	var hexV=Global.listCollision[Global.indexClicked]
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+	Global.gridBuilding.visible=false
+	
 func _on_button2_pressed():
 	changeBuilding("Okrąg")
 	
 func _on_button9_pressed():
-	var gridContainer=Global.gridMenu
-	gridContainer.visible=true
-	self.visible=false
+	var hexV=Global.listCollision[Global.indexClicked]
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
+	#var gridContainer=Global.gridMenu
+	#gridContainer.visible=true
+	#self.visible=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

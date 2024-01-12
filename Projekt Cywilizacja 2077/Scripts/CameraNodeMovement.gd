@@ -72,48 +72,72 @@ func get_selection():
 		
 		clickOnlyGrassAndOnce(index)
 
-func _process(delta):
-	var mousepos = get_viewport().get_mouse_position()
-	var result=Xray()
-	viewport_rect = get_viewport().get_visible_rect()
-	if viewport_rect.size.x*2/3>mousepos.x:
-		if "shape" in result:
-			var index=result["shape"]
-			if index in listGrass and index not in listGrassClicked:
-				var listCollision=Global.listCollision
-				var gridXY=listCollision[index]
-				#var gridMapPath=Global.gridPath
-				var hexV=gridXY
-				var gridMapBacklight=Global.gridBacklight
-				var lastBacklight=Global.lastBacklight
-				
-				gridMapBacklight.set_cell_item(lastBacklight,Global.actualGridBuilding,-1)
-				gridMapBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-				Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
-	else:
-		var gridMapBacklight=Global.gridBacklight
-		var lastBacklight=Global.lastBacklight
-		gridMapBacklight.set_cell_item(lastBacklight,1,-1)
+#func _process(delta):
+	#var mousepos = get_viewport().get_mouse_position()
+	#var result=Xray()
+	#viewport_rect = get_viewport().get_visible_rect()
+	#if viewport_rect.size.x*2/3>mousepos.x:
+		#if "shape" in result:
+			#var index=result["shape"]
+			#if index in listGrass and index not in listGrassClicked:
+				#var listCollision=Global.listCollision
+				#var gridXY=listCollision[index]
+				##var gridMapPath=Global.gridPath
+				#var hexV=gridXY
+				#var gridMapBacklight=Global.gridBacklight
+				#var lastBacklight=Global.lastBacklight
+				#
+				#gridMapBacklight.set_cell_item(lastBacklight,Global.actualGridBuilding,-1)
+				#gridMapBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+				#Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
+	#else:
+		#var gridMapBacklight=Global.gridBacklight
+		#var lastBacklight=Global.lastBacklight
+		#gridMapBacklight.set_cell_item(lastBacklight,1,-1)
 
 		
-	
+
 
 var money=5
 func clickOnlyGrassAndOnce(index):
 	if index in listGrass and index not in listGrassClicked:
-		var listCollision=Global.listCollision
-		var gridXY=listCollision[index]
-		var gridMapPath=Global.gridPath
-		var hexV=gridXY
-		if money>0:
-			gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-			if Global.actualGridBuildingName=="Kostka":
-				money-=1
-			elif Global.actualGridBuildingName=="Okrąg":
-				money-=3
+		#var listCollision=Global.listCollision
+		#var gridXY=listCollision[index]
+		#var gridMapPath=Global.gridPath
+		#var hexV=gridXY
+		#if money>0:
+			#gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+			#if Global.actualGridBuildingName=="Kostka":
+				#money-=1
+			#elif Global.actualGridBuildingName=="Okrąg":
+				#money-=3
 		
 		clicked_map_index_changed.emit(index)
 		print(index)
+		
+		var hexV=Global.listCollision[index]
+		Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
+		Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+		
+		Global.indexClicked=index
+		if Global.listBuilding[index]!="":
+			if Global.listBuilding[index]=="Kostka":
+				Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+
+				
+				#Global.actualGridBuildingName="Kostka"
+			Global.gridUpdating.visible=true
+			Global.gridBuilding.visible=false
+			
+		else:
+			Global.gridBuilding.visible=true
+			Global.gridUpdating.visible=false
+			#Global.actualGridBuildingName=listBuilding[index]
+		Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
+			
+			
+			
+		
 		#listGrassClicked.append(index)
 		
 		

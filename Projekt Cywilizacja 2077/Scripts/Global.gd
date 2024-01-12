@@ -1,6 +1,7 @@
 extends Node
 
 var gridBuilding
+var gridUpdating
 var gridMenu
 var gridPath
 var gridBacklight
@@ -9,16 +10,22 @@ var lastBacklight=Vector3(0,0,0)
 var listCollision=[]
 var actualGridBuilding=0
 var actualGridBuildingName=""
+var indexClicked=0
 
 var breakClick=0
+
+var listBuilding = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
+	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
 	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
 	gridPath=get_node("/root/Node3D/GridMapSetObject")
 	gridBacklight=get_node("/root/Node3D/GridMapBacklight")
-	pass # Replace with function body.
+	
+	for i in range(10000):
+		listBuilding.append("")
 	
 func cubeToHex(x,y):
 	var x2=x

@@ -143,6 +143,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_kkgif")
 text = "Back"
 
 [node name="GridContainerMenu" type="GridContainer" parent="ActionMenu"]
+visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -177,6 +178,78 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 icon = SubResource("CanvasTexture_6fhg0")
+
+[node name="GridContainerUpdating" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -343.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 3
+script = ExtResource("6_ewnod")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+text = "ULEPSZENIE 1"
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+text = "ULEPSZENIE 2"
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button4" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button5" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button6" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button7" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button8" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_ng67w")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerUpdating"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_kkgif")
+text = "Back"
 
 [node name="Menu" parent="." instance=ExtResource("5_pivbd")]
 
