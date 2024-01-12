@@ -265,5 +265,3 @@ fov = 18.9
 transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, -15.8941, 0, 0)
 mesh = SubResource("PlaneMesh_64ajg")
 surface_material_override/0 = SubResource("StandardMaterial3D_q753y")
-
-[connection signal="clicked_map_index_changed" from="CameraNode" to="." method="_on_camera_node_clicked_map_index_changed"]

@@ -1,9 +1,9 @@
 extends Node3D
 
+
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
 
-signal clicked_map_index_changed(map_ind:int)
 
 
 const RAY_LENGTH = 2000
@@ -111,8 +111,6 @@ func clickOnlyGrassAndOnce(index):
 				#money-=1
 			#elif Global.actualGridBuildingName=="Okrąg":
 				#money-=3
-		
-		clicked_map_index_changed.emit(index)
 		print(index)
 		
 		var hexV=Global.listCollision[index]

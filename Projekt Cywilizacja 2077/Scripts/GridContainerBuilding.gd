@@ -1,5 +1,10 @@
 extends GridContainer
 
+#Signals------------
+signal money_changed(newMoneyValue:int)
+
+#-------------------
+
 func _ready():
 	var button = $Button
 	button.connect("pressed", Callable(self, "_on_button_pressed"))
@@ -16,9 +21,13 @@ func changeBuilding(nameBuilding):
 	
 	Global.listBuilding[Global.indexClicked]=nameBuilding
 	var hexV=Global.listCollision[Global.indexClicked]
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-	Global.gridBuilding.visible=false
-	
+	var priceOfSelected = _get_price_of_placed_item(nameBuilding)
+	if(Global.currentMoneyPlayer-priceOfSelected > 0):
+		money_changed.emit(Global.currentMoneyPlayer-priceOfSelected)
+		Global.currentMoneyPlayer -= priceOfSelected
+		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+		Global.gridBuilding.visible=false
+		
 	
 	
 func _on_button_pressed():
@@ -41,3 +50,15 @@ func _on_button9_pressed():
 func _process(delta):
    #print(stop)
 	pass
+
+
+func _get_price_of_placed_item(itemName):
+	var itemPrice = 0
+	
+	#Place to put any item name, that is available on the building menu
+	match itemName:
+		"Kostka":
+			itemPrice = 450
+		"Okrąg":
+			itemPrice = 5
+	return itemPrice
