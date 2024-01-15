@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt78wfgmofl6d"]
+
+[ext_resource type="PackedScene" uid="uid://b41e8ac5wb4is" path="res://Models/HexSkins/hexagonBacklight.glb" id="1_e3wkg"]
+
+[node name="Cube" type="Node3D"]
+
+[node name="hexagonBacklight" parent="." instance=ExtResource("1_e3wkg")]

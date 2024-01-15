@@ -22,10 +22,13 @@ func _on_button_pressed():
 	
 func _on_button2_pressed():
 	changeBuilding("Okrąg")
-	
+signal constructed_item_unclicked()
 func _on_button9_pressed():
 	var hexV=Global.listCollision[Global.indexClicked]
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
+	Global.listBuilding[Global.indexClicked]=""
+	self.visible=false
+	constructed_item_unclicked.emit()
 	#var gridContainer=Global.gridMenu
 	#gridContainer.visible=true
 	#self.visible=false
