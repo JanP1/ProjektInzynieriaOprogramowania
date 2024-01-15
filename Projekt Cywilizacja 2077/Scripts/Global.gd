@@ -7,6 +7,7 @@ var gridMenu
 var gridPath
 var gridBacklight
 var cameraNode
+var cameraNodeCamera3D
 # --------------
 
 
@@ -36,6 +37,7 @@ func _ready():
 	gridPath=get_node("/root/Node3D/GridMapSetObject")
 	gridBacklight=get_node("/root/Node3D/GridMapBacklight")
 	cameraNode=get_node("/root/Node3D/CameraNode")
+	cameraNodeCamera3D=get_node("/root/Node3D/CameraNode/Camera3D")
 	
 	#Top Menu Containing players money
 	moneyLable=get_node("/root/Node3D/Menu/Control/MarginContainer/LabelIndex")
