@@ -128,6 +128,8 @@ func clickOnlyGrassAndOnce(index):
 			if Global.listBuilding[index]=="Kostka":
 				Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
 				constructed_item_clicked.emit("Kostka", "Opis")
+			else:
+				constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
 
 				
 				#Global.actualGridBuildingName="Kostka"
