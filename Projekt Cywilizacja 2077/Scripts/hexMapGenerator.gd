@@ -53,7 +53,7 @@ func _ready():
 	var GrassY=randi_range(7,grid_size-7)
 	hexV=cubeToHex(GrassX,GrassY)
 	#KAMERA POSITION
-	Global.cameraNodeCamera3D.position=Vector3i(-GrassX-10,25,GrassY)
+					#Global.cameraNodeCamera3D.position=Vector3i(-GrassX-10,25,GrassY)
 	#Global.cameraNodeCamera3D.position=Vector3i(hexV[0],25,hexV[1])
 	print(GrassX,GrassY)
 	#print(hexV)

@@ -29,6 +29,7 @@ func _on_button9_pressed():
 	Global.listBuilding[Global.indexClicked]=""
 	self.visible=false
 	Global._on_const_it_unclick()
+	
 	#constructed_item_unclicked.emit()
 	#var gridContainer=Global.gridMenu
 	#gridContainer.visible=true
