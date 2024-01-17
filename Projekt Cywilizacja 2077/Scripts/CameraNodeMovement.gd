@@ -102,10 +102,11 @@ func get_selection():
 		#gridMapBacklight.set_cell_item(lastBacklight,1,-1)
 
 		
-
+var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 
 var money=5
 func clickOnlyGrassAndOnce(index):
+		
 	if index in listGrass and index not in listGrassClicked:
 		#var listCollision=Global.listCollision
 		#var gridXY=listCollision[index]
@@ -120,28 +121,32 @@ func clickOnlyGrassAndOnce(index):
 		print(index)
 		
 		var hexV=Global.listCollision[index]
-		Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
-		Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 		
-		Global.indexClicked=index
-		if Global.listBuilding[index]!="":
-			if Global.listBuilding[index]=="Kostka":
-				Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-				constructed_item_clicked.emit("Kostka", "Opis")
-			else:
-				constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
-
-				
-				#Global.actualGridBuildingName="Kostka"
-			Global.gridUpdating.visible=true
-			Global.gridBuilding.visible=false
-			
+		if Global.robotMove==1:
+			pass
 		else:
-			Global.gridBuilding.visible=true
-			Global.gridUpdating.visible=false
-			constructed_item_unclicked.emit()
-			#Global.actualGridBuildingName=listBuilding[index]
-		Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
+			Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
+			Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+			
+			Global.indexClicked=index
+			if Global.listBuilding[index]!="":
+				if Global.listBuilding[index]=="Kostka":
+					Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+					constructed_item_clicked.emit("Kostka", "Opis")
+				else:
+					constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
+
+					
+					#Global.actualGridBuildingName="Kostka"
+				Global.gridUpdating.visible=true
+				Global.gridBuilding.visible=false
+				
+			else:
+				Global.gridBuilding.visible=true
+				Global.gridUpdating.visible=false
+				constructed_item_unclicked.emit()
+				#Global.actualGridBuildingName=listBuilding[index]
+			Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
 			
 			
 			

@@ -9,15 +9,25 @@ func _ready():
 	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 
 func changeBuilding(nameBuilding):
-	var gridMap=Global.gridBacklight
-	var indexItem = Global.get_item_index_by_name(gridMap.mesh_library, nameBuilding)
+	#var gridMap=Global.gridBacklight
+	#var indexItem = Global.get_item_index_by_name(gridMap.mesh_library, nameBuilding)
+	#Global.actualGridBuilding=indexItem
+	#Global.actualGridBuildingName=nameBuilding
+	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
 	Global.actualGridBuilding=indexItem
-	Global.actualGridBuildingName=nameBuilding
+	#Global.actualGridBuildingName=nameBuilding
 	
+	var hexV=Global.listCollision[Global.indexClicked]
+		
+	Global.listBuilding[Global.indexClicked]=nameBuilding
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	#Global.gridUpdating.visible=false
+		
 	
 	
 func _on_button_pressed():
-	pass
+	Global.robotMove=1
+	
 	
 	
 func _on_button2_pressed():

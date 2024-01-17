@@ -26,6 +26,13 @@ func indexHex(x,y):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var mapMovement=[]
+	for i in range(grid_size):
+		var mapMovementTmp=[]
+		for j in range(grid_size):
+			mapMovementTmp.append(0)
+		mapMovement.append(mapMovementTmp)
+	print(mapMovement)
 #	randomize()
 #	var current_pos=Vector2(0,0)
 	
@@ -117,6 +124,7 @@ func _ready():
 				
 			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 			Global.listCollision.append(hexV)
+	
 
 
 

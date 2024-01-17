@@ -11,7 +11,7 @@ var gridBacklight
 var cameraNode
 var cameraNodeCamera3D
 # --------------
-
+var robotMove=0
 
 #Players Money
 @onready var moneyLable
