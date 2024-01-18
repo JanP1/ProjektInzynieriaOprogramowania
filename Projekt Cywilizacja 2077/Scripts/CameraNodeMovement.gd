@@ -102,7 +102,7 @@ func get_selection():
 		#gridMapBacklight.set_cell_item(lastBacklight,1,-1)
 
 		
-var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+#var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 
 var money=5
 func clickOnlyGrassAndOnce(index):
@@ -123,7 +123,13 @@ func clickOnlyGrassAndOnce(index):
 		var hexV=Global.listCollision[index]
 		
 		if Global.robotMove==1:
-			pass
+			print("robotmove")
+			Global.robotMove=0
+			#var start_point = Vector2(0, 0)
+			#var end_point = Vector2(3, 1)
+			var startV=Global.indexToVector(Global.start)
+			var indexV=Global.indexToVector(index)
+			Global.shortestPath(startV,indexV)
 		else:
 			Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
 			Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)

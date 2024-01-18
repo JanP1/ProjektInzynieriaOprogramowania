@@ -27,7 +27,7 @@ func changeBuilding(nameBuilding):
 	
 func _on_button_pressed():
 	Global.robotMove=1
-	
+	Global.start=Global.indexClicked
 	
 	
 func _on_button2_pressed():
@@ -46,6 +46,4 @@ func _on_button9_pressed():
 	#self.visible=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-   #print(stop)
-	pass
+

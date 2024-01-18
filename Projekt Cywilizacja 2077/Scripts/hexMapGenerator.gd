@@ -30,9 +30,9 @@ func _ready():
 	for i in range(grid_size):
 		var mapMovementTmp=[]
 		for j in range(grid_size):
-			mapMovementTmp.append(0)
+			mapMovementTmp.append(1)
 		mapMovement.append(mapMovementTmp)
-	print(mapMovement)
+	#print(mapMovement)
 #	randomize()
 #	var current_pos=Vector2(0,0)
 	
@@ -83,6 +83,7 @@ func _ready():
 				hexI=indexHex(grassX2,grassY2)
 				listGrass.append(hexI)
 				list1.append(hexV)
+			
 	
 	
 	
@@ -100,6 +101,10 @@ func _ready():
 						list1.append(hexV)
 						hexI=indexHex(waterX2,waterY2)
 						listWater.append(hexI)
+						mapMovement[waterX2][waterY2]=0
+	#print(mapMovement)
+	Global.mapMovement=mapMovement
+	
 	
 	
 

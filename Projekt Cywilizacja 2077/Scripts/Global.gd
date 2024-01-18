@@ -12,6 +12,8 @@ var cameraNode
 var cameraNodeCamera3D
 # --------------
 var robotMove=0
+var mapMovement=[]
+var start
 
 #Players Money
 @onready var moneyLable
@@ -59,9 +61,45 @@ func _ready():
 	for i in range(10000):
 		listBuilding.append("")
 		
-		
-
-
+var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+func shortestPath(start2,end):
+	#var graph = [
+	#[1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+	#[1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+	#[1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+	#[1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	#]
+	#print(graph.is_typed())
+	#print(graph[0].is_typed())
+	#print(mapMovement)
+	#for i in mapMovement:
+		#print(i)
+	var graph=[]
+	for i in range(10):
+		var listka2=[]
+		for j in range(10):
+			listka2.append(1)
+		graph.append(listka2)
+	#print(listka)
+	print(graph.is_typed())
+	print(graph[0].is_typed())
+	var dijkstra = Dijkstra.new(mapMovement, start2, end)
+	var shortest_path = dijkstra.process(mapMovement, start2, end)
+	print(shortest_path)
+	for i in shortest_path:
+		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
+		Global.gridDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	
+func indexToVector(x):
+	print(Vector2(int(x/40),x%40))
+	return Vector2(int(x/40),x%40)
+	
 	
 func cubeToHex(x,y):
 	var x2=x
@@ -79,8 +117,6 @@ func get_item_index_by_name(mesh_library, item_name):
 	return -1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 #Function called every time the value of currentMoneyPlayer changes

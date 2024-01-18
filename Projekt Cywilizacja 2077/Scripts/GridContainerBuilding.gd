@@ -48,9 +48,7 @@ func _on_button9_pressed():
 	#self.visible=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-   #print(stop)
-	pass
+
 
 
 func _get_price_of_placed_item(itemName):
