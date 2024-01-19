@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=27 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -15,6 +15,8 @@
 [ext_resource type="Theme" uid="uid://cfphnhpxu5cx0" path="res://Models/Textures/Buttons.tres" id="7_ng67w"]
 [ext_resource type="Script" path="res://Scripts/GridContainerMenu.gd" id="8_77o42"]
 [ext_resource type="Script" path="res://Scenes/GridContainerUpdating.gd" id="10_m3avn"]
+[ext_resource type="Texture2D" uid="uid://cpk452e7lhnn" path="res://Models/Textures/GUI/money.jpg" id="12_v7hvs"]
+[ext_resource type="Script" path="res://Scenes/RichTextLabel2.gd" id="13_p1mwb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
@@ -26,6 +28,10 @@ sky_material = SubResource("ProceduralSkyMaterial_n4pwy")
 background_mode = 2
 background_energy_multiplier = 1.49
 sky = SubResource("Sky_xw1ns")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fa5p"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_r4qs3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkgif"]
 bg_color = Color(1, 0.333333, 0.364706, 1)
@@ -78,39 +84,57 @@ environment = SubResource("Environment_3wksv")
 [node name="ActionMenu" type="CanvasLayer" parent="."]
 
 [node name="GridContainerBuilding" type="GridContainer" parent="ActionMenu"]
-visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -343.0
+offset_left = -373.0
 offset_top = 9.0
 offset_right = -9.0
 offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 2
-columns = 3
+columns = 2
 script = ExtResource("6_ewnod")
 
 [node name="Button" type="Button" parent="ActionMenu/GridContainerBuilding"]
+material = SubResource("ShaderMaterial_5fa5p")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
-text = "GRASS"
+icon = ExtResource("12_v7hvs")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ActionMenu/GridContainerBuilding/Button"]
+layout_mode = 2
+offset_right = 180.0
+offset_bottom = 310.0
+mouse_default_cursor_shape = 2
+text = "Kasyno
+Cena: 100"
+script = ExtResource("13_p1mwb")
 
 [node name="Button2" type="Button" parent="ActionMenu/GridContainerBuilding"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
-text = "WATER"
+text = "Bank"
 
 [node name="Button3" type="Button" parent="ActionMenu/GridContainerBuilding"]
+material = SubResource("CanvasItemMaterial_r4qs3")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ActionMenu/GridContainerBuilding/Button3"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 310.0
+mouse_default_cursor_shape = 2
+text = "Koszary"
+script = ExtResource("13_p1mwb")
 
 [node name="Button4" type="Button" parent="ActionMenu/GridContainerBuilding"]
 layout_mode = 2
@@ -118,31 +142,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("7_ng67w")
 
-[node name="Button5" type="Button" parent="ActionMenu/GridContainerBuilding"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
-
-[node name="Button6" type="Button" parent="ActionMenu/GridContainerBuilding"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
-
-[node name="Button7" type="Button" parent="ActionMenu/GridContainerBuilding"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
-
-[node name="Button8" type="Button" parent="ActionMenu/GridContainerBuilding"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("7_ng67w")
+[node name="RichTextLabel" type="RichTextLabel" parent="ActionMenu/GridContainerBuilding/Button4"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 310.0
+mouse_default_cursor_shape = 2
+text = "Labolatorium"
+script = ExtResource("13_p1mwb")
 
 [node name="Button9" type="Button" parent="ActionMenu/GridContainerBuilding"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
