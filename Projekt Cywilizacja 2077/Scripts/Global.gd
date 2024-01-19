@@ -3,8 +3,10 @@ extends Node
 # --------------
 var gridBuilding
 var gridUpdating
+var gridRobot
 var gridDesert
 var gridGrass
+var gridWater
 var gridMenu
 var gridPath
 var gridBacklight
@@ -25,6 +27,8 @@ var currentMoneyPlayer = 1000
 
 var lastBacklight=Vector3(0,0,0)
 var listCollision=[]
+var listEverything=[]
+var listGround=[]
 var actualGridBuilding=0
 var actualGridBuildingName=""
 var indexClicked=0
@@ -36,8 +40,10 @@ var listBuilding = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gridDesert=get_node("/root/Node3D/GridMapDesert")
+	gridWater=get_node("/root/Node3D/GridMapWater")
 	gridGrass=get_node("/root/Node3D/GridMapGrass")
 	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
+	gridRobot=get_node("/root/Node3D/ActionMenu/GridContainerRobot")
 	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
 	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
 	gridPath=get_node("/root/Node3D/GridMapSetObject")
@@ -94,13 +100,14 @@ func shortestPath(start2,end):
 	print(shortest_path)
 	for i in shortest_path:
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
-		Global.gridDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 	
 func indexToVector(x):
 	print(Vector2(int(x/40),x%40))
 	return Vector2(int(x/40),x%40)
-	
-	
+
+		
+
 func cubeToHex(x,y):
 	var x2=x
 	x*=-2

@@ -11,7 +11,7 @@ func _ready():
 	var button2 = $Button2
 	button2.connect("pressed", Callable(self, "_on_button2_pressed"))
 	var button9 = $Button9
-	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
+	#button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 
 func changeBuilding(nameBuilding):
 	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
@@ -25,10 +25,15 @@ func changeBuilding(nameBuilding):
 		Global.currentMoneyPlayer -= priceOfSelected
 		
 		Global.listBuilding[Global.indexClicked]=nameBuilding
+		Global.listEverything[Global.indexClicked]=nameBuilding
+		var xClick=Global.indexToVector(Global.indexClicked)[0]
+		var yClick=Global.indexToVector(Global.indexClicked)[1]
+		Global.mapMovement[xClick][yClick]=0
 		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
 		Global.gridBuilding.visible=false
 		
-	
+#func deleteElement(name):
+		
 	
 func _on_button_pressed():
 	

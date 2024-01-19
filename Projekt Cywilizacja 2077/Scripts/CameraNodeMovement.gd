@@ -106,35 +106,37 @@ func get_selection():
 
 var money=5
 func clickOnlyGrassAndOnce(index):
-		
-	if index in listGrass and index not in listGrassClicked:
-		#var listCollision=Global.listCollision
-		#var gridXY=listCollision[index]
-		#var gridMapPath=Global.gridPath
-		#var hexV=gridXY
-		#if money>0:
-			#gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-			#if Global.actualGridBuildingName=="Kostka":
-				#money-=1
-			#elif Global.actualGridBuildingName=="Okrąg":
-				#money-=3
-		print(index)
-		
-		var hexV=Global.listCollision[index]
-		
-		if Global.robotMove==1:
+	
+	if Global.robotMove==1:
+		Global.robotMove=0
+		if Global.listEverything[index] in ["", "enemyRobot","enemyBuilding"] and  Global.listGround[index] in ["grass","desert"]:
 			print("robotmove")
-			Global.robotMove=0
 			#var start_point = Vector2(0, 0)
 			#var end_point = Vector2(3, 1)
 			var startV=Global.indexToVector(Global.start)
 			var indexV=Global.indexToVector(index)
 			Global.shortestPath(startV,indexV)
-		else:
-			Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
-			Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	else:	
+		#if index in listGrass and index not in listGrassClicked:
+		if Global.listGround[index] in ["grass","desert"]:
+			if Global.listEverything in ["robot"]:
+				constants(index)
+				Global.gridRobot.visible=true
+		if Global.listGround[index] in ["grass"]:
+			#var listCollision=Global.listCollision
+			#var gridXY=listCollision[index]
+			#var gridMapPath=Global.gridPath
+			#var hexV=gridXY
+			#if money>0:
+				#gridMapPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+				#if Global.actualGridBuildingName=="Kostka":
+					#money-=1
+				#elif Global.actualGridBuildingName=="Okrąg":
+					#money-=3
+			print(index)
 			
-			Global.indexClicked=index
+			constants(index)
+			
 			if Global.listBuilding[index]!="":
 				if Global.listBuilding[index]=="Kostka":
 					Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
@@ -152,10 +154,16 @@ func clickOnlyGrassAndOnce(index):
 				Global.gridUpdating.visible=false
 				constructed_item_unclicked.emit()
 				#Global.actualGridBuildingName=listBuilding[index]
-			Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
+		
+		
 			
-			
-			
+func constants(index):
+	var hexV=Global.listCollision[index]
+	Global.gridBacklight.set_cell_item(Global.lastBacklight,1,-1)
+	Global.gridBacklight.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	Global.lastBacklight=Vector3(int(hexV[0]),0, int(hexV[1]))
+	Global.indexClicked=index
+				
 		
 		#listGrassClicked.append(index)
 		

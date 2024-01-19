@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=30 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -17,6 +17,9 @@
 [ext_resource type="Script" path="res://Scenes/GridContainerUpdating.gd" id="10_m3avn"]
 [ext_resource type="Texture2D" uid="uid://cpk452e7lhnn" path="res://Models/Textures/GUI/money.jpg" id="12_v7hvs"]
 [ext_resource type="Script" path="res://Scenes/RichTextLabel2.gd" id="13_p1mwb"]
+[ext_resource type="Script" path="res://Scenes/MarginContainerScript.gd" id="16_rccfy"]
+[ext_resource type="LabelSettings" uid="uid://c2bkfdy458qsx" path="res://Models/Textures/label.tres" id="17_3j4ej"]
+[ext_resource type="Script" path="res://Scenes/LabelScript.gd" id="17_wwgcj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
@@ -84,6 +87,7 @@ environment = SubResource("Environment_3wksv")
 [node name="ActionMenu" type="CanvasLayer" parent="."]
 
 [node name="GridContainerBuilding" type="GridContainer" parent="ActionMenu"]
+visible = false
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -267,6 +271,87 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_kkgif")
 text = "Back"
+
+[node name="GridContainerRobot" type="GridContainer" parent="ActionMenu"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_ewnod")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+script = ExtResource("16_rccfy")
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Przemieść robota"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerRobot/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Rozwiąż oddział za połowę ceny (\"CENA\")"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("5_5fq2g")

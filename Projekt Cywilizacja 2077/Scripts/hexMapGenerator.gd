@@ -30,6 +30,8 @@ func _ready():
 	for i in range(grid_size):
 		var mapMovementTmp=[]
 		for j in range(grid_size):
+			Global.listEverything.append("")
+			Global.listGround.append("")
 			mapMovementTmp.append(1)
 		mapMovement.append(mapMovementTmp)
 	#print(mapMovement)
@@ -83,6 +85,7 @@ func _ready():
 				hexI=indexHex(grassX2,grassY2)
 				listGrass.append(hexI)
 				list1.append(hexV)
+				Global.listGround[hexI]="grass"
 			
 	
 	
@@ -102,6 +105,7 @@ func _ready():
 						hexI=indexHex(waterX2,waterY2)
 						listWater.append(hexI)
 						mapMovement[waterX2][waterY2]=0
+						Global.listGround[hexI]="water"
 	#print(mapMovement)
 	Global.mapMovement=mapMovement
 	
@@ -123,6 +127,7 @@ func _ready():
 			if hexV not in list1:
 				$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 				hexI=indexHex(i,j)
+				Global.listGround[hexI]="desert"
 				#listGrass.append(hexI)
 #				if hexI in listGrass and hexI<1500:  #przydatne, nie usuwac
 #					listGrass.remove_at(listGrass.find(hexI))
