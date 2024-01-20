@@ -26,8 +26,9 @@ func changeBuilding(nameBuilding):
 	
 	
 func _on_button_pressed():
-	Global.robotMove=1
-	Global.start=Global.indexClicked
+	var ulepszenieZarabiania
+	#Global.robotMove=1
+	#Global.start=Global.indexClicked
 	
 	
 func _on_button2_pressed():
@@ -36,13 +37,15 @@ func _on_button2_pressed():
 	Global.listBuilding[Global.indexClicked]=""
 	self.visible=false
 	Global._on_const_it_unclick()
+	#Global.robotMove=0
+	
 	#changeBuilding("Okrąg")
 #signal constructed_item_unclicked()
 func _on_button9_pressed():
 	#var hexV=Global.listCollision[Global.indexClicked]
 	#Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 	#Global.listBuilding[Global.indexClicked]=""
-	Global.robotMove=0
+	#Global.robotMove=0
 	self.visible=false
 	Global._on_const_it_unclick()
 	

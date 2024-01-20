@@ -1,0 +1,10 @@
+match itemName:
+		"Kostka":
+			itemPrice = 350
+		"Okrąg":
+			itemPrice = 250
+		"Kasyno":
+			itemPrice=100
+		"Koszary":
+			itemPrice=150
+	return itemPrice

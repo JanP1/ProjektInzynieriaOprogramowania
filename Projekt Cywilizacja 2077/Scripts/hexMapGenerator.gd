@@ -85,6 +85,7 @@ func _ready():
 				hexI=indexHex(grassX2,grassY2)
 				listGrass.append(hexI)
 				list1.append(hexV)
+			if (int(hexV[0])-int(hexV2[0]))**2+(int(hexV[1])-int(hexV2[1]))**2<radius+1:
 				Global.listGround[hexI]="grass"
 			
 	

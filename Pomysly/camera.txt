@@ -1,0 +1,12 @@
+if Global.listBuilding[index]=="Bank":
+					Global.gridUpdating.get_node("Button").text = "Ulepszenie "
+					constructed_item_clicked.emit("Bank", "1000$ => 1500$")
+				elif Global.listBuilding[index]=="Okrąg": 
+					Global.gridUpdating.get_node("Button").text = "Ulepszeie"
+					constructed_item_clicked.emit("Laboratorium","100$ => 90$")
+				elif Global.listBuilding[index]=="Kasyno":
+					Global.gridUpdating.get_node("Button").text="Ulepszenie"
+					constructed_item_clicked.emit("Kasyno", "1000$ => 1500$")
+				elif Global.listBuilding[index]=="Koszary": 
+					Global.gridUpdating.get_node("Button").text="Ulepszenie"
+					constructed_item_clicked.emit("Koszary", "10 => 11")

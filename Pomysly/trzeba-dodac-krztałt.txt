@@ -1,0 +1,11 @@
+	
+	changeBuilding("Kostka")
+	
+func _on_button2_pressed():
+	changeBuilding("Okrąg")
+	
+func _on_button3_pressed():
+	changeBuilding("Kasyno")
+	
+func _on_button4_pressed():
+	changeBuilding("Koszary")

@@ -1,0 +1,18 @@
+var button = $Button
+	button.connect("pressed", Callable(self, "_on_button_pressed"))
+	var button2 = $Button2
+	button2.connect("pressed", Callable(self, "_on_button2_pressed"))
+	var button3= $Button3
+	button3.connect("pressed", Callable(self, "_on_button3_pressed"))
+	var button4 = $Button4
+	button4.connect("pressed",Callable(self, "_on_button4_pressed"))
+	var button5= $Button5
+	button5.connect("pressed",Callable(self, "_on_button5_pressed"))
+	var button6 = $Button6
+	button6.connect("pressed",Callable(self, "_on_button6_pressed"))
+	var button7 = $Button7
+	button7.connect("pressed",Callable(self, "_on_button7_pressed"))
+	var button8 = $Button8
+	button8.connect("pressed",Callable(self, "_on_button8_pressed"))
+	var button9 = $Button9
+	button9.connect("pressed", Callable(self, "_on_button9_pressed"))

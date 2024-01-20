@@ -10,8 +10,12 @@ func _ready():
 	button.connect("pressed", Callable(self, "_on_button_pressed"))
 	var button2 = $Button2
 	button2.connect("pressed", Callable(self, "_on_button2_pressed"))
+	var button3 = $Button3
+	button3.connect("pressed", Callable(self, "_on_button3_pressed"))
+	var button4 = $Button4
+	button4.connect("pressed", Callable(self, "_on_button4_pressed"))
 	var button9 = $Button9
-	#button9.connect("pressed", Callable(self, "_on_button9_pressed"))
+	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 
 func changeBuilding(nameBuilding):
 	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
@@ -36,21 +40,30 @@ func changeBuilding(nameBuilding):
 		
 	
 func _on_button_pressed():
-	
+	#Kasyno
 	changeBuilding("Kostka")
 	
 	
 	
 func _on_button2_pressed():
+	#Bank
+	changeBuilding("Okrąg")
+	
+func _on_button3_pressed():
+	#Koszary
+	changeBuilding("Okrąg")
+	
+func _on_button4_pressed():
+	#Laboratorium
 	changeBuilding("Okrąg")
 	
 func _on_button9_pressed():
-	var hexV=Global.listCollision[Global.indexClicked]
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
+	#var hexV=Global.listCollision[Global.indexClicked]
+	#Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 	
 	#var gridContainer=Global.gridMenu
 	#gridContainer.visible=true
-	#self.visible=false
+	self.visible=false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
