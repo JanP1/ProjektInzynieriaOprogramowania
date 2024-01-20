@@ -74,32 +74,6 @@ func _ready():
 		
 var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 func shortestPath(start2,end):
-	#var graph = [
-	#[1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-	#[1, 0, 1, 0, 0, 0, 1, 0, 0, 0],
-	#[1, 1, 0, 0, 0, 0, 1, 0, 0, 0],
-	#[1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	#]
-	#print(graph.is_typed())
-	#print(graph[0].is_typed())
-	#print(mapMovement)
-	#for i in mapMovement:
-		#print(i)
-	var graph=[]
-	for i in range(10):
-		var listka2=[]
-		for j in range(10):
-			listka2.append(1)
-		graph.append(listka2)
-	#print(listka)
-	print(graph.is_typed())
-	print(graph[0].is_typed())
 	var dijkstra = Dijkstra.new(mapMovement, start2, end)
 	var shortest_path = dijkstra.process(mapMovement, start2, end)
 	print(shortest_path)

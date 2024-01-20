@@ -15,7 +15,6 @@ func _ready():
 func changeBuilding(nameBuilding):
 	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
 	Global.actualGridBuilding=indexItem
-	#Global.actualGridBuildingName=nameBuilding
 	
 	var hexV=Global.listCollision[Global.indexClicked]
 	var priceOfSelected = _get_price_of_placed_item(nameBuilding)

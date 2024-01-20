@@ -1,10 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=35 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
 [ext_resource type="MeshLibrary" uid="uid://cvbtnjgc67u31" path="res://Models/HexGodot/hexDesert.meshlib" id="2_uqmr3"]
 [ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
-[ext_resource type="Script" path="res://Scenes/GridMapDesert.gd" id="3_dc2p5"]
 [ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
 [ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
 [ext_resource type="PackedScene" uid="uid://byjtepionmf18" path="res://Scenes/Menu.tscn" id="5_pivbd"]
@@ -12,23 +11,23 @@
 [ext_resource type="Script" path="res://Scripts/GridContainerBuilding.gd" id="6_ewnod"]
 [ext_resource type="MeshLibrary" uid="uid://cypuyuhmmssek" path="res://Models/Building/building.meshlib" id="6_r7xsy"]
 [ext_resource type="MeshLibrary" uid="uid://bk8s06v7gdn0p" path="res://Models/HexGodot/hexBacklight.meshlib" id="7_j43le"]
-[ext_resource type="Script" path="res://Scenes/GridContainerUpdating.gd" id="10_m3avn"]
+[ext_resource type="Script" path="res://Scripts/GridContainerUpdating.gd" id="10_m3avn"]
 [ext_resource type="Texture2D" uid="uid://c55giqthmux6d" path="res://Models/Textures/GUI/casino.jpg" id="12_tfu4q"]
 [ext_resource type="Texture2D" uid="uid://e3gxcw7h81bw" path="res://Models/Textures/GUI/bank.jpg" id="16_0niqf"]
-[ext_resource type="Script" path="res://Scenes/MarginContainerScript.gd" id="16_rccfy"]
+[ext_resource type="Script" path="res://Scripts/MarginContainerScript.gd" id="16_rccfy"]
 [ext_resource type="LabelSettings" uid="uid://c2bkfdy458qsx" path="res://Models/Textures/label.tres" id="17_3j4ej"]
 [ext_resource type="StyleBox" uid="uid://b12waixtknn5n" path="res://Models/Textures/blackBackground.tres" id="17_51481"]
 [ext_resource type="Texture2D" uid="uid://b7slk01nd3oob" path="res://Models/Textures/GUI/koszary.jpg" id="17_hj81i"]
 [ext_resource type="Texture2D" uid="uid://dvmlfoxfknrhx" path="res://Models/Textures/GUI/upgrade.jpg" id="17_lgdvf"]
-[ext_resource type="Script" path="res://Scenes/LabelScript.gd" id="17_wwgcj"]
+[ext_resource type="Script" path="res://Scripts/LabelScript.gd" id="17_wwgcj"]
 [ext_resource type="Texture2D" uid="uid://bffj8c3r2l8it" path="res://Models/Textures/GUI/laboratory.jpg" id="18_nwhtf"]
 [ext_resource type="Texture2D" uid="uid://cfbvbymy2bi2i" path="res://Models/Textures/GUI/delete.jpg" id="18_pbvrv"]
 [ext_resource type="Texture2D" uid="uid://dwdmpytsv8hog" path="res://Models/Textures/GUI/offensiveRobot.jpg" id="23_ki64j"]
-[ext_resource type="Script" path="res://Scenes/GridContainerRobot.gd" id="23_vhcyo"]
+[ext_resource type="Script" path="res://Scripts/GridContainerRobot.gd" id="23_vhcyo"]
 [ext_resource type="Texture2D" uid="uid://cfbr388si1dov" path="res://Models/Textures/GUI/deffenceRobot.jpg" id="24_okr73"]
-[ext_resource type="Script" path="res://Scenes/GridContainerBarracks.gd" id="24_wudpc"]
+[ext_resource type="Script" path="res://Scripts/GridContainerBarracks.gd" id="24_wudpc"]
 [ext_resource type="Texture2D" uid="uid://4lprtklrfax0" path="res://Models/Textures/GUI/rangeMovement.jpg" id="25_8cj4b"]
-[ext_resource type="Script" path="res://Scenes/GridContainerLaboratory.gd" id="27_7715c"]
+[ext_resource type="Script" path="res://Scripts/GridContainerLaboratory.gd" id="27_7715c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
 sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
@@ -54,7 +53,6 @@ script = ExtResource("1_nm7ik")
 [node name="GridMapDesert" type="GridMap" parent="."]
 mesh_library = ExtResource("2_uqmr3")
 cell_size = Vector3(0.755, 1.01, 0.87)
-script = ExtResource("3_dc2p5")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="GridMapGrass" type="GridMap" parent="."]

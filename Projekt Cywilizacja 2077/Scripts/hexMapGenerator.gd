@@ -65,11 +65,7 @@ func _ready():
 					#Global.cameraNodeCamera3D.position=Vector3i(-GrassX-10,25,GrassY)
 	#Global.cameraNodeCamera3D.position=Vector3i(hexV[0],25,hexV[1])
 	print(GrassX,GrassY)
-	#print(hexV)
-	#while hexV in list1:
-		#GrassX=randi_range(7,grid_size-7)
-		#GrassY=randi_range(7,grid_size-7)	
-		#hexV=cubeToHex(GrassX,GrassY)
+	
 	hexI=indexHex(GrassX,GrassY)
 	listGrass.append(hexI)
 	list1.append(hexV)
@@ -112,14 +108,6 @@ func _ready():
 	
 	
 	
-
-		#for j in range(grid_size):
-			#hexV=cubeToHex(i,j)
-			#if hexV not in list1:
-				#$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-				#hexI=indexHex(i,j)
-				#listGrass.append(hexI)
-				
 
 	hexV=cubeToHex(3,2)
 	for i in range(grid_size):
