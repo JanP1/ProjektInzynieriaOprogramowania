@@ -4,6 +4,8 @@ extends Node
 var gridBuilding
 var gridUpdating
 var gridRobot
+var gridBarracks
+var gridBarracksError
 var gridDesert
 var gridGrass
 var gridWater
@@ -14,6 +16,7 @@ var cameraNode
 var cameraNodeCamera3D
 # --------------
 var robotMove=0
+var barrackNeighbor
 var mapMovement=[]
 var start
 
@@ -44,6 +47,8 @@ func _ready():
 	gridGrass=get_node("/root/Node3D/GridMapGrass")
 	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
 	gridRobot=get_node("/root/Node3D/ActionMenu/GridContainerRobot")
+	gridBarracks=get_node("/root/Node3D/ActionMenu/GridContainerBarracks")
+	gridBarracksError=get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
 	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
 	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
 	gridPath=get_node("/root/Node3D/GridMapSetObject")

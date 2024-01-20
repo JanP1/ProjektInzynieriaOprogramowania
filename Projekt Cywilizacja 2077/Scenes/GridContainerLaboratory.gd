@@ -29,7 +29,7 @@ func changeBuilding(nameBuilding):
 		var yClick=Global.indexToVector(Global.indexClicked)[1]
 		Global.mapMovement[xClick][yClick]=0
 		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
-		Global.gridBuilding.visible=false
+		self.visible=false
 		
 		
 func _on_button_pressed():

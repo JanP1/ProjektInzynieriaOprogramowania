@@ -137,13 +137,36 @@ func clickOnlyGrassAndOnce(index):
 			
 			constants(index)
 			
-			if Global.listBuilding[index]!="":
-				if Global.listBuilding[index]=="Kostka":
+			if Global.listEverything[index]!="":
+				if Global.listEverything[index]=="Kostka":
 					Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
 					constructed_item_clicked.emit("Kostka", "Opis")
+				
+				if Global.listEverything[index]=="Koszary":
+					constructed_item_clicked.emit("Koszary", "Opis")
+					var directions
+					var node=Global.indexToVector(index)
+					if int(node[0])%2!=1:
+						
+						directions = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1), Vector2(1, 1), Vector2(-1, 1)]
+					else:
+						
+						directions = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1), Vector2(-1, -1), Vector2(1, -1)]
+					var barrackError=1
+					print(index)
+					for direction in directions:
+						var neighbor = node + direction
+						var neighborIndex=neighbor[0]*40+neighbor[1]
+						print(neighborIndex)
+						if Global.listEverything[neighborIndex]=="":
+							barrackError=0
+							Global.barrackNeighbor=neighborIndex
+					if barrackError==1:
+						Global.gridBarracksError.visible=true
+					if barrackError==0:
+						Global.gridBarracks.visible=true
 				else:
 					constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
-
 					
 					#Global.actualGridBuildingName="Kostka"
 				Global.gridUpdating.visible=true
