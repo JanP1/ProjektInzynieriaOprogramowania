@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvwlrrwue7v5t"]
+[gd_scene load_steps=10 format=3 uid="uid://cvwlrrwue7v5t"]
 
 [ext_resource type="PackedScene" uid="uid://debmdikuo2al" path="res://Models/HexSkins/hexagonWater.glb" id="2_25q25"]
 [ext_resource type="PackedScene" uid="uid://dsqosb8j3jtr8" path="res://Models/Building/tower.glb" id="3_6y8pi"]
 [ext_resource type="PackedScene" uid="uid://bdu2k51im1ulx" path="res://Models/Building/castle.glb" id="3_goh81"]
+[ext_resource type="PackedScene" uid="uid://cfhaot2tuang1" path="res://Models/robots/robot1.glb" id="4_i6joc"]
+[ext_resource type="PackedScene" uid="uid://cav0p0lyyae0b" path="res://Models/robots/robot2.glb" id="5_mddco"]
+[ext_resource type="PackedScene" uid="uid://m4y6nrclvwyx" path="res://Models/Building/kasyno.glb" id="6_8pey5"]
+[ext_resource type="PackedScene" uid="uid://mux3therblx0" path="res://Models/Building/koszary.glb" id="7_r2tgl"]
+[ext_resource type="PackedScene" uid="uid://cwgkaioh45nix" path="res://Models/Building/bank.glb" id="8_ufij4"]
+[ext_resource type="PackedScene" uid="uid://domguro8rur72" path="res://Models/Building/laboratorium.glb" id="9_7toli"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,3 +17,15 @@
 [node name="tower" parent="." instance=ExtResource("3_6y8pi")]
 
 [node name="hexagonWater" parent="." instance=ExtResource("2_25q25")]
+
+[node name="robot1" parent="." instance=ExtResource("4_i6joc")]
+
+[node name="robot2" parent="." instance=ExtResource("5_mddco")]
+
+[node name="kasyno" parent="." instance=ExtResource("6_8pey5")]
+
+[node name="koszary" parent="." instance=ExtResource("7_r2tgl")]
+
+[node name="bank" parent="." instance=ExtResource("8_ufij4")]
+
+[node name="laboratorium" parent="." instance=ExtResource("9_7toli")]

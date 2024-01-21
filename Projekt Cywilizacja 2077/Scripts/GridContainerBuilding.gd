@@ -41,21 +41,21 @@ func changeBuilding(nameBuilding):
 	
 func _on_button_pressed():
 	#Kasyno
-	changeBuilding("Kostka")
+	changeBuilding("Kasyno")
 	
 	
 	
 func _on_button2_pressed():
 	#Bank
-	changeBuilding("Okrąg")
+	changeBuilding("Bank")
 	
 func _on_button3_pressed():
 	#Koszary
-	changeBuilding("Okrąg")
+	changeBuilding("Koszary")
 	
 func _on_button4_pressed():
 	#Laboratorium
-	changeBuilding("Okrąg")
+	changeBuilding("Laboratorium")
 	
 func _on_button9_pressed():
 	self.visible=false

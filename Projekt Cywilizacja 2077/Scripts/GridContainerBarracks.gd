@@ -33,11 +33,11 @@ func changeBuilding(nameBuilding):
 		
 func _on_button_pressed():
 	#Robot Defensywny
-	changeBuilding("Kostka")
+	changeBuilding("RobotDefensywny")
 	
 func _on_button2_pressed():
 	#Robot Ofensywny
-	changeBuilding("Kostka")
+	changeBuilding("RobotOfensywny")
 	
 	
 func _on_button3_pressed():

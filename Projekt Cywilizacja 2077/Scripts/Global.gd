@@ -5,6 +5,9 @@ var gridBuilding
 var gridUpdating
 var gridRobot
 var gridBarracks
+var gridLaboratory
+var gridBank
+var gridKasyno
 var gridBarracksError
 var gridDesert
 var gridGrass
@@ -48,6 +51,9 @@ func _ready():
 	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
 	gridRobot=get_node("/root/Node3D/ActionMenu/GridContainerRobot")
 	gridBarracks=get_node("/root/Node3D/ActionMenu/GridContainerBarracks")
+	gridLaboratory=get_node("/root/Node3D/ActionMenu/GridContainerLaboratory")
+	gridBank=get_node("/root/Node3D/ActionMenu/GridContainerBank")
+	gridKasyno=get_node("/root/Node3D/ActionMenu/GridContainerKasyno")
 	gridBarracksError=get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
 	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
 	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")

@@ -103,7 +103,19 @@ func get_selection():
 
 		
 #var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+func setVisibility(activeGrid):
+	# Lista wszystkich dostępnych gridów
+	var allGrids = ["gridBarracks", "gridBarracksError", "gridBuilding", "gridBank","gridKasyno", "gridRobot", "gridLaboratory"]
 
+	# Ustawia wszystkie gridy na false
+	for grid in allGrids:
+		Global[grid].visible = false
+
+	# Ustawia tylko wybrany grid na true
+	Global[activeGrid].visible = true
+	
+		
+		
 var money=5
 func clickOnlyGrassAndOnce(index):
 	
@@ -138,11 +150,22 @@ func clickOnlyGrassAndOnce(index):
 			constants(index)
 			
 			if Global.listEverything[index]!="":
-				if Global.listEverything[index]=="Kostka":
-					Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Kostka", "Opis")
+				if Global.listEverything[index]=="Kasyno":
+					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+					constructed_item_clicked.emit("Kasyno", "Opis")
+					setVisibility("gridKasyno")
 				
-				if Global.listEverything[index]=="Koszary":
+				elif Global.listEverything[index]=="Bank":
+					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+					constructed_item_clicked.emit("Bank", "Opis")
+					setVisibility("gridBank")
+				
+				elif Global.listEverything[index]=="Laboratorium":
+					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
+					constructed_item_clicked.emit("Laboratorium", "Opis")
+					setVisibility("gridLaboratory")
+				
+				elif Global.listEverything[index]=="Koszary":
 					constructed_item_clicked.emit("Koszary", "Opis")
 					var directions
 					var node=Global.indexToVector(index)
@@ -162,19 +185,22 @@ func clickOnlyGrassAndOnce(index):
 							barrackError=0
 							Global.barrackNeighbor=neighborIndex
 					if barrackError==1:
-						Global.gridBarracksError.visible=true
+						#Global.gridBarracks.visible=false
+						#Global.gridBarracksError.visible=true
+						setVisibility("gridBarracksError")
 					if barrackError==0:
-						Global.gridBarracks.visible=true
+						setVisibility("gridBarracks")
 				else:
 					constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
 					
 					#Global.actualGridBuildingName="Kostka"
-				Global.gridUpdating.visible=true
-				Global.gridBuilding.visible=false
+					#Global.gridUpdating.visible=true
+					#Global.gridBarracks.visible=false
+					#Global.gridBuilding.visible=false
+					#Global.gridBarracksError.visible=false
 				
 			else:
-				Global.gridBuilding.visible=true
-				Global.gridUpdating.visible=false
+				setVisibility("gridBuilding")
 				constructed_item_unclicked.emit()
 				#Global.actualGridBuildingName=listBuilding[index]
 		

@@ -34,11 +34,11 @@ func changeBuilding(nameBuilding):
 		
 func _on_button_pressed():
 	#Ulepsz Robot Defensywny
-	changeBuilding("Kostka")
+	changeBuilding("RobotDefensywny")
 	
 func _on_button2_pressed():
 	#Ulepsz Robot Ofensywny
-	changeBuilding("Kostka")
+	changeBuilding("RobotOfensywny")
 func _on_button3_pressed():
 	#Ulepsz Robot Zasieg
 	changeBuilding("Kostka")

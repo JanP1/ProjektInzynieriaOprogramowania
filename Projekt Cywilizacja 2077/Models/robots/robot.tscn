@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgjmcq5wsbi1s"]
+
+[ext_resource type="PackedScene" uid="uid://cfhaot2tuang1" path="res://Models/robots/robot1.glb" id="1_48vaw"]
+[ext_resource type="PackedScene" uid="uid://cav0p0lyyae0b" path="res://Models/robots/robot2.glb" id="2_n1vrq"]
+[ext_resource type="PackedScene" uid="uid://ehet1hmitjeg" path="res://Models/HexSkins/hexagonDesert.glb" id="3_1c0gh"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="robot1" parent="." instance=ExtResource("1_48vaw")]
+
+[node name="robot2" parent="." instance=ExtResource("2_n1vrq")]
+
+[node name="hexagonDesert" parent="." instance=ExtResource("3_1c0gh")]
