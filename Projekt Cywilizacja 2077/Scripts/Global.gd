@@ -9,6 +9,7 @@ var gridLaboratory
 var gridBank
 var gridKasyno
 var gridBarracksError
+var gridBuildingError
 var gridDesert
 var gridGrass
 var gridWater
@@ -34,6 +35,7 @@ var currentMoneyPlayer = 1000
 var lastBacklight=Vector3(0,0,0)
 var listCollision=[]
 var listEverything=[]
+var listRobotMove=[]
 var listGround=[]
 var actualGridBuilding=0
 var actualGridBuildingName=""
@@ -55,6 +57,7 @@ func _ready():
 	gridBank=get_node("/root/Node3D/ActionMenu/GridContainerBank")
 	gridKasyno=get_node("/root/Node3D/ActionMenu/GridContainerKasyno")
 	gridBarracksError=get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
+	gridBuildingError=get_node("/root/Node3D/ActionMenu/GridContainerBuildingError")
 	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
 	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
 	gridPath=get_node("/root/Node3D/GridMapSetObject")
@@ -80,17 +83,35 @@ func _ready():
 		
 var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 func shortestPath(start2,end):
+	var index=vectorToIndex(start2)
+	deleteLastRobotMove(index)
+		
 	var dijkstra = Dijkstra.new(mapMovement, start2, end)
 	var shortest_path = dijkstra.process(mapMovement, start2, end)
-	print(shortest_path)
+	#print(shortest_path)
+	shortest_path=shortest_path.slice(1,shortest_path.size())
 	for i in shortest_path:
+		Global.listEverything[vectorToIndex(i)]="RobotMove"
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	Global.listRobotMove[index]=shortest_path
+	#print(shortest_path)
+	#print(Global.listRobotMove[index])
+
+func deleteLastRobotMove(index):
+	#print(Global.listRobotMove[index])
+	for i in Global.listRobotMove[index]:
+		Global.listEverything[vectorToIndex(i)]=""
+		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
+		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
+		
 	
 func indexToVector(x):
-	print(Vector2(int(x/40),x%40))
+	#print(Vector2(int(x/40),x%40))
 	return Vector2(int(x/40),x%40)
 
+func vectorToIndex(x):
+	return x[0]*40+x[1]
 		
 
 func cubeToHex(x,y):

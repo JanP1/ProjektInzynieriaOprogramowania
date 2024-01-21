@@ -130,11 +130,12 @@ func clickOnlyGrassAndOnce(index):
 			Global.shortestPath(startV,indexV)
 	else:	
 		#if index in listGrass and index not in listGrassClicked:
-		if Global.listGround[index] in ["grass","desert"]:
-			if Global.listEverything in ["robot"]:
-				constants(index)
-				Global.gridRobot.visible=true
-		if Global.listGround[index] in ["grass"]:
+		#if Global.listGround[index] in ["grass","desert"]:
+		if Global.listEverything[index] in ["RobotDefensywny","RobotOfensywny"]:# and Global.listGround[index] in ["grass","desert"]:
+			constants(index)
+			setVisibility("gridRobot")
+			constructed_item_clicked.emit("Robot", "Opis")
+		elif Global.listGround[index] in ["grass"]:
 			#var listCollision=Global.listCollision
 			#var gridXY=listCollision[index]
 			#var gridMapPath=Global.gridPath
@@ -145,11 +146,14 @@ func clickOnlyGrassAndOnce(index):
 					#money-=1
 				#elif Global.actualGridBuildingName=="Okrąg":
 					#money-=3
-			print(index)
+			#print(index)
 			
 			constants(index)
 			
 			if Global.listEverything[index]!="":
+				if Global.listEverything[index]=="RobotMove":
+					setVisibility("gridBuildingError")
+					
 				if Global.listEverything[index]=="Kasyno":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
 					constructed_item_clicked.emit("Kasyno", "Opis")
@@ -176,14 +180,15 @@ func clickOnlyGrassAndOnce(index):
 						
 						directions = [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1), Vector2(-1, -1), Vector2(1, -1)]
 					var barrackError=1
-					print(index)
+					#print(index)
 					for direction in directions:
 						var neighbor = node + direction
-						var neighborIndex=neighbor[0]*40+neighbor[1]
-						print(neighborIndex)
+						var neighborIndex=Global.vectorToIndex(neighbor)#neighbor[0]*40+neighbor[1]
+						#print(neighborIndex)
 						if Global.listEverything[neighborIndex]=="":
 							barrackError=0
-							Global.barrackNeighbor=neighborIndex
+							Global.barrackNeighbor=int(neighborIndex)
+							break
 					if barrackError==1:
 						#Global.gridBarracks.visible=false
 						#Global.gridBarracksError.visible=true

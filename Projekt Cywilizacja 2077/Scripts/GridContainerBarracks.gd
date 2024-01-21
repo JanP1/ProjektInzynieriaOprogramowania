@@ -12,20 +12,20 @@ func _ready():
 	var button9 = $Button9
 	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 	
-func changeBuilding(nameBuilding):
-	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
+func createRobot(nameRobot):
+	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameRobot)
 	Global.actualGridBuilding=indexItem
 	
-	var hexV=Global.listCollision[Global.indexClicked]
-	var priceOfSelected = _get_price_of_placed_item(nameBuilding)
+	var hexV=Global.listCollision[Global.barrackNeighbor]
+	var priceOfSelected = _get_price_of_placed_item(nameRobot)
 	if(Global.currentMoneyPlayer-priceOfSelected > 0):
-		Global._on_money_changed(Global.currentMoneyPlayer-priceOfSelected)
+		Global._on_money_change(Global.currentMoneyPlayer-priceOfSelected)
 		Global.currentMoneyPlayer -= priceOfSelected
 		
-		Global.listBuilding[Global.indexClicked]=nameBuilding
-		Global.listEverything[Global.indexClicked]=nameBuilding
-		var xClick=Global.indexToVector(Global.indexClicked)[0]
-		var yClick=Global.indexToVector(Global.indexClicked)[1]
+		#Global.listBuilding[Global.indexClicked]=nameBuilding
+		Global.listEverything[Global.barrackNeighbor]=nameRobot
+		var xClick=Global.indexToVector(Global.barrackNeighbor)[0]
+		var yClick=Global.indexToVector(Global.barrackNeighbor)[1]
 		Global.mapMovement[xClick][yClick]=0
 		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
 		self.visible=false
@@ -33,11 +33,13 @@ func changeBuilding(nameBuilding):
 		
 func _on_button_pressed():
 	#Robot Defensywny
-	changeBuilding("RobotDefensywny")
+	print(Global.indexClicked)
+	print(Global.barrackNeighbor)
+	createRobot("RobotDefensywny")
 	
 func _on_button2_pressed():
 	#Robot Ofensywny
-	changeBuilding("RobotOfensywny")
+	createRobot("RobotOfensywny")
 	
 	
 func _on_button3_pressed():

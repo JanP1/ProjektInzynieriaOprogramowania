@@ -67,8 +67,8 @@ func _get_price_of_placed_item(itemName):
 	
 	#Place to put any item name, that is available on the building menu
 	match itemName:
-		"Kostka":
-			itemPrice = 450
+		"Kasyno":
+			itemPrice = 100
 		"Okrąg":
 			itemPrice = 5
 	return itemPrice

@@ -358,7 +358,7 @@ color = Color(0, 0.0392157, 0.266667, 1)
 show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 1
-text = "Ulepsz"
+text = "Zwiększ Pojemność"
 label_settings = ExtResource("17_3j4ej")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -520,6 +520,46 @@ layout_mode = 2
 color = Color(0, 0.0392157, 0.266667, 1)
 
 [node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj ruch robota"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerRobot/Button3/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button3/MarginContainer"]
 show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 1
@@ -1067,7 +1107,7 @@ color = Color(0, 0.0392157, 0.266667, 1)
 show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 1
-text = "Ulepsz"
+text = "Ulepsz zarabianie"
 label_settings = ExtResource("17_3j4ej")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1150,6 +1190,40 @@ show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBuildingError" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuildingError"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuildingError/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Budowanie niemożliwe na drodze robota. Zmień lub usuń drogę robota"
 label_settings = ExtResource("17_3j4ej")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -7,6 +7,8 @@ func _ready():
 	button.connect("pressed", Callable(self, "_on_button_pressed"))
 	var button2 = $Button2
 	button2.connect("pressed", Callable(self, "_on_button2_pressed"))
+	var button3 = $Button3
+	button3.connect("pressed", Callable(self, "_on_button3_pressed"))
 	var button9 = $Button9
 	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 
@@ -15,8 +17,10 @@ func _on_button_pressed():
 	Global.robotMove=1
 	Global.start=Global.indexClicked
 	
-	
 func _on_button2_pressed():
+	Global.deleteLastRobotMove(Global.indexClicked)
+	
+func _on_button3_pressed():
 	var dodajZloto
 	
 	var hexV=Global.listCollision[Global.indexClicked]

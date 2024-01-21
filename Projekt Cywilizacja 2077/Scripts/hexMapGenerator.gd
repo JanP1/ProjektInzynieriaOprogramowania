@@ -32,6 +32,7 @@ func _ready():
 		for j in range(grid_size):
 			Global.listEverything.append("")
 			Global.listGround.append("")
+			Global.listRobotMove.append("")
 			mapMovementTmp.append(1)
 		mapMovement.append(mapMovementTmp)
 	#print(mapMovement)
