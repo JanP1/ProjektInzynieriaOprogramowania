@@ -29,7 +29,10 @@ func changeBuilding(nameBuilding):
 		
 		#Global.listBuilding[Global.indexClicked]=nameBuilding
 		Global.listEverything[Global.indexClicked]=nameBuilding
-		Global.listHP[Global.indexClicked]=giveHP(nameBuilding) ######################################################################TUTAJ
+		#Zmienione ---------------------------
+		Global.listHP[Global.indexClicked]=giveHP(nameBuilding)
+		Global.listStrength[Global.indexClicked]="None"
+		
 		var xClick=Global.indexToVector(Global.indexClicked)[0]
 		var yClick=Global.indexToVector(Global.indexClicked)[1]
 		Global.mapMovement[xClick][yClick]=0

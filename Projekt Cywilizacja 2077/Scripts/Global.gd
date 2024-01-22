@@ -139,6 +139,34 @@ func indexToVector(x):
 func vectorToIndex(x):
 	return x[0]*40+x[1]
 		
+#Zmienione --------------------------------------------------------------------------------
+func checkIfColided():
+	for i in range(Global.RobotMove.size()):
+		var list_of_moves = Global.RobotMove[i]
+		if( list_of_moves != ""):
+			for j in list_of_moves:
+				var moved_to_position = vectorToIndex(j)
+				if Global.listEverything[moved_to_position] == "RobotWrogi":
+					while(Global.listHP[moved_to_position]>0 and Global.listHP[i]>0):
+						Global.listHP[moved_to_position] -= Global.listHP[i]/10+Global.listStrength[i]
+						if(Global.listHP[moved_to_position] <= 0):
+							break
+						Global.listHP[i] -= Global.listHP[moved_to_position]/10+Global.listStrength[moved_to_position]
+					
+					if(Global.listHP[moved_to_position] <= 0):
+						Global.listHP[moved_to_position] = ""
+						Global.listStrength[moved_to_position] = ""
+						Global.listEverything[moved_to_position] = ""
+					if(Global.listHP[i] <= 0):
+						Global.listHP[i] = ""
+						Global.listStrength[i] = ""
+						Global.listEverything[i] = ""
+						deleteLastRobotMove(i)
+						break
+#Zmienione --------------------------------------------------------------------------------
+
+
+
 
 func cubeToHex(x,y):
 	var x2=x

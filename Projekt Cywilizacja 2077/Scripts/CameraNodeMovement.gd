@@ -6,6 +6,10 @@ signal constructed_item_clicked(name:String, descr:String) # To set lables as vi
 signal constructed_item_unclicked() # To set lable for name and desc as invisible
 
 # ----------------
+#Zmienione ---------------------------
+@onready var clicked_hp
+@onready var clicked_strength
+#Zmienione ---------------------------
 
 @export var swipe_speed : float = 0.02
 var mouse=Vector2()
@@ -132,9 +136,15 @@ func clickOnlyGrassAndOnce(index):
 		#if index in listGrass and index not in listGrassClicked:
 		#if Global.listGround[index] in ["grass","desert"]:
 		if Global.listEverything[index] in ["RobotDefensywny","RobotOfensywny"]:# and Global.listGround[index] in ["grass","desert"]:
+			#Zmienione --------------------------------------------------------------------------------
+			clicked_hp = Global.listHP[index]
+			clicked_strength = Global.listStrength[index]
+			var opis = "Hp: " + str(clicked_hp) + " Strength: " + str(clicked_strength)
+			#Zmienione --------------------------------------------------------------------------------
+			
 			constants(index)
 			setVisibility("gridRobot")
-			constructed_item_clicked.emit("Robot", "Opis")
+			constructed_item_clicked.emit("Robot", opis)
 		elif Global.listGround[index] in ["grass"]:
 			#var listCollision=Global.listCollision
 			#var gridXY=listCollision[index]
@@ -151,26 +161,34 @@ func clickOnlyGrassAndOnce(index):
 			constants(index)
 			
 			if Global.listEverything[index]!="":
+				#Zmienione --------------------------------------------------------------------------------
+				clicked_hp = Global.listHP[index]
+				clicked_strength = Global.listStrength[index]
+				var opis = "Hp: " + str(clicked_hp) + " Strength: " + str(clicked_strength)
+				#Zmienione --------------------------------------------------------------------------------
+				
+				
+				
 				if Global.listEverything[index]=="RobotMove":
 					setVisibility("gridBuildingError")
 					
 				if Global.listEverything[index]=="Kasyno":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Kasyno", "Opis")
+					constructed_item_clicked.emit("Kasyno", opis)
 					setVisibility("gridKasyno")
 				
 				elif Global.listEverything[index]=="Bank":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Bank", "Opis")
+					constructed_item_clicked.emit("Bank", opis)
 					setVisibility("gridBank")
 				
 				elif Global.listEverything[index]=="Laboratorium":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Laboratorium", "Opis")
+					constructed_item_clicked.emit("Laboratorium", opis)
 					setVisibility("gridLaboratory")
 				
 				elif Global.listEverything[index]=="Koszary":
-					constructed_item_clicked.emit("Koszary", "Opis")
+					constructed_item_clicked.emit("Koszary", opis)
 					var directions
 					var node=Global.indexToVector(index)
 					if int(node[0])%2!=1:
