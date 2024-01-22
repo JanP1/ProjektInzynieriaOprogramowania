@@ -20,7 +20,7 @@ func changeBuilding(nameBuilding):
 	var hexV=Global.listCollision[Global.indexClicked]
 	var priceOfSelected = _get_price_of_placed_item(nameBuilding)
 	if(Global.currentMoneyPlayer-priceOfSelected > 0):
-		Global._on_money_changed(Global.currentMoneyPlayer-priceOfSelected)
+		Global._on_money_change(Global.currentMoneyPlayer-priceOfSelected)
 		Global.currentMoneyPlayer -= priceOfSelected
 		
 		Global.listBuilding[Global.indexClicked]=nameBuilding
