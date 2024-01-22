@@ -25,17 +25,18 @@ func changeBuilding(nameBuilding):
 	var hexV=Global.listCollision[Global.indexClicked]
 	var priceOfSelected = _get_price_of_placed_item(nameBuilding)
 	if(Global.currentMoneyPlayer-priceOfSelected > 0):
-		money_changed.emit(Global.currentMoneyPlayer-priceOfSelected)
-		Global.currentMoneyPlayer -= priceOfSelected
+		money_changed.emit(-priceOfSelected)
 		
-		Global.listBuilding[Global.indexClicked]=nameBuilding
+		#Global.listBuilding[Global.indexClicked]=nameBuilding
 		Global.listEverything[Global.indexClicked]=nameBuilding
-		Global.listHP=giveHP(nameBuilding) ######################################################################TUTAJ
+		Global.listHP[Global.indexClicked]=giveHP(nameBuilding) ######################################################################TUTAJ
 		var xClick=Global.indexToVector(Global.indexClicked)[0]
 		var yClick=Global.indexToVector(Global.indexClicked)[1]
 		Global.mapMovement[xClick][yClick]=0
 		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
 		self.visible=false
+		if nameBuilding=="Bank":
+			Global._on_bank_change(100)
 		
 #func deleteElement(name):
 		
@@ -70,8 +71,12 @@ func giveHP(itemName): #########################################################
 	match itemName:
 		"Kasyno":
 			hp = 100
-		"Okrąg":
-			hp = 5
+		"Bank":
+			hp = 50
+		"Koszary":
+			hp = 100
+		"Laboratorium":
+			hp = 200
 	return hp
 	
 
@@ -82,6 +87,10 @@ func _get_price_of_placed_item(itemName):
 	match itemName:
 		"Kasyno":
 			itemPrice = 100
-		"Okrąg":
-			itemPrice = 5
+		"Bank":
+			itemPrice = 50
+		"Koszary":
+			itemPrice = 100
+		"Laboratorium":
+			itemPrice = 200
 	return itemPrice

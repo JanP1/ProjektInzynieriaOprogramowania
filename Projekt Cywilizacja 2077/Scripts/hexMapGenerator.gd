@@ -33,6 +33,10 @@ func _ready():
 			Global.listEverything.append("")
 			Global.listGround.append("")
 			Global.listRobotMove.append("")
+			Global.listHP.append(0)
+			Global.listStrength.append(0)
+			Global.listRange.append(0)
+			Global.listUpgrading.append(1)
 			mapMovementTmp.append(1)
 		mapMovement.append(mapMovementTmp)
 	#print(mapMovement)
@@ -104,6 +108,7 @@ func _ready():
 						listWater.append(hexI)
 						mapMovement[waterX2][waterY2]=0
 						Global.listGround[hexI]="water"
+						Global.listEverything[hexI]="water"
 	#print(mapMovement)
 	Global.mapMovement=mapMovement
 	

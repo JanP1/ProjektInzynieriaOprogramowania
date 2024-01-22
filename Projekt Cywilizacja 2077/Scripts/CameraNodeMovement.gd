@@ -105,7 +105,7 @@ func get_selection():
 #var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 func setVisibility(activeGrid):
 	# Lista wszystkich dostępnych gridów
-	var allGrids = ["gridBarracks", "gridBarracksError", "gridBuilding", "gridBank","gridKasyno", "gridRobot", "gridLaboratory"]
+	var allGrids = ["gridBarracks", "gridBarracksError", "gridBuilding", "gridBuildingError", "gridBank","gridKasyno", "gridRobot", "gridLaboratory"]
 
 	# Ustawia wszystkie gridy na false
 	for grid in allGrids:
@@ -121,7 +121,7 @@ func clickOnlyGrassAndOnce(index):
 	
 	if Global.robotMove==1:
 		Global.robotMove=0
-		if Global.listEverything[index] in ["", "enemyRobot","enemyBuilding"] and  Global.listGround[index] in ["grass","desert"]:
+		if Global.listEverything[index] in ["", "WrogiRobot","WrogiBudynek"] and  Global.listGround[index] in ["grass","desert"]:
 			print("robotmove")
 			#var start_point = Vector2(0, 0)
 			#var end_point = Vector2(3, 1)

@@ -9,47 +9,58 @@ func _ready():
 	button2.connect("pressed", Callable(self, "_on_button2_pressed"))
 	var button3 = $Button3
 	button3.connect("pressed", Callable(self, "_on_button3_pressed"))
+	var button8 = $Button8
+	button8.connect("pressed", Callable(self, "_on_button8_pressed"))
 	var button9 = $Button9
 	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 	
-func changeBuilding(nameBuilding):
-	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
-	Global.actualGridBuilding=indexItem
-	#Global.actualGridBuildingName=nameBuilding
-	
-	var hexV=Global.listCollision[Global.indexClicked]
-	var priceOfSelected = _get_price_of_placed_item(nameBuilding)
+var price_const=200	
+func robotUpgrade(robotUpgrade):
+	var priceOfSelected = price_const*robotUpgrade
 	if(Global.currentMoneyPlayer-priceOfSelected > 0):
-		Global._on_money_change(Global.currentMoneyPlayer-priceOfSelected)
-		Global.currentMoneyPlayer -= priceOfSelected
 		
-		Global.listBuilding[Global.indexClicked]=nameBuilding
-		Global.listEverything[Global.indexClicked]=nameBuilding
-		var xClick=Global.indexToVector(Global.indexClicked)[0]
-		var yClick=Global.indexToVector(Global.indexClicked)[1]
-		Global.mapMovement[xClick][yClick]=0
-		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+		Global._on_money_change(-priceOfSelected)
+		#Global.listUpgrading[Global.indexClicked]+=1
+		robotUpgrade+=1
 		self.visible=false
 		
 		
 func _on_button_pressed():
+	robotUpgrade(Global.RobotDefensywnyUpgrade)
 	#Ulepsz Robot Defensywny
-	changeBuilding("RobotDefensywny")
+	#Global.listHP[Global.indexClicked]
+	#Global.listStrength[Global.indexClicked]
+	#changeBuilding("RobotDefensywny")
 	
 func _on_button2_pressed():
+	robotUpgrade(Global.RobotOfensywnyUpgrade)
 	#Ulepsz Robot Ofensywny
-	changeBuilding("RobotOfensywny")
+	#changeBuilding("RobotOfensywny")
 func _on_button3_pressed():
+	robotUpgrade(Global.RobotRangeUpgrade)
+	#Global.listHP[Global.indexClicked]
 	#Ulepsz Robot Zasieg
-	changeBuilding("Kostka")
+	#changeBuilding("Kostka")
 	
 	
-func _on_button4_pressed():
+func _on_button8_pressed():
+	var buyPrice=Global.gridBuilding._get_price_of_placed_item("Bank")
+	var priceOfSelected = buyPrice#+price_const*(int(Global.listUpgrading[Global.indexClicked])-1)
+	priceOfSelected=int(priceOfSelected/2)
+	Global._on_money_change(priceOfSelected)
 	var hexV=Global.listCollision[Global.indexClicked]
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 	Global.listEverything[Global.indexClicked]=""
 	self.visible=false
 	Global._on_const_it_unclick()
+	var ok=0
+	for element in Global.listEverything:
+		if element in ["Laboratorium","RobotOfensywny"]:
+			ok=1
+	if ok==0:
+		Global.RobotDefensywnyUpgrade=0
+		Global.RobotOfensywnyUpgrade=0
+		Global.RobotRangeUpgrade=0
 
 
 func _get_price_of_placed_item(itemName):

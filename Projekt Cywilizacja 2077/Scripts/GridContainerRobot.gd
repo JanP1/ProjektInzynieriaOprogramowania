@@ -21,14 +21,17 @@ func _on_button2_pressed():
 	Global.deleteLastRobotMove(Global.indexClicked)
 	
 func _on_button3_pressed():
-	var dodajZloto
-	
+	var buyPrice=Global.gridBarracks._get_price_of_placed_item(Global.listEverything[Global.indexClicked])
+	var priceOfSelected = buyPrice
+	priceOfSelected=int(priceOfSelected/2)
+	Global._on_money_change(priceOfSelected)
 	var hexV=Global.listCollision[Global.indexClicked]
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 	Global.listEverything[Global.indexClicked]=""
 	self.visible=false
 	Global._on_const_it_unclick()
 	
+	Global.deleteLastRobotMove(Global.indexClicked)
 	Global.robotMove=0
 
 func _on_button9_pressed():

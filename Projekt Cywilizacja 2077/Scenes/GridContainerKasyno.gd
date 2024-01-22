@@ -8,26 +8,27 @@ func _ready():
 	var button9 = $Button9
 	button9.connect("pressed", Callable(self, "_on_button9_pressed"))
 
-func changeBuilding(nameBuilding):
-	var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, nameBuilding)
-	Global.actualGridBuilding=indexItem
-	
-	var hexV=Global.listCollision[Global.indexClicked]
-		
-	Global.listBuilding[Global.indexClicked]=nameBuilding
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-	self.visible=false
-		
+var price_const=200
+func upgradeBuilding():
+	var priceOfSelected = price_const*int(Global.listUpgrading[Global.indexClicked])
+	if(Global.currentMoneyPlayer-priceOfSelected > 0):
+		Global._on_money_change(-priceOfSelected)
+		Global.listUpgrading[Global.indexClicked]+=1
+		#self.visible=false
 	
 	
 func _on_button_pressed():
-	#var ulepszenieZarabiania+=x
-	self.visible=false
+	upgradeBuilding()
 	
 func _on_button2_pressed():
+	var buyPrice=Global.gridBuilding._get_price_of_placed_item("Kasyno")
+	var priceOfSelected = buyPrice+price_const*(int(Global.listUpgrading[Global.indexClicked])-1)
+	priceOfSelected=int(priceOfSelected/2)
+	Global._on_money_change(priceOfSelected)
 	var hexV=Global.listCollision[Global.indexClicked]
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
-	Global.listBuilding[Global.indexClicked]=""
+	Global.listEverything[Global.indexClicked]=""
+	Global.listUpgrading[Global.indexClicked]=1
 	self.visible=false
 	Global._on_const_it_unclick()
 	

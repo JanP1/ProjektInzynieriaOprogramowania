@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://byjtepionmf18"]
+[gd_scene load_steps=5 format=3 uid="uid://byjtepionmf18"]
 
 [ext_resource type="Texture2D" uid="uid://dv7nkreudcsvy" path="res://Models/Textures/frame of money.png" id="1_12ehn"]
 [ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="1_rfjv1"]
+[ext_resource type="LabelSettings" uid="uid://c2bkfdy458qsx" path="res://Models/Textures/label.tres" id="3_cq2il"]
 
 [sub_resource type="GDScript" id="GDScript_ka151"]
 script/source = "extends CanvasLayer
 
-@onready var index_label = $Control/MarginContainer/Labelndex
+@onready var index_label = $Control/GridContainer/Labelndex#$Control/MarginContainer/Labelndex
 
 # Called when the node enters the scene tree for the first time.
 
@@ -75,7 +76,51 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.294118, 0.270588, 1)
 
+[node name="GridContainer" type="GridContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -397.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="LabelIndex" type="Label" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+text = "2"
+label_settings = ExtResource("3_cq2il")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelIndex3" type="Label" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+text = "/"
+label_settings = ExtResource("3_cq2il")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelIndex2" type="Label" parent="Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 80
+text = "1000$"
+label_settings = ExtResource("3_cq2il")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
