@@ -30,6 +30,7 @@ func changeBuilding(nameBuilding):
 		
 		Global.listBuilding[Global.indexClicked]=nameBuilding
 		Global.listEverything[Global.indexClicked]=nameBuilding
+		Global.listHP=giveHP(nameBuilding) ######################################################################TUTAJ
 		var xClick=Global.indexToVector(Global.indexClicked)[0]
 		var yClick=Global.indexToVector(Global.indexClicked)[1]
 		Global.mapMovement[xClick][yClick]=0
@@ -42,6 +43,7 @@ func changeBuilding(nameBuilding):
 func _on_button_pressed():
 	#Kasyno
 	changeBuilding("Kasyno")
+	#Global.listUpgrading[index]="1"
 	
 	
 	
@@ -60,7 +62,18 @@ func _on_button4_pressed():
 func _on_button9_pressed():
 	self.visible=false
 
-
+func giveHP(itemName): ######################################################################TUTAJ
+	
+	var hp = 0
+	
+	#Place to put any item name, that is available on the building menu
+	match itemName:
+		"Kasyno":
+			hp = 100
+		"Okrąg":
+			hp = 5
+	return hp
+	
 
 func _get_price_of_placed_item(itemName):
 	var itemPrice = 0

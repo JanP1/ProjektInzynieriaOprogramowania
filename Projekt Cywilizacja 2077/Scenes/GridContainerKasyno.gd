@@ -21,7 +21,7 @@ func changeBuilding(nameBuilding):
 	
 	
 func _on_button_pressed():
-	var ulepszenieZarabiania
+	#var ulepszenieZarabiania+=x
 	self.visible=false
 	
 func _on_button2_pressed():

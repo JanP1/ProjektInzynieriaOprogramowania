@@ -5,7 +5,7 @@ extends Node3D
 #const hexDir=["N","NE","SE","S","SW","NW"]
 
 var grid_size=40
-var grid_steps=50
+#var grid_steps=50
 var list1=[]
 var listWater=[]
 var listGrass=[]

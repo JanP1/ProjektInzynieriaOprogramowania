@@ -24,6 +24,8 @@ func createRobot(nameRobot):
 		
 		#Global.listBuilding[Global.indexClicked]=nameBuilding
 		Global.listEverything[Global.barrackNeighbor]=nameRobot
+		Global.listHP ######################################################################TUTAJ
+		Global.listStrenght[Global.barrackNeighbor]=giveStrenght(nameRobot) ######################################################################TUTAJ
 		var xClick=Global.indexToVector(Global.barrackNeighbor)[0]
 		var yClick=Global.indexToVector(Global.barrackNeighbor)[1]
 		Global.mapMovement[xClick][yClick]=0
@@ -49,6 +51,32 @@ func _on_button3_pressed():
 	self.visible=false
 	Global._on_const_it_unclick()
 
+
+func giveStrenght(itemName): ######################################################################TUTAJ
+	
+	var hp = 0
+	
+	#Place to put any item name, that is available on the building menu
+	match itemName:
+		"Kasyno":
+			hp = 100
+		"Okrąg":
+			hp = 5
+	return hp
+	
+
+func giveHP(itemName): ######################################################################TUTAJ
+	
+	var hp = 0
+	
+	#Place to put any item name, that is available on the building menu
+	match itemName:
+		"Kasyno":
+			hp = 100
+		"Okrąg":
+			hp = 5
+	return hp
+	
 
 func _get_price_of_placed_item(itemName):
 	var itemPrice = 0

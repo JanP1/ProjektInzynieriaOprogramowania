@@ -90,11 +90,13 @@ func shortestPath(start2,end):
 	var shortest_path = dijkstra.process(mapMovement, start2, end)
 	#print(shortest_path)
 	shortest_path=shortest_path.slice(1,shortest_path.size())
+	#shortest_path
 	for i in shortest_path:
 		Global.listEverything[vectorToIndex(i)]="RobotMove"
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-	Global.listRobotMove[index]=shortest_path
+	Global.listRobotMove[index]=shortest_path ######################################################################TUTAJ
+	
 	#print(shortest_path)
 	#print(Global.listRobotMove[index])
 
@@ -104,6 +106,7 @@ func deleteLastRobotMove(index):
 		Global.listEverything[vectorToIndex(i)]=""
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
+	Global.listRobotMove[index]=""
 		
 	
 func indexToVector(x):

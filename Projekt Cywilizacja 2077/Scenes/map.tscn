@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=37 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/GridContainerBuilding.gd" id="6_ewnod"]
 [ext_resource type="MeshLibrary" uid="uid://cypuyuhmmssek" path="res://Models/Building/building.meshlib" id="6_r7xsy"]
 [ext_resource type="MeshLibrary" uid="uid://bk8s06v7gdn0p" path="res://Models/HexGodot/hexBacklight.meshlib" id="7_j43le"]
+[ext_resource type="Script" path="res://Scenes/GridContainerNextRound.gd" id="9_6103v"]
 [ext_resource type="Script" path="res://Scripts/GridContainerBank.gd" id="10_m3avn"]
 [ext_resource type="Texture2D" uid="uid://c55giqthmux6d" path="res://Models/Textures/GUI/casino.jpg" id="12_tfu4q"]
 [ext_resource type="Texture2D" uid="uid://e3gxcw7h81bw" path="res://Models/Textures/GUI/bank.jpg" id="16_0niqf"]
@@ -98,8 +99,9 @@ offset_right = -9.0
 offset_bottom = -516.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("9_6103v")
 
-[node name="Button9" type="Button" parent="ActionMenu/GridContainerNextRound"]
+[node name="Button" type="Button" parent="ActionMenu/GridContainerNextRound"]
 material = SubResource("ShaderMaterial_5fa5p")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -109,7 +111,7 @@ icon_alignment = 1
 vertical_icon_alignment = 2
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerNextRound/Button9"]
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerNextRound/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,12 +124,12 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 script = ExtResource("16_rccfy")
 
-[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerNextRound/Button9/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerNextRound/Button/MarginContainer"]
 z_index = -1
 layout_mode = 2
 color = Color(0.415686, 0.576471, 1, 1)
 
-[node name="Label" type="Label" parent="ActionMenu/GridContainerNextRound/Button9/MarginContainer"]
+[node name="Label" type="Label" parent="ActionMenu/GridContainerNextRound/Button/MarginContainer"]
 show_behind_parent = true
 layout_mode = 2
 size_flags_vertical = 1
