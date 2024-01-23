@@ -1299,6 +1299,7 @@ offset_bottom = 652.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ActionMenu/ColorRect"]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 652.0
 text = "Wygrałeś!"

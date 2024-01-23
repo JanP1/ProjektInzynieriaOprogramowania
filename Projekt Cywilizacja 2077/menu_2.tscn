@@ -1,0 +1,148 @@
+[gd_scene load_steps=24 format=3 uid="uid://b5f2x5y1oii6c"]
+
+[ext_resource type="Script" path="res://menu_1.gd" id="1_jsjco"]
+[ext_resource type="Texture2D" uid="uid://cpo6j6yaf312y" path="res://kolor tła.png" id="2_46b01"]
+[ext_resource type="Script" path="res://VBoxContainer2.gd" id="2_gm6se"]
+[ext_resource type="Script" path="res://Postac 1.gd" id="3_p6gqu"]
+[ext_resource type="Texture2D" uid="uid://d0on2e0i38m6e" path="res://bobkartka.png" id="4_jvxhk"]
+[ext_resource type="Texture2D" uid="uid://bqfj0ebecei4v" path="res://logo.svg" id="4_or34l"]
+[ext_resource type="Texture2D" uid="uid://c5ytacy0gwvs8" path="res://drkartka.png" id="5_6f48y"]
+[ext_resource type="Texture2D" uid="uid://yeak42gmspix" path="res://kosmitakartka.png" id="6_xnt5h"]
+[ext_resource type="Texture2D" uid="uid://ba64p0yy5usr8" path="res://robotkartka.png" id="7_wcwok"]
+[ext_resource type="Texture2D" uid="uid://k6pc3y7wjcrt" path="res://naukowiec.png" id="8_o0125"]
+[ext_resource type="Texture2D" uid="uid://44tod0yltjsd" path="res://kosmita.jpg" id="9_t155c"]
+[ext_resource type="Texture2D" uid="uid://dg78hvumfv578" path="res://inzynier.png" id="10_4csb8"]
+[ext_resource type="Texture2D" uid="uid://ch4tv8rwds0pr" path="res://roboty.png" id="11_4ljyo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpgcs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frvxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg3nk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nko1q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ps4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ikhc7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4vmu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_csjkb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xbdg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvelk"]
+
+[node name="Menu 2" type="Control"]
+layout_mode = 3
+anchor_left = 0.423611
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_jsjco")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 132.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_gm6se")
+
+[node name="TłoP" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(91.5001, 0.999969)
+scale = Vector2(2.99483, 2.73729)
+texture = ExtResource("2_46b01")
+
+[node name="Postac 1" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xpgcs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_frvxb")
+text = "PLAY BOB"
+script = ExtResource("3_p6gqu")
+
+[node name="Postac 2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kg3nk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nko1q")
+text = "PLAY DR. "
+
+[node name="Postac 3" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5ps4k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ikhc7")
+text = "PLAY Ksen"
+
+[node name="Postac 4" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i4vmu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_csjkb")
+text = "PLAY ED-209"
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6xbdg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gvelk")
+text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(86, -143)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("4_or34l")
+
+[node name="Sprite2DBOB" type="Sprite2D" parent="."]
+position = Vector2(-318, -120)
+rotation = -0.23911
+scale = Vector2(0.860115, 0.742567)
+texture = ExtResource("4_jvxhk")
+
+[node name="Sprite2DDR" type="Sprite2D" parent="."]
+position = Vector2(371, -124)
+rotation = 0.23911
+scale = Vector2(0.860115, 0.742567)
+texture = ExtResource("5_6f48y")
+
+[node name="SpriteORUGA" type="Sprite2D" parent="."]
+position = Vector2(-149, 154)
+rotation = 0.23911
+scale = Vector2(0.837021, 0.757292)
+texture = ExtResource("6_xnt5h")
+
+[node name="SpriteED" type="Sprite2D" parent="."]
+position = Vector2(526, 138)
+rotation = -0.23911
+scale = Vector2(0.818585, 0.802083)
+texture = ExtResource("7_wcwok")
+
+[node name="Naukowiec" type="Sprite2D" parent="."]
+position = Vector2(461.411, -222.411)
+rotation = 0.247717
+scale = Vector2(0.140577, 0.120933)
+texture = ExtResource("8_o0125")
+
+[node name="Kosmita" type="Sprite2D" parent="."]
+position = Vector2(-59.9999, 58)
+rotation = 0.241142
+scale = Vector2(0.249093, 0.235401)
+texture = ExtResource("9_t155c")
+
+[node name="inzynier" type="Sprite2D" parent="."]
+position = Vector2(-283.074, -248.657)
+rotation = -0.245019
+scale = Vector2(0.496507, 0.461997)
+texture = ExtResource("10_4csb8")
+
+[node name="robot" type="Sprite2D" parent="."]
+position = Vector2(562, 4.99999)
+rotation = -0.257336
+scale = Vector2(0.366336, 0.378895)
+texture = ExtResource("11_4ljyo")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

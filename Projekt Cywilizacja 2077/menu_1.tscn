@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://1j4chpa6sq82"]
+
+[ext_resource type="Script" path="res://menu_1.gd" id="1_xjpgf"]
+[ext_resource type="Script" path="res://VBoxContainer1.gd" id="2_1vi2o"]
+[ext_resource type="Texture2D" uid="uid://bqfj0ebecei4v" path="res://logo.svg" id="2_embtf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sj3o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj5yn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8o4ke"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o87wd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37r7c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8uijh"]
+
+[node name="Menu 1" type="Control"]
+layout_mode = 3
+anchor_left = 0.423611
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_xjpgf")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -98.0
+offset_top = 106.0
+offset_right = 273.0
+offset_bottom = 285.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_1vi2o")
+
+[node name="TłoG" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(185, -103)
+scale = Vector2(0.598958, 0.601852)
+texture = ExtResource("2_embtf")
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5sj3o")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aj5yn")
+text = "PLAY"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8o4ke")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o87wd")
+text = "GAME RULES"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_37r7c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8uijh")
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

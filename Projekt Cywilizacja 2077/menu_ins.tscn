@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvrkliw5uf868"]
+
+[ext_resource type="Script" path="res://menu_1.gd" id="1_d76n0"]
+[ext_resource type="Texture2D" uid="uid://cynqs0nq6vtb0" path="res://komputer.jpg" id="2_l8apx"]
+[ext_resource type="Script" path="res://Label.gd" id="3_wpyu2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apt4f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_57b33"]
+
+[node name="Menu ins" type="Control"]
+layout_mode = 3
+anchor_left = 0.423611
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("1_d76n0")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 237.0
+offset_right = 184.0
+offset_bottom = 263.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TłoI" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(105, -218)
+scale = Vector2(1.58436, 1.51073)
+texture = ExtResource("2_l8apx")
+
+[node name="Back1" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_apt4f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_57b33")
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.838
+anchor_right = -3.838
+offset_left = 2.7446
+offset_top = -176.0
+offset_right = 844.745
+offset_bottom = 221.0
+text = "instrukcja"
+script = ExtResource("3_wpyu2")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -210.0
+offset_right = 185.0
+offset_bottom = -164.0
+text = "GAME RULES"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back1" to="." method="_on_back_pressed"]

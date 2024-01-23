@@ -61,39 +61,41 @@ var enemyRobotMove=[]
 var listBuilding = []
 
 # Called when the node enters the scene tree for the first time.
+var map_scene = preload("res://Scenes/map.tscn")
 func _ready():
-	gridDesert=get_node("/root/Node3D/GridMapDesert")
-	gridWater=get_node("/root/Node3D/GridMapWater")
-	gridGrass=get_node("/root/Node3D/GridMapGrass")
-	gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
-	gridRobot=get_node("/root/Node3D/ActionMenu/GridContainerRobot")
-	gridBarracks=get_node("/root/Node3D/ActionMenu/GridContainerBarracks")
-	gridLaboratory=get_node("/root/Node3D/ActionMenu/GridContainerLaboratory")
-	gridBank=get_node("/root/Node3D/ActionMenu/GridContainerBank")
-	gridKasyno=get_node("/root/Node3D/ActionMenu/GridContainerKasyno")
-	gridBarracksError=get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
-	gridBuildingError=get_node("/root/Node3D/ActionMenu/GridContainerBuildingError")
-	gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
-	gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
-	gridPath=get_node("/root/Node3D/GridMapSetObject")
-	gridBacklight=get_node("/root/Node3D/GridMapBacklight")
-	cameraNode=get_node("/root/Node3D/CameraNode")
-	cameraNodeCamera3D=get_node("/root/Node3D/CameraNode/Camera3D")
+	var player = map_scene.instantiate()
+	gridDesert=player.get_node("/root/Node3D/GridMapDesert")
+	gridWater=player.get_node("/root/Node3D/GridMapWater")
+	gridGrass=player.get_node("/root/Node3D/GridMapGrass")
+	gridBuilding=player.get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
+	gridRobot=player.get_node("/root/Node3D/ActionMenu/GridContainerRobot")
+	gridBarracks=player.get_node("/root/Node3D/ActionMenu/GridContainerBarracks")
+	gridLaboratory=player.get_node("/root/Node3D/ActionMenu/GridContainerLaboratory")
+	gridBank=player.get_node("/root/Node3D/ActionMenu/GridContainerBank")
+	gridKasyno=player.get_node("/root/Node3D/ActionMenu/GridContainerKasyno")
+	gridBarracksError=player.get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
+	gridBuildingError=player.get_node("/root/Node3D/ActionMenu/GridContainerBuildingError")
+	gridUpdating=player.get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
+	gridMenu=player.get_node("/root/Node3D/ActionMenu/GridContainerMenu")
+	gridPath=player.get_node("/root/Node3D/GridMapSetObject")
+	gridBacklight=player.get_node("/root/Node3D/GridMapBacklight")
+	cameraNode=player.get_node("/root/Node3D/CameraNode")
+	cameraNodeCamera3D=player.get_node("/root/Node3D/CameraNode/Camera3D")
 	
 	#Top Menu Containing players money
 	#moneyLable=get_node("/root/Node3D/Menu/Control/MarginContainer/LabelIndex")
-	moneyLable=get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex")
-	moneyLable2=get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex2")
+	moneyLable=player.get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex")
+	moneyLable2=player.get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex2")
 	#Item clicked
-	nameLable = get_node("/root/Node3D/Menu/Control/MarginContainer4/LabelName")
-	descLable = get_node("/root/Node3D/Menu/Control/MarginContainer3/Description")
-	moneyLable.text = str(currentMoneyPlayer) + "$"
+	nameLable = player.get_node("/root/Node3D/Menu/Control/MarginContainer4/LabelName")
+	descLable = player.get_node("/root/Node3D/Menu/Control/MarginContainer3/Description")
+	#moneyLable.text = str(currentMoneyPlayer) + "$"
 	
 	#Connecting to the signals
-	gridBuilding.money_changed.connect(_on_money_change)
-	cameraNode.constructed_item_clicked.connect(_on_const_it_click)
-	cameraNode.constructed_item_unclicked.connect(_on_const_it_unclick)
-	Global._on_money_change(1000)
+	#gridBuilding.money_changed.connect(_on_money_change)
+	#cameraNode.constructed_item_clicked.connect(_on_const_it_click)
+	#cameraNode.constructed_item_unclicked.connect(_on_const_it_unclick)
+	#Global._on_money_change(1000)
 	#for i in range(10000):
 		#listBuilding.append("")
 		

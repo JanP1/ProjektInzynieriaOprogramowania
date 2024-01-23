@@ -26,6 +26,34 @@ func indexHex(x,y):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.gridDesert=get_node("/root/Node3D/GridMapDesert")
+	Global.gridWater=get_node("/root/Node3D/GridMapWater")
+	Global.gridGrass=get_node("/root/Node3D/GridMapGrass")
+	Global.gridBuilding=get_node("/root/Node3D/ActionMenu/GridContainerBuilding")
+	Global.gridRobot=get_node("/root/Node3D/ActionMenu/GridContainerRobot")
+	Global.gridBarracks=get_node("/root/Node3D/ActionMenu/GridContainerBarracks")
+	Global.gridLaboratory=get_node("/root/Node3D/ActionMenu/GridContainerLaboratory")
+	Global.gridBank=get_node("/root/Node3D/ActionMenu/GridContainerBank")
+	Global.gridKasyno=get_node("/root/Node3D/ActionMenu/GridContainerKasyno")
+	Global.gridBarracksError=get_node("/root/Node3D/ActionMenu/GridContainerBarracksError")
+	Global.gridBuildingError=get_node("/root/Node3D/ActionMenu/GridContainerBuildingError")
+	Global.gridUpdating=get_node("/root/Node3D/ActionMenu/GridContainerUpdating")
+	Global.gridMenu=get_node("/root/Node3D/ActionMenu/GridContainerMenu")
+	Global.gridPath=get_node("/root/Node3D/GridMapSetObject")
+	Global.gridBacklight=get_node("/root/Node3D/GridMapBacklight")
+	Global.cameraNode=get_node("/root/Node3D/CameraNode")
+	Global.cameraNodeCamera3D=get_node("/root/Node3D/CameraNode/Camera3D")
+	
+	#Top Menu Containing players money
+	#moneyLable=get_node("/root/Node3D/Menu/Control/MarginContainer/LabelIndex")
+	Global.moneyLable=get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex")
+	Global.moneyLable2=get_node("/root/Node3D/Menu/Control/GridContainer/LabelIndex2")
+	#Item clicked
+	Global.nameLable = get_node("/root/Node3D/Menu/Control/MarginContainer4/LabelName")
+	Global.descLable =get_node("/root/Node3D/Menu/Control/MarginContainer3/Description")
+	
+	
+	
 	var mapMovement=[]
 	for i in range(grid_size):
 		var mapMovementTmp=[]
