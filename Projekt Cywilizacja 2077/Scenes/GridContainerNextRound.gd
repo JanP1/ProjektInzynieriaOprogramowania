@@ -86,6 +86,21 @@ func _on_button_pressed():
 	for i in range(int(enemyBuildings/10)):
 		enemyRespawn()
 	
+	var yourCapitol=false
+	var enemyCapitol=false
+	for i in Global.listEverything:
+		match i:
+			"StolicaMoja":
+				yourCapitol=true
+			"StolicaWroga":
+				enemyCapitol=true
+	
+	if enemyCapitol==false:
+		get_node("/root/Node3D/ActionMenu/ColorRect/Label").text="Wygrałeś"
+		get_node("/root/Node3D/ActionMenu/ColorRect").visible=true
+	elif yourCapitol==false:
+		get_node("/root/Node3D/ActionMenu/ColorRect/Label").text="Przegrałeś"
+		get_node("/root/Node3D/ActionMenu/ColorRect").visible=true
 	
 	
 		

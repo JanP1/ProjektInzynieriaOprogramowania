@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cgxqriodj1jtr"]
+[gd_scene load_steps=39 format=3 uid="uid://cgxqriodj1jtr"]
 
 [ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
 [ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
@@ -43,6 +43,15 @@ background_energy_multiplier = 1.49
 sky = SubResource("Sky_xw1ns")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5fa5p"]
+
+[sub_resource type="SystemFont" id="SystemFont_triq8"]
+font_names = PackedStringArray("WarHeliosCondCBold")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f41cb"]
+font = SubResource("SystemFont_triq8")
+font_size = 200
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
 
@@ -1282,6 +1291,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 script = ExtResource("17_wwgcj")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu"]
+visible = false
+offset_right = 1152.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/ColorRect"]
+offset_right = 1152.0
+offset_bottom = 652.0
+text = "Wygrałeś!"
+label_settings = SubResource("LabelSettings_f41cb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CameraNode" type="Node3D" parent="."]
 script = ExtResource("5_5fq2g")
