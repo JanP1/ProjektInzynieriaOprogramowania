@@ -120,10 +120,10 @@ func checkIfColided():
 						var hexV=Global.cubeToHex(int(Global.indexToVector(i)[0]),int(Global.indexToVector(i)[1]))
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						#Global.deleteLastRobotMove(i)
-						return false
+						#return false
 				#elif Global.listEverything[moved_to_position]=="RobotMove":
 				bestMove=moved_to_position
-			if bestMove!=-1:
+			if bestMove!=-1 and Global.listHP[i]:
 				movingRobot(i,bestMove)
 						
 				
@@ -174,8 +174,8 @@ func checkIfColided_Enemy():
 						var hexV=Global.cubeToHex(int(Global.indexToVector(moved_to_position)[0]),int(Global.indexToVector(moved_to_position)[1]))
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						
-						if Global.listHP[i]>0:
-							bestMove=moved_to_position
+						#if Global.listHP[i]>0:
+							#bestMove=moved_to_position
 					if(Global.listHP[i] <= 0):
 						Global.listHP[i] = 0
 						Global.listStrength[i] = 0
@@ -183,11 +183,11 @@ func checkIfColided_Enemy():
 						var hexV=Global.cubeToHex(int(Global.indexToVector(i)[0]),int(Global.indexToVector(i)[1]))
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						#Global.deleteLastRobotMove(i)
-						return false
 				#elif Global.listEverything[moved_to_position]=="RobotMove":
 				bestMove=moved_to_position
-			if bestMove!=-1:
+			if bestMove!=-1 and Global.listHP[i]:
 				movingRobot(i,bestMove)
+				#Global.enemyRobotMove[i]=[]
 
 
 	
