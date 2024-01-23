@@ -33,6 +33,7 @@ func _ready():
 			Global.listEverything.append("")
 			Global.listGround.append("")
 			Global.listRobotMove.append([])
+			Global.enemyRobotMove.append([])
 			Global.listHP.append(0)
 			Global.listStrength.append(0)
 			Global.listRange.append(0)
@@ -42,20 +43,23 @@ func _ready():
 		
 		
 	
-	var losX=randi_range(7,grid_size-7)
-	var losY=randi_range(7,grid_size-7)
-	hexV=cubeToHex(losX,losY)
-	print(losX,losY)
-	hexI=indexHex(losX,losY)
-	#listGrass.append(hexI)
-	Global.listGround[hexI]="desert"
-	list1.append(hexV)
-	$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	#var losX=randi_range(7,grid_size-7)
+	#var losY=randi_range(7,grid_size-7)
+	#hexV=cubeToHex(losX,losY)
+	#print(losX,losY)
+	#hexI=indexHex(losX,losY)
+	##listGrass.append(hexI)
+	#Global.listGround[hexI]="desert"
+	#list1.append(hexV)
+	#$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	#
+	#var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaWroga")
+	#Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
+	#Global.listEverything[hexI]="StolicaWroga"
+	#Global.listHP[hexI]=1000
 	
-	var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaWroga")
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
-	Global.listEverything[hexI]="StolicaWroga"
-	Global.listHP[hexI]=1000
+	
+	
 	#print(mapMovement)
 #	randomize()
 #	var current_pos=Vector2(0,0)
@@ -92,18 +96,20 @@ func _ready():
 	listGrass.append(hexI)
 	list1.append(hexV)
 	$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	Global.Centrum=hexI
+	Global.listGround[hexI]="grass"
 	
-	var z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "RobotWrogi")
+	var z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaMoja")
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
-	Global.listEverything[hexI]="RobotWrogi"
+	Global.listEverything[hexI]="StolicaMoja"
 	Global.listHP[hexI]=100
 	
-	hexI=indexHex(GrassX-3,GrassY-3)
-	hexV=cubeToHex(GrassX-3,GrassY-3)
-	z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "BudynekWrogi")
-	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
-	Global.listEverything[hexI]="BudynekWrogi"
-	Global.listHP[hexI]=100
+	#hexI=indexHex(GrassX-3,GrassY-3)
+	#hexV=cubeToHex(GrassX-3,GrassY-3)
+	#z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "BudynekWrogi")
+	#Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
+	#Global.listEverything[hexI]="BudynekWrogi"
+	#Global.listHP[hexI]=100
 	
 	var radius=200
 	for grassX2 in range(grid_size):
@@ -117,7 +123,7 @@ func _ready():
 					listGrass.append(hexI)
 					list1.append(hexV)
 			#if (int(hexV[0])-int(hexV2[0]))**2+(int(hexV[1])-int(hexV2[1]))**2<radius+1:
-				#Global.listGround[hexI]="grass"
+					Global.listGround[hexI]="grass"
 			
 	
 	
@@ -144,7 +150,7 @@ func _ready():
 	
 	
 	
-
+	var stolica=false
 	hexV=cubeToHex(3,2)
 	for i in range(grid_size):
 		for j in range(grid_size):
@@ -153,6 +159,19 @@ func _ready():
 				$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 				hexI=indexHex(i,j)
 				Global.listGround[hexI]="desert"
+				
+				var los=randi_range(1,200)
+				if los<2 and stolica==false:
+					var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaWroga")
+					Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
+					Global.listEverything[hexI]="StolicaWroga"
+					Global.listHP[hexI]=1000
+					stolica=true
+				elif los<10:
+					var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "BudynekWrogi")
+					Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
+					Global.listEverything[hexI]="BudynekWrogi"
+					Global.listHP[hexI]=20
 				#listGrass.append(hexI)
 #				if hexI in listGrass and hexI<1500:  #przydatne, nie usuwac
 #					listGrass.remove_at(listGrass.find(hexI))

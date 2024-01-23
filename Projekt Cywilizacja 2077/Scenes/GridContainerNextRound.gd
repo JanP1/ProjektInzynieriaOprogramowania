@@ -6,20 +6,53 @@ func _ready():
 	var button = $Button
 	button.connect("pressed", Callable(self, "_on_button_pressed"))
 
+var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+func shortestPath(start2,end):
+	var index=Global.vectorToIndex(start2)
+	#deleteLastRobotMove(index)
+		
+	var dijkstra = Dijkstra.new(Global.mapMovement, start2, end)
+	var shortest_path = dijkstra.process(Global.mapMovement, start2, end)
+	
+	shortest_path=shortest_path.slice(1,5)
+	Global.enemyRobotMove[index]=shortest_path
 
+func enemyRespawn():
+	var waterX=randi_range(0,35)
+	var waterY=randi_range(0,35)
+	var hexI=Global.indexHex(waterX,waterY)
+	if Global.listEverything[hexI]=="" and Global.listGround[hexI]!="Grass":
+		#if (waterX2-waterX)**2+(waterY2-waterY)**2>radius:
+			var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, "RobotWrogi")
+			var hexV=Global.cubeToHex(waterX,waterY)
+			Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),indexItem,0)
+			Global.listEverything[hexI]="RobotWrogi"
+			Global.listHP[hexI]=15
+			Global.listStrength[hexI]=1
+	
 func _on_button_pressed():
+	var enemyBuildings=0
+	for i in range(Global.listEverything.size()):
+		var j=Global.listEverything[i]
+		if j=="BudynekWrogi":
+			enemyBuildings+=1
+		if j=="RobotWrogi":
+			#print(Global.indexToVector(i),Global.Centrum)
+			shortestPath(Global.indexToVector(i),Global.indexToVector(Global.Centrum))
 			
-	checkIfColided()	
-	Global.listEverything="RobotWrogi"
-	var newList[200]=[(1,2),(2,2),(3,2)]
-	shotest_paht[1:4] w stronę stolicy
-	checkIfColided_Enemy(newList)
+		
+		
+	#Global.listEverything="RobotWrogi"
+	#var newList[200]=[(1,2),(2,2),(3,2)]
+	#shotest_paht[1:4] w stronę stolicy
+	checkIfColided()
+	checkIfColided_Enemy()
 	for i in range(Global.listRobotMove.size()):
 		Global.deleteLastRobotMove(i)
 	
 	var money=0
-	Global.currentBankPlayer=1000
-	var bank=0
+	Global.currentBankPlayer=0
+	var bank=1000
 	var lab=false
 	
 	var len = min(Global.listEverything.size(), Global.listUpgrading.size())
@@ -42,10 +75,16 @@ func _on_button_pressed():
 		Global.RobotDefensywnyUpgrade=1
 		Global.RobotOfensywnyUpgrade=1
 		Global.RobotRangeUpgrade=1
-				
+					
+	Global._on_bank_change(bank)
 	Global._on_money_change(money)		
-	Global._on_bank_change(bank)	
+	if Global.currentMoneyPlayer>bank:
+		Global.currentMoneyPlayer=bank
+		print(bank)
+		Global._on_money_change(0)	
 	
+	for i in range(int(enemyBuildings/10)):
+		enemyRespawn()
 	
 	
 	
@@ -72,7 +111,8 @@ func checkIfColided():
 						
 						var hexV=Global.cubeToHex(int(Global.indexToVector(moved_to_position)[0]),int(Global.indexToVector(moved_to_position)[1]))
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
-						
+						if Global.listHP[i]>0:
+							bestMove=moved_to_position
 					if(Global.listHP[i] <= 0):
 						Global.listHP[i] = 0
 						Global.listStrength[i] = 0
@@ -81,8 +121,8 @@ func checkIfColided():
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						#Global.deleteLastRobotMove(i)
 						return false
-				elif Global.listEverything[moved_to_position]=="RobotMove":
-					bestMove=moved_to_position
+				#elif Global.listEverything[moved_to_position]=="RobotMove":
+				bestMove=moved_to_position
 			if bestMove!=-1:
 				movingRobot(i,bestMove)
 						
@@ -100,8 +140,8 @@ func movingRobot(start,end):
 	Global.listStrength[end]=Global.listStrength[start]
 	
 	Global.listEverything[start]=""
-	Global.listHP[start]=""
-	Global.listStrength[start]=""
+	Global.listHP[start]=0
+	Global.listStrength[start]=0
 	
 	#print(end)
 	#print(Global.listEverything[end])
@@ -110,10 +150,10 @@ func movingRobot(start,end):
 
 
 		
-func checkIfColided_Enemy(listRobotMove):
-	for i in range(listRobotMove.size()):
+func checkIfColided_Enemy():
+	for i in range(Global.enemyRobotMove.size()):
 		var bestMove=-1
-		var list_of_moves = listRobotMove[i]
+		var list_of_moves = Global.enemyRobotMove[i]
 		if list_of_moves.size() >0:
 			for j in list_of_moves:
 				var moved_to_position = int(Global.vectorToIndex(j))
@@ -134,6 +174,8 @@ func checkIfColided_Enemy(listRobotMove):
 						var hexV=Global.cubeToHex(int(Global.indexToVector(moved_to_position)[0]),int(Global.indexToVector(moved_to_position)[1]))
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						
+						if Global.listHP[i]>0:
+							bestMove=moved_to_position
 					if(Global.listHP[i] <= 0):
 						Global.listHP[i] = 0
 						Global.listStrength[i] = 0
@@ -142,8 +184,8 @@ func checkIfColided_Enemy(listRobotMove):
 						Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 						#Global.deleteLastRobotMove(i)
 						return false
-				elif Global.listEverything[moved_to_position]=="RobotMove":
-					bestMove=moved_to_position
+				#elif Global.listEverything[moved_to_position]=="RobotMove":
+				bestMove=moved_to_position
 			if bestMove!=-1:
 				movingRobot(i,bestMove)
 

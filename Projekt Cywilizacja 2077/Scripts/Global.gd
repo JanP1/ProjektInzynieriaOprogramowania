@@ -54,7 +54,9 @@ var actualGridBuilding=0
 var actualGridBuildingName=""
 var indexClicked=0
 
+var Centrum
 var breakClick=0
+var enemyRobotMove=[]
 
 var listBuilding = []
 
@@ -91,9 +93,9 @@ func _ready():
 	gridBuilding.money_changed.connect(_on_money_change)
 	cameraNode.constructed_item_clicked.connect(_on_const_it_click)
 	cameraNode.constructed_item_unclicked.connect(_on_const_it_unclick)
-	
-	for i in range(10000):
-		listBuilding.append("")
+	Global._on_money_change(1000)
+	#for i in range(10000):
+		#listBuilding.append("")
 		
 var Dijkstra = preload("res://Scripts/Dijkstra.gd")
 func shortestPath(start2,end):
@@ -103,7 +105,10 @@ func shortestPath(start2,end):
 	var dijkstra = Dijkstra.new(mapMovement, start2, end)
 	var shortest_path = dijkstra.process(mapMovement, start2, end)
 	#print(shortest_path)
-	shortest_path=shortest_path.slice(1,shortest_path.size())
+	if shortest_path.size()<=4+Global.RobotRangeUpgrade:
+		shortest_path=shortest_path.slice(1,shortest_path.size())
+	else:
+		shortest_path=shortest_path.slice(1,4+Global.RobotRangeUpgrade)
 	#shortest_path
 	for i in shortest_path:
 		if Global.listEverything[vectorToIndex(i)] not in ["RobotWrogi","BudynekWrogi"]:
@@ -140,7 +145,9 @@ func indexToVector(x):
 
 func vectorToIndex(x):
 	return x[0]*40+x[1]
-		
+	
+func indexHex(x,y):
+	return y+x*40		
 #Zmienione --------------------------------------------------------------------------------
 
 #Zmienione --------------------------------------------------------------------------------
