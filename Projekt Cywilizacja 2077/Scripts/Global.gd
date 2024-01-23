@@ -106,7 +106,8 @@ func shortestPath(start2,end):
 	shortest_path=shortest_path.slice(1,shortest_path.size())
 	#shortest_path
 	for i in shortest_path:
-		Global.listEverything[vectorToIndex(i)]="RobotMove"
+		if Global.listEverything[vectorToIndex(i)] not in ["RobotWrogi","BudynekWrogi"]:
+			Global.listEverything[vectorToIndex(i)]="RobotMove"
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 	Global.listRobotMove[index]=shortest_path ######################################################################TUTAJ
@@ -126,10 +127,11 @@ func deleteLastRobotMove(index):
 						ok=0
 			index2+=1
 		if ok==1:
-			Global.listEverything[vectorToIndex(i)]=""
+			if Global.listEverything[vectorToIndex(i)] in ["RobotMove"]:
+				Global.listEverything[vectorToIndex(i)]=""
 			var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 			Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
-	Global.listRobotMove[index]=""
+	Global.listRobotMove[index]=[]
 		
 	
 func indexToVector(x):
@@ -140,29 +142,7 @@ func vectorToIndex(x):
 	return x[0]*40+x[1]
 		
 #Zmienione --------------------------------------------------------------------------------
-func checkIfColided():
-	for i in range(Global.RobotMove.size()):
-		var list_of_moves = Global.RobotMove[i]
-		if( list_of_moves != ""):
-			for j in list_of_moves:
-				var moved_to_position = vectorToIndex(j)
-				if Global.listEverything[moved_to_position] == "RobotWrogi":
-					while(Global.listHP[moved_to_position]>0 and Global.listHP[i]>0):
-						Global.listHP[moved_to_position] -= Global.listHP[i]/10+Global.listStrength[i]
-						if(Global.listHP[moved_to_position] <= 0):
-							break
-						Global.listHP[i] -= Global.listHP[moved_to_position]/10+Global.listStrength[moved_to_position]
-					
-					if(Global.listHP[moved_to_position] <= 0):
-						Global.listHP[moved_to_position] = ""
-						Global.listStrength[moved_to_position] = ""
-						Global.listEverything[moved_to_position] = ""
-					if(Global.listHP[i] <= 0):
-						Global.listHP[i] = ""
-						Global.listStrength[i] = ""
-						Global.listEverything[i] = ""
-						deleteLastRobotMove(i)
-						break
+
 #Zmienione --------------------------------------------------------------------------------
 
 

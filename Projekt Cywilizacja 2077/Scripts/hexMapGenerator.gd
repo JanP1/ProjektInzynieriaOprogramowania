@@ -32,13 +32,30 @@ func _ready():
 		for j in range(grid_size):
 			Global.listEverything.append("")
 			Global.listGround.append("")
-			Global.listRobotMove.append("")
+			Global.listRobotMove.append([])
 			Global.listHP.append(0)
 			Global.listStrength.append(0)
 			Global.listRange.append(0)
 			Global.listUpgrading.append(1)
 			mapMovementTmp.append(1)
 		mapMovement.append(mapMovementTmp)
+		
+		
+	
+	var losX=randi_range(7,grid_size-7)
+	var losY=randi_range(7,grid_size-7)
+	hexV=cubeToHex(losX,losY)
+	print(losX,losY)
+	hexI=indexHex(losX,losY)
+	#listGrass.append(hexI)
+	Global.listGround[hexI]="desert"
+	list1.append(hexV)
+	$GridMapDesert.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	
+	var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaWroga")
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
+	Global.listEverything[hexI]="StolicaWroga"
+	Global.listHP[hexI]=1000
 	#print(mapMovement)
 #	randomize()
 #	var current_pos=Vector2(0,0)
@@ -75,19 +92,32 @@ func _ready():
 	listGrass.append(hexI)
 	list1.append(hexV)
 	$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	
+	var z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "RobotWrogi")
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
+	Global.listEverything[hexI]="RobotWrogi"
+	Global.listHP[hexI]=100
+	
+	hexI=indexHex(GrassX-3,GrassY-3)
+	hexV=cubeToHex(GrassX-3,GrassY-3)
+	z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "BudynekWrogi")
+	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
+	Global.listEverything[hexI]="BudynekWrogi"
+	Global.listHP[hexI]=100
+	
 	var radius=200
 	for grassX2 in range(grid_size):
 		for grassY2 in range(grid_size):	
 			hexV=cubeToHex(grassX2,grassY2)
 			var hexV2=cubeToHex(GrassX,GrassY)
 			if (int(hexV[0])-int(hexV2[0]))**2+(int(hexV[1])-int(hexV2[1]))**2<radius:
-				#if hexV not in list1:
-				$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
-				hexI=indexHex(grassX2,grassY2)
-				listGrass.append(hexI)
-				list1.append(hexV)
-			if (int(hexV[0])-int(hexV2[0]))**2+(int(hexV[1])-int(hexV2[1]))**2<radius+1:
-				Global.listGround[hexI]="grass"
+				if hexV not in list1:
+					$GridMapGrass.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+					hexI=indexHex(grassX2,grassY2)
+					listGrass.append(hexI)
+					list1.append(hexV)
+			#if (int(hexV[0])-int(hexV2[0]))**2+(int(hexV[1])-int(hexV2[1]))**2<radius+1:
+				#Global.listGround[hexI]="grass"
 			
 	
 	
@@ -129,6 +159,7 @@ func _ready():
 				
 			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 			Global.listCollision.append(hexV)
+	
 	
 
 

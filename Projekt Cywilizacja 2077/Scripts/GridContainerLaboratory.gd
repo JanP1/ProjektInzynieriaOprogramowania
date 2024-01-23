@@ -23,21 +23,24 @@ func robotUpgrade(robotUpgrade):
 		#Global.listUpgrading[Global.indexClicked]+=1
 		robotUpgrade+=1
 		self.visible=false
+		return robotUpgrade
 		
 		
 func _on_button_pressed():
-	robotUpgrade(Global.RobotDefensywnyUpgrade)
+
+	Global.RobotDefensywnyUpgrade=robotUpgrade(Global.RobotDefensywnyUpgrade)
 	#Ulepsz Robot Defensywny
 	#Global.listHP[Global.indexClicked]
 	#Global.listStrength[Global.indexClicked]
 	#changeBuilding("RobotDefensywny")
 	
 func _on_button2_pressed():
-	robotUpgrade(Global.RobotOfensywnyUpgrade)
+	Global.RobotOfensywnyUpgrade=robotUpgrade(Global.RobotOfensywnyUpgrade)
 	#Ulepsz Robot Ofensywny
 	#changeBuilding("RobotOfensywny")
 func _on_button3_pressed():
-	robotUpgrade(Global.RobotRangeUpgrade)
+	
+	Global.RobotRangeUpgrade=robotUpgrade(Global.RobotRangeUpgrade)
 	#Global.listHP[Global.indexClicked]
 	#Ulepsz Robot Zasieg
 	#changeBuilding("Kostka")
@@ -58,9 +61,9 @@ func _on_button8_pressed():
 		if element in ["Laboratorium","RobotOfensywny"]:
 			ok=1
 	if ok==0:
-		Global.RobotDefensywnyUpgrade=0
-		Global.RobotOfensywnyUpgrade=0
-		Global.RobotRangeUpgrade=0
+		Global.RobotDefensywnyUpgrade=1
+		Global.RobotOfensywnyUpgrade=1
+		Global.RobotRangeUpgrade=1
 
 
 func _get_price_of_placed_item(itemName):

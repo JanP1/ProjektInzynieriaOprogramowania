@@ -107,6 +107,12 @@ func get_selection():
 
 		
 #var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+
+func setVisibilityEmpty():
+	var allGrids = ["gridBarracks", "gridBarracksError", "gridBuilding", "gridBuildingError", "gridBank","gridKasyno", "gridRobot", "gridLaboratory"]
+	for grid in allGrids:
+		Global[grid].visible = false
+	
 func setVisibility(activeGrid):
 	# Lista wszystkich dostępnych gridów
 	var allGrids = ["gridBarracks", "gridBarracksError", "gridBuilding", "gridBuildingError", "gridBank","gridKasyno", "gridRobot", "gridLaboratory"]
@@ -122,11 +128,12 @@ func setVisibility(activeGrid):
 		
 var money=5
 func clickOnlyGrassAndOnce(index):
-	
+	#print(index)
+	#print(Global.listEverything[index])
 	if Global.robotMove==1:
 		Global.robotMove=0
-		if Global.listEverything[index] in ["", "WrogiRobot","WrogiBudynek"] and  Global.listGround[index] in ["grass","desert"]:
-			print("robotmove")
+		if Global.listEverything[index] in ["", "RobotWrogi","BudynekWrogi"] and  Global.listGround[index] in ["grass","desert"]:
+			#print("robotmove")
 			#var start_point = Vector2(0, 0)
 			#var end_point = Vector2(3, 1)
 			var startV=Global.indexToVector(Global.start)
@@ -168,6 +175,12 @@ func clickOnlyGrassAndOnce(index):
 				#Zmienione --------------------------------------------------------------------------------
 				
 				
+				if Global.listEverything[index]=="StolicaMoja":
+					constructed_item_clicked.emit("StolicaMoja", opis)
+					setVisibilityEmpty()
+				if Global.listEverything[index]=="StolicaWroga":
+					constructed_item_clicked.emit("StolicaWroga", opis)
+					setVisibilityEmpty()
 				
 				if Global.listEverything[index]=="RobotMove":
 					setVisibility("gridBuildingError")

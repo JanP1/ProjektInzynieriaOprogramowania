@@ -1,0 +1,1296 @@
+[gd_scene load_steps=37 format=3 uid="uid://cgxqriodj1jtr"]
+
+[ext_resource type="Script" path="res://Scripts/hexMapGenerator.gd" id="1_nm7ik"]
+[ext_resource type="MeshLibrary" uid="uid://dxeba2qqe2o2t" path="res://Models/HexGodot/hexGrass.meshlib" id="2_h658d"]
+[ext_resource type="MeshLibrary" uid="uid://cvbtnjgc67u31" path="res://Models/HexGodot/hexDesert.meshlib" id="2_uqmr3"]
+[ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
+[ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
+[ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
+[ext_resource type="PackedScene" uid="uid://byjtepionmf18" path="res://Scenes/Menu.tscn" id="5_pivbd"]
+[ext_resource type="MeshLibrary" uid="uid://g5gk4hqclevv" path="res://Models/Building/wszystko.meshlib" id="5_r8xo7"]
+[ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="6_claf3"]
+[ext_resource type="Script" path="res://Scripts/GridContainerBuilding.gd" id="6_ewnod"]
+[ext_resource type="MeshLibrary" uid="uid://bk8s06v7gdn0p" path="res://Models/HexGodot/hexBacklight.meshlib" id="7_j43le"]
+[ext_resource type="Script" path="res://Scenes/GridContainerNextRound.gd" id="9_6103v"]
+[ext_resource type="Script" path="res://Scripts/GridContainerBank.gd" id="10_m3avn"]
+[ext_resource type="Texture2D" uid="uid://c55giqthmux6d" path="res://Models/Textures/GUI/casino.jpg" id="12_tfu4q"]
+[ext_resource type="Texture2D" uid="uid://e3gxcw7h81bw" path="res://Models/Textures/GUI/bank.jpg" id="16_0niqf"]
+[ext_resource type="Script" path="res://Scripts/MarginContainerScript.gd" id="16_rccfy"]
+[ext_resource type="LabelSettings" uid="uid://c2bkfdy458qsx" path="res://Models/Textures/label.tres" id="17_3j4ej"]
+[ext_resource type="StyleBox" uid="uid://b12waixtknn5n" path="res://Models/Textures/blackBackground.tres" id="17_51481"]
+[ext_resource type="Texture2D" uid="uid://b7slk01nd3oob" path="res://Models/Textures/GUI/koszary.jpg" id="17_hj81i"]
+[ext_resource type="Texture2D" uid="uid://dvmlfoxfknrhx" path="res://Models/Textures/GUI/upgrade.jpg" id="17_lgdvf"]
+[ext_resource type="Script" path="res://Scripts/LabelScript.gd" id="17_wwgcj"]
+[ext_resource type="Texture2D" uid="uid://bffj8c3r2l8it" path="res://Models/Textures/GUI/laboratory.jpg" id="18_nwhtf"]
+[ext_resource type="Texture2D" uid="uid://cfbvbymy2bi2i" path="res://Models/Textures/GUI/delete.jpg" id="18_pbvrv"]
+[ext_resource type="Texture2D" uid="uid://dwdmpytsv8hog" path="res://Models/Textures/GUI/offensiveRobot.jpg" id="23_ki64j"]
+[ext_resource type="Script" path="res://Scripts/GridContainerRobot.gd" id="23_vhcyo"]
+[ext_resource type="Texture2D" uid="uid://cfbr388si1dov" path="res://Models/Textures/GUI/deffenceRobot.jpg" id="24_okr73"]
+[ext_resource type="Script" path="res://Scripts/GridContainerBarracks.gd" id="24_wudpc"]
+[ext_resource type="Texture2D" uid="uid://4lprtklrfax0" path="res://Models/Textures/GUI/rangeMovement.jpg" id="25_8cj4b"]
+[ext_resource type="Script" path="res://Scripts/GridContainerLaboratory.gd" id="27_7715c"]
+[ext_resource type="Script" path="res://Scenes/GridContainerKasyno.gd" id="27_v15y6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n4pwy"]
+sky_top_color = Color(0.756863, 0.8, 0.862745, 1)
+
+[sub_resource type="Sky" id="Sky_xw1ns"]
+sky_material = SubResource("ProceduralSkyMaterial_n4pwy")
+
+[sub_resource type="Environment" id="Environment_3wksv"]
+background_mode = 2
+background_energy_multiplier = 1.49
+sky = SubResource("Sky_xw1ns")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fa5p"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_64ajg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q753y"]
+albedo_texture = ExtResource("6_claf3")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_nm7ik")
+
+[node name="GridMapDesert" type="GridMap" parent="."]
+mesh_library = ExtResource("2_uqmr3")
+cell_size = Vector3(0.755, 1.01, 0.87)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMapGrass" type="GridMap" parent="."]
+mesh_library = ExtResource("2_h658d")
+cell_size = Vector3(0.755, 1.01, 0.87)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMapWater" type="GridMap" parent="."]
+mesh_library = ExtResource("3_2khim")
+cell_size = Vector3(0.755, 1.01, 0.87)
+
+[node name="GridMapSetObject" type="GridMap" parent="."]
+mesh_library = ExtResource("5_r8xo7")
+cell_size = Vector3(0.755, 1.01, 0.87)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMapCollision" type="GridMap" parent="."]
+mesh_library = ExtResource("4_lgd71")
+cell_size = Vector3(0.755, 1.01, 0.87)
+cell_octant_size = 100
+
+[node name="GridMapBacklight" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh_library = ExtResource("7_j43le")
+cell_size = Vector3(0.755, 1.01, 0.87)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3wksv")
+
+[node name="Menu" parent="." instance=ExtResource("5_pivbd")]
+
+[node name="ActionMenu" type="CanvasLayer" parent="."]
+
+[node name="GridContainerNextRound" type="GridContainer" parent="ActionMenu"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = -516.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("9_6103v")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerNextRound"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerNextRound/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerNextRound/Button/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.415686, 0.576471, 1, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerNextRound/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Następna runda"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBuilding" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -369.0
+offset_top = 159.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("6_ewnod")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerBuilding"]
+self_modulate = Color(0.45098, 0.45098, 0.45098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("12_tfu4q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuilding/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBuilding/Button/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuilding/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Kasyno
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerBuilding"]
+self_modulate = Color(0.47451, 0.47451, 0.47451, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("16_0niqf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuilding/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBuilding/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuilding/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = " Bank
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerBuilding"]
+self_modulate = Color(0.486275, 0.486275, 0.486275, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("17_hj81i")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuilding/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBuilding/Button3/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuilding/Button3/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Koszary
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button4" type="Button" parent="ActionMenu/GridContainerBuilding"]
+self_modulate = Color(0.682353, 0.682353, 0.682353, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("18_nwhtf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuilding/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBuilding/Button4/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuilding/Button4/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Laboratorium
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerBuilding"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuilding/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBuilding/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuilding/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBank" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = 159.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("10_m3avn")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerBank"]
+self_modulate = Color(0.376471, 0.376471, 0.376471, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("17_lgdvf")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBank/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBank/Button/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBank/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Zwiększ Pojemność"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerBank"]
+self_modulate = Color(0.345098, 0.345098, 0.345098, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("18_pbvrv")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBank/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBank/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBank/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sprzedaj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerBank"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBank/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBank/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBank/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerRobot" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("23_vhcyo")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+script = ExtResource("16_rccfy")
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Przemieść robota"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerRobot/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj ruch robota"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerRobot/Button3/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button3/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Rozwiąż oddział za połowę ceny (\"CENA\")"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerRobot"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerRobot/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerRobot/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerRobot/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBarracks" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("24_wudpc")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerBarracks"]
+self_modulate = Color(0.690196, 0.690196, 0.690196, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("24_okr73")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBarracks/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBarracks/Button/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBarracks/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Zrekrutuj Robota Defensywnego
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerBarracks"]
+self_modulate = Color(0.709804, 0.709804, 0.709804, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("23_ki64j")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBarracks/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBarracks/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBarracks/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Zrekrutuj Robota Ofensywnego
+200$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerBarracks"]
+self_modulate = Color(0.345098, 0.345098, 0.345098, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("18_pbvrv")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBarracks/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBarracks/Button3/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBarracks/Button3/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sprzedaj za połowę ceny
++50$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerBarracks"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBarracks/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerBarracks/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBarracks/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerLaboratory" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("27_7715c")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerLaboratory"]
+self_modulate = Color(0.690196, 0.690196, 0.690196, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("24_okr73")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerLaboratory/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerLaboratory/Button/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerLaboratory/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ulepsz Robota Defensywnego
+200$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerLaboratory"]
+self_modulate = Color(0.627451, 0.627451, 0.627451, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("23_ki64j")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerLaboratory/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerLaboratory/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerLaboratory/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ulepsz Robota Ofensywnego
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button3" type="Button" parent="ActionMenu/GridContainerLaboratory"]
+self_modulate = Color(0.72549, 0.72549, 0.72549, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("25_8cj4b")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerLaboratory/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerLaboratory/Button3/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerLaboratory/Button3/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Zwiększ zasięg ruchu robotów
+100$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button8" type="Button" parent="ActionMenu/GridContainerLaboratory"]
+self_modulate = Color(0.615686, 0.615686, 0.615686, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("18_pbvrv")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerLaboratory/Button8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerLaboratory/Button8/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerLaboratory/Button8/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sprzedaj za połowę ceny
++50$"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerLaboratory"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerLaboratory/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerLaboratory/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerLaboratory/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBarracksError" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBarracksError"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBarracksError/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Rekrutacja niemożliwa poprzez brak sąsiedniego miejsca do postawienia jednostki"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerKasyno" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("27_v15y6")
+
+[node name="Button" type="Button" parent="ActionMenu/GridContainerKasyno"]
+self_modulate = Color(0.376471, 0.376471, 0.376471, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("17_lgdvf")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerKasyno/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerKasyno/Button/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerKasyno/Button/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Ulepsz zarabianie"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button2" type="Button" parent="ActionMenu/GridContainerKasyno"]
+self_modulate = Color(0.345098, 0.345098, 0.345098, 1)
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("17_51481")
+icon = ExtResource("18_pbvrv")
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerKasyno/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerKasyno/Button2/MarginContainer"]
+visible = false
+z_index = -1
+layout_mode = 2
+color = Color(0, 0.0392157, 0.266667, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerKasyno/Button2/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sprzedaj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="Button9" type="Button" parent="ActionMenu/GridContainerKasyno"]
+material = SubResource("ShaderMaterial_5fa5p")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerKasyno/Button9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="ColorRect" type="ColorRect" parent="ActionMenu/GridContainerKasyno/Button9/MarginContainer"]
+z_index = -1
+layout_mode = 2
+color = Color(0.180392, 0, 0.0588235, 1)
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerKasyno/Button9/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Anuluj"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="GridContainerBuildingError" type="GridContainer" parent="ActionMenu"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = 157.0
+offset_right = -9.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionMenu/GridContainerBuildingError"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("16_rccfy")
+
+[node name="Label" type="Label" parent="ActionMenu/GridContainerBuildingError/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Budowanie niemożliwe na drodze robota. Zmień lub usuń drogę robota"
+label_settings = ExtResource("17_3j4ej")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("17_wwgcj")
+
+[node name="CameraNode" type="Node3D" parent="."]
+script = ExtResource("5_5fq2g")
+
+[node name="Camera3D" type="Camera3D" parent="CameraNode"]
+transform = Transform3D(-1, -5.61943e-08, 6.69697e-08, 0, 0.766045, 0.642788, -8.74228e-08, 0.642788, -0.766045, -40, 25, 10)
+fov = 18.9
+
+[node name="SeaMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, -15.8941, 0, 0)
+mesh = SubResource("PlaneMesh_64ajg")
+surface_material_override/0 = SubResource("StandardMaterial3D_q753y")
