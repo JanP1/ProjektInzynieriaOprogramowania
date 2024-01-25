@@ -50,6 +50,9 @@ func _on_button3_pressed():
 	var hexV=Global.listCollision[Global.indexClicked]
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,-1)
 	Global.listEverything[Global.indexClicked]=""
+	var xClick=Global.indexToVector(Global.indexClicked)[0]
+	var yClick=Global.indexToVector(Global.indexClicked)[1]
+	Global.mapMovement[xClick][yClick]=1
 	self.visible=false
 	Global._on_const_it_unclick()
 

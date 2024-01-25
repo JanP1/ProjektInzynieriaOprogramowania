@@ -113,7 +113,7 @@ func shortestPath(start2,end):
 		shortest_path=shortest_path.slice(1,4+Global.RobotRangeUpgrade)
 	#shortest_path
 	for i in shortest_path:
-		if Global.listEverything[vectorToIndex(i)] not in ["RobotWrogi","BudynekWrogi"]:
+		if Global.listEverything[vectorToIndex(i)] not in ["RobotWrogi","BudynekWrogi","StolicaWroga"]:
 			Global.listEverything[vectorToIndex(i)]="RobotMove"
 		var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
 		Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)

@@ -58,6 +58,9 @@ func _on_button8_pressed():
 	Global.listEverything[Global.indexClicked]=""
 	self.visible=false
 	Global._on_const_it_unclick()
+	var xClick=Global.indexToVector(Global.indexClicked)[0]
+	var yClick=Global.indexToVector(Global.indexClicked)[1]
+	Global.mapMovement[xClick][yClick]=1
 	var ok=0
 	for element in Global.listEverything:
 		if element in ["Laboratorium","RobotOfensywny"]:

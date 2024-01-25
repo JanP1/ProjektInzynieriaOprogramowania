@@ -133,7 +133,7 @@ func clickOnlyGrassAndOnce(index):
 	#print(Global.listEverything[index])
 	if Global.robotMove==1:
 		Global.robotMove=0
-		if Global.listEverything[index] in ["", "RobotWrogi","BudynekWrogi"] and  Global.listGround[index] in ["grass","desert"]:
+		if Global.listEverything[index] in ["", "RobotWrogi","BudynekWrogi","StolicaWroga"] and  Global.listGround[index] in ["grass","desert"]:
 			#print("robotmove")
 			#var start_point = Vector2(0, 0)
 			#var end_point = Vector2(3, 1)

@@ -138,7 +138,10 @@ func _ready():
 	var z=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaMoja")
 	Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),z,0)
 	Global.listEverything[hexI]="StolicaMoja"
-	Global.listHP[hexI]=100
+	Global.listHP[hexI]=200
+	var xClick=Global.indexToVector(hexI)[0]
+	var yClick=Global.indexToVector(hexI)[1]
+	mapMovement[xClick][yClick]=0
 	
 	#hexI=indexHex(GrassX-3,GrassY-3)
 	#hexV=cubeToHex(GrassX-3,GrassY-3)
