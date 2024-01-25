@@ -62,12 +62,12 @@ func _on_button_pressed():
 	#for element in Global.listEverything and for upgrade in Global.listUpgrading:
 		match element:
 			"Kasyno":
-				money+=upgrade*upgrade*10
+				money+=upgrade*upgrade*10+100000
 				#match upgrade:
 					#1:
 						#money+=10
 			"Bank":
-				bank +=200*upgrade
+				bank +=200*upgrade+100000
 			"Laboratorium":
 				lab=true
 				

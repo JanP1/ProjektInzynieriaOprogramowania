@@ -53,6 +53,14 @@ func _ready():
 	Global.descLable =get_node("/root/Node3D/Menu/Control/MarginContainer3/Description")
 	
 	
+	Global.moneyLable.text = str(1000) + "$"
+	
+	#Connecting to the signals
+	#gridBuilding.Global.money_changed.connect(_on_money_change)
+	#cameraNode.constructed_item_clicked.connect(_on_const_it_click)
+	#cameraNode.constructed_item_unclicked.connect(_on_const_it_unclick)
+	Global._on_money_change(1000)
+	
 	
 	var mapMovement=[]
 	for i in range(grid_size):

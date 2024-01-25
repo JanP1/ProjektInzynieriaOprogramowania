@@ -152,7 +152,7 @@ func clickOnlyGrassAndOnce(index):
 			
 			constants(index)
 			setVisibility("gridRobot")
-			constructed_item_clicked.emit("Robot", opis)
+			Global._on_const_it_click("Robot", opis)
 		elif Global.listGround[index] in ["grass","desert"]:
 			#var listCollision=Global.listCollision
 			#var gridXY=listCollision[index]
@@ -177,16 +177,16 @@ func clickOnlyGrassAndOnce(index):
 				
 				
 				if Global.listEverything[index]=="StolicaMoja":
-					constructed_item_clicked.emit("StolicaMoja", opis)
+					Global._on_const_it_click("StolicaMoja", opis)
 					setVisibilityEmpty()
 				elif Global.listEverything[index]=="StolicaWroga":
-					constructed_item_clicked.emit("StolicaWroga", opis)
+					Global._on_const_it_click("StolicaWroga", opis)
 					setVisibilityEmpty()
 				elif Global.listEverything[index]=="BudynekWrogi":
-					constructed_item_clicked.emit("BudynekWrogi", opis)
+					Global._on_const_it_click("BudynekWrogi", opis)
 					setVisibilityEmpty()
 				elif Global.listEverything[index]=="RobotWrogi":
-					constructed_item_clicked.emit("RobotWrogi", opis)
+					Global._on_const_it_click("RobotWrogi", opis)
 					setVisibilityEmpty()
 				
 				elif Global.listEverything[index]=="RobotMove":
@@ -194,21 +194,21 @@ func clickOnlyGrassAndOnce(index):
 					
 				elif Global.listEverything[index]=="Kasyno":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Kasyno", opis)
+					Global._on_const_it_click("Kasyno", opis)
 					setVisibility("gridKasyno")
 				
 				elif Global.listEverything[index]=="Bank":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Bank", opis)
+					Global._on_const_it_click("Bank", opis)
 					setVisibility("gridBank")
 				
 				elif Global.listEverything[index]=="Laboratorium":
 					#Global.gridUpdating.get_node("Button").text = "Ulepszenie Kostki"
-					constructed_item_clicked.emit("Laboratorium", opis)
+					Global._on_const_it_click("Laboratorium", opis)
 					setVisibility("gridLaboratory")
 				
 				elif Global.listEverything[index]=="Koszary":
-					constructed_item_clicked.emit("Koszary", opis)
+					Global._on_const_it_click("Koszary", opis)
 					var directions
 					var node=Global.indexToVector(index)
 					if int(node[0])%2!=1:
@@ -234,7 +234,7 @@ func clickOnlyGrassAndOnce(index):
 					if barrackError==0:
 						setVisibility("gridBarracks")
 				else:
-					constructed_item_clicked.emit("Niezidentyfikowany obiekt", "...")
+					Global._on_const_it_click("Niezidentyfikowany obiekt", "...")
 					
 					#Global.actualGridBuildingName="Kostka"
 					#Global.gridUpdating.visible=true
@@ -244,7 +244,7 @@ func clickOnlyGrassAndOnce(index):
 				
 			elif Global.listGround[index] in ["grass"]:
 				setVisibility("gridBuilding")
-				constructed_item_unclicked.emit()
+				Global._on_const_it_unclick()
 			else:
 				setVisibilityEmpty()
 				#Global.actualGridBuildingName=listBuilding[index]

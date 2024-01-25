@@ -21,9 +21,10 @@ func robotUpgrade(robotUpgrade):
 		
 		Global._on_money_change(-priceOfSelected)
 		#Global.listUpgrading[Global.indexClicked]+=1
-		robotUpgrade+=1
+		var up=int(robotUpgrade)
+		up+=1
 		self.visible=false
-		return robotUpgrade
+		return up
 		
 		
 func _on_button_pressed():
@@ -41,6 +42,7 @@ func _on_button2_pressed():
 func _on_button3_pressed():
 	
 	Global.RobotRangeUpgrade=robotUpgrade(Global.RobotRangeUpgrade)
+	print(Global.RobotRangeUpgrade)
 	#Global.listHP[Global.indexClicked]
 	#Ulepsz Robot Zasieg
 	#changeBuilding("Kostka")
