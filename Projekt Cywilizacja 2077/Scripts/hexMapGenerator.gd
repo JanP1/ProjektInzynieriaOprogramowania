@@ -63,8 +63,10 @@ func _ready():
 	
 	
 	var mapMovement=[]
+	var mapMovementEnemy=[]
 	for i in range(grid_size):
 		var mapMovementTmp=[]
+		var mapMovementTmp2=[]
 		for j in range(grid_size):
 			Global.listEverything.append("")
 			Global.listGround.append("")
@@ -75,8 +77,9 @@ func _ready():
 			Global.listRange.append(0)
 			Global.listUpgrading.append(1)
 			mapMovementTmp.append(1)
+			mapMovementTmp2.append(1)
 		mapMovement.append(mapMovementTmp)
-		
+		mapMovementEnemy.append(mapMovementTmp2)
 		
 	
 	#var losX=randi_range(7,grid_size-7)
@@ -182,10 +185,10 @@ func _ready():
 						hexI=indexHex(waterX2,waterY2)
 						listWater.append(hexI)
 						mapMovement[waterX2][waterY2]=0
+						mapMovementEnemy[waterX2][waterY2]=0
 						Global.listGround[hexI]="water"
 						Global.listEverything[hexI]="water"
 	#print(mapMovement)
-	Global.mapMovement=mapMovement
 	
 	
 	
@@ -200,23 +203,31 @@ func _ready():
 				Global.listGround[hexI]="desert"
 				
 				var los=randi_range(1,200)
-				if los<2 and stolica==false:
+				if i>15 and stolica==false:
 					var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "StolicaWroga")
 					Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
 					Global.listEverything[hexI]="StolicaWroga"
 					Global.listHP[hexI]=1000
 					stolica=true
+					mapMovementEnemy[i][j]=0
 				elif los<10:
 					var zez=Global.get_item_index_by_name(Global.gridPath.mesh_library, "BudynekWrogi")
 					Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),zez,0)
 					Global.listEverything[hexI]="BudynekWrogi"
 					Global.listHP[hexI]=20
+					mapMovementEnemy[i][j]=0
 				#listGrass.append(hexI)
 #				if hexI in listGrass and hexI<1500:  #przydatne, nie usuwac
 #					listGrass.remove_at(listGrass.find(hexI))
 				
 			$GridMapCollision.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
 			Global.listCollision.append(hexV)
+	
+	Global.mapMovement=mapMovement		
+	Global.mapMovementEnemy=mapMovementEnemy
+	#print(mapMovementEnemy)
+	#print(mapMovement)
+	#print(Global.mapMovementEnemy)
 	
 	
 

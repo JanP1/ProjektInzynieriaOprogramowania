@@ -23,6 +23,7 @@ func _init(graph, start, end):
 	process(graph, start, end)
 
 func process(graph, start, end):
+	#print(graph)
 	while heap.size() > 0:
 		#heap.sort_custom(_compare_pairs)
 		var current_pair = heap_pop_front()

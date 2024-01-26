@@ -22,6 +22,7 @@ var cameraNodeCamera3D
 var robotMove=0
 var barrackNeighbor
 var mapMovement=[]
+var mapMovementEnemy=[]
 var start
 
 #Players Money

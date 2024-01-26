@@ -6,22 +6,29 @@ func _ready():
 	var button = $Button
 	button.connect("pressed", Callable(self, "_on_button_pressed"))
 
-var Dijkstra = preload("res://Scripts/Dijkstra.gd")
+var Dijkstra2 = preload("res://Scripts/Dijkstra.gd")
 func shortestPath(start2,end):
 	var index=Global.vectorToIndex(start2)
 	#deleteLastRobotMove(index)
 		
-	var dijkstra = Dijkstra.new(Global.mapMovement, start2, end)
-	var shortest_path = dijkstra.process(Global.mapMovement, start2, end)
+	var dijkstra2 = Dijkstra2.new(Global.mapMovementEnemy, start2, end)
+	var shortest_path2 = dijkstra2.process(Global.mapMovementEnemy, start2, end)
 	
-	shortest_path=shortest_path.slice(1,5)
-	Global.enemyRobotMove[index]=shortest_path
+	#print(start2,end, shortest_path2)
+	shortest_path2=shortest_path2.slice(1,5)
+	Global.enemyRobotMove[index]=shortest_path2
+	#for i in shortest_path2:
+		##if Global.listEverything[Global.vectorToIndex(i)] in [""]:
+			##Global.listEverything[Global.vectorToIndex(i)]="RobotMove"
+		#var hexV=Global.cubeToHex(int(i[0]),int(i[1]))
+		#Global.gridWater.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),0,0)
+	
 
 func enemyRespawn():
 	var waterX=randi_range(0,35)
 	var waterY=randi_range(0,35)
 	var hexI=Global.indexHex(waterX,waterY)
-	if Global.listEverything[hexI]=="" and Global.listGround[hexI]!="Grass":
+	if Global.listEverything[hexI]=="" and Global.listGround[hexI]!="grass":
 		#if (waterX2-waterX)**2+(waterY2-waterY)**2>radius:
 			var indexItem = Global.get_item_index_by_name(Global.gridPath.mesh_library, "RobotWrogi")
 			var hexV=Global.cubeToHex(waterX,waterY)
@@ -45,6 +52,7 @@ func _on_button_pressed():
 	#Global.listEverything="RobotWrogi"
 	#var newList[200]=[(1,2),(2,2),(3,2)]
 	#shotest_paht[1:4] w stronę stolicy
+	#print(Global.enemyRobotMove)
 	checkIfColided()
 	checkIfColided_Enemy()
 	for i in range(Global.listRobotMove.size()):
@@ -172,7 +180,7 @@ func checkIfColided_Enemy():
 		if list_of_moves.size() >0:
 			for j in list_of_moves:
 				var moved_to_position = int(Global.vectorToIndex(j))
-				#var WAZNA=Global.listEverything[moved_to_position]
+				#var WAZNA=Global.listEverything[moved_to_position]   "RobotMove",
 				if Global.listEverything[moved_to_position] not in ["","RobotWrogi","BudynekWrogi","StolicaWroga"]:
 					while(Global.listHP[moved_to_position]>0 and Global.listHP[i]>0):
 						Global.listHP[moved_to_position] -= Global.listHP[i]/10+Global.listStrength[i]
