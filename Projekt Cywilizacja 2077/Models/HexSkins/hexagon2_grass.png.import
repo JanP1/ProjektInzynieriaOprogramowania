@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://f8mm7q5ufv3q"
 path.s3tc="res://.godot/imported/hexagon2_grass.png-ae35243011f7a37f94f501b359bb118d.s3tc.ctex"
+path.etc2="res://.godot/imported/hexagon2_grass.png-ae35243011f7a37f94f501b359bb118d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/HexSkins/hexagon2_grass.png"
-dest_files=["res://.godot/imported/hexagon2_grass.png-ae35243011f7a37f94f501b359bb118d.s3tc.ctex"]
+dest_files=["res://.godot/imported/hexagon2_grass.png-ae35243011f7a37f94f501b359bb118d.s3tc.ctex", "res://.godot/imported/hexagon2_grass.png-ae35243011f7a37f94f501b359bb118d.etc2.ctex"]
 
 [params]
 

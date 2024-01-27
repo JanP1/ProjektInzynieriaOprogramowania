@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw54j8xnuobg2"
 path.s3tc="res://.godot/imported/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png-535e6902b003bce53f39ac2a4f259595.s3tc.ctex"
+path.etc2="res://.godot/imported/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png-535e6902b003bce53f39ac2a4f259595.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/robots/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png"
-dest_files=["res://.godot/imported/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png-535e6902b003bce53f39ac2a4f259595.s3tc.ctex"]
+dest_files=["res://.godot/imported/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png-535e6902b003bce53f39ac2a4f259595.s3tc.ctex", "res://.godot/imported/robot2_robot_weapon_Metallic-robot_weapon_Roughness.png-535e6902b003bce53f39ac2a4f259595.etc2.ctex"]
 
 [params]
 

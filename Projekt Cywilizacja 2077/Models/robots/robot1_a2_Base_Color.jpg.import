@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3xccoxspxwf7"
 path.s3tc="res://.godot/imported/robot1_a2_Base_Color.jpg-af3f761bf5bfd07935d9c83f53b88d8f.s3tc.ctex"
+path.etc2="res://.godot/imported/robot1_a2_Base_Color.jpg-af3f761bf5bfd07935d9c83f53b88d8f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/robots/robot1_a2_Base_Color.jpg"
-dest_files=["res://.godot/imported/robot1_a2_Base_Color.jpg-af3f761bf5bfd07935d9c83f53b88d8f.s3tc.ctex"]
+dest_files=["res://.godot/imported/robot1_a2_Base_Color.jpg-af3f761bf5bfd07935d9c83f53b88d8f.s3tc.ctex", "res://.godot/imported/robot1_a2_Base_Color.jpg-af3f761bf5bfd07935d9c83f53b88d8f.etc2.ctex"]
 
 [params]
 
