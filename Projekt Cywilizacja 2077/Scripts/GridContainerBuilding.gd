@@ -36,7 +36,8 @@ func changeBuilding(nameBuilding):
 		var xClick=Global.indexToVector(Global.indexClicked)[0]
 		var yClick=Global.indexToVector(Global.indexClicked)[1]
 		Global.mapMovement[xClick][yClick]=0
-		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,0)
+		var rotationMatrix = Basis(Vector3(0, 1, 0), deg_to_rad(90))
+		Global.gridPath.set_cell_item(Vector3i(int(hexV[0]),0, int(hexV[1])),Global.actualGridBuilding,16)
 		self.visible=false
 		if nameBuilding=="Bank":
 			Global._on_bank_change(100)

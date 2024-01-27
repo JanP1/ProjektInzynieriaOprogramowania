@@ -5,7 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cvbtnjgc67u31" path="res://Models/HexGodot/hexDesert.meshlib" id="2_uqmr3"]
 [ext_resource type="MeshLibrary" uid="uid://dhcygu1kqipv1" path="res://Models/HexGodot/hexWater.meshlib" id="3_2khim"]
 [ext_resource type="MeshLibrary" uid="uid://cb8h0w63uyaqy" path="res://Models/HexGodot/hexCollision.meshlib" id="4_lgd71"]
-[ext_resource type="MeshLibrary" uid="uid://djfecjt8iy8n7" path="res://Models/robots/wszystko3.meshlib" id="5_1ad04"]
+[ext_resource type="MeshLibrary" uid="uid://bsb2lrp0j0fpo" path="res://Models/robots/wszystko4.meshlib" id="5_0v4yr"]
 [ext_resource type="Script" path="res://Scripts/CameraNodeMovement.gd" id="5_5fq2g"]
 [ext_resource type="PackedScene" uid="uid://byjtepionmf18" path="res://Scenes/Menu.tscn" id="5_pivbd"]
 [ext_resource type="Texture2D" uid="uid://ujkavi055tmk" path="res://Models/HexSkins/sea.jpg" id="6_claf3"]
@@ -76,8 +76,11 @@ mesh_library = ExtResource("3_2khim")
 cell_size = Vector3(0.755, 1.01, 0.87)
 
 [node name="GridMapSetObject" type="GridMap" parent="."]
-mesh_library = ExtResource("5_1ad04")
+mesh_library = ExtResource("5_0v4yr")
 cell_size = Vector3(0.755, 1.01, 0.87)
+data = {
+"cells": PackedInt32Array(1, 65535, 0, 1, 65534, 1, 1, 65533, 4, 1, 65532, 2, 0, 65534, 9, 65535, 65535, 3, 3, 65532, 5)
+}
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="GridMapCollision" type="GridMap" parent="."]

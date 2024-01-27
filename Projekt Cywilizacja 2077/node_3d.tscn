@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://clmj6itb12gwy"]
+
+[ext_resource type="ArrayMesh" uid="uid://xs7dbv8rtfhx" path="res://Models/ModelsAI/1e8078a706d8_0a44f044b934_stylisize_low_poly__obj/0a44f044b934_stylisize_low_poly_.obj" id="1_gaksq"]
+[ext_resource type="ArrayMesh" uid="uid://tu0gp5pf3it8" path="res://Models/ModelsAI/cbbe7b6c91be_low_poly_skyscraper.obj" id="2_l04hx"]
+[ext_resource type="ArrayMesh" uid="uid://bmyqgq6knjat8" path="res://Models/ModelsAI/fb18c91efc5b_ee068ce045a9_low_poly_military_b_obj/ee068ce045a9_low_poly_military_b.obj" id="3_bhnp3"]
+[ext_resource type="ArrayMesh" uid="uid://dmh3xto48dvf4" path="res://Models/ModelsAI/edc4080d4697_0d5ba9f0e421_low_poly_biolumines_obj/0d5ba9f0e421_low_poly_biolumines.obj" id="4_lankk"]
+[ext_resource type="ArrayMesh" uid="uid://cf1qk01veilmr" path="res://Models/ModelsAI/cf7c6aa7c926_b7bd40251250_low_poly_neon_red_s_obj/b7bd40251250_low_poly_neon_red_s.obj" id="5_x5gop"]
+[ext_resource type="PackedScene" uid="uid://cfhaot2tuang1" path="res://Models/robots/robot1.glb" id="6_dnnuy"]
+[ext_resource type="PackedScene" uid="uid://rslpi2eokkjs" path="res://Models/robots/StolicaMoja.glb" id="7_7fyrb"]
+[ext_resource type="PackedScene" uid="uid://b4qadouae4k2o" path="res://Models/robots/StolicaWroga.glb" id="8_8in8r"]
+[ext_resource type="PackedScene" uid="uid://c06a8qndphqs0" path="res://Models/robots/wrogiRobot.glb" id="9_vcpsf"]
+[ext_resource type="PackedScene" uid="uid://cav0p0lyyae0b" path="res://Models/robots/robot2.glb" id="10_5xrpn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="0a44f044b934StylisizeLowPoly" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0)
+mesh = ExtResource("1_gaksq")
+
+[node name="Cbbe7b6c91BeLowPolySkyscraper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.775, 0, 0, 0, 1.775, 0, 0, 0, 1.775, 0, 1.06, 0)
+mesh = ExtResource("2_l04hx")
+
+[node name="Ee068Ce045a9LowPolyMilitaryB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.806855)
+mesh = ExtResource("3_bhnp3")
+
+[node name="0d5Ba9f0e421LowPolyBiolumines" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179845, 0, 1.57832)
+mesh = ExtResource("4_lankk")
+
+[node name="B7Bd40251250LowPolyNeonRedS" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33578, 5.96046e-08, 0.554017)
+mesh = ExtResource("5_x5gop")
+
+[node name="robot1" parent="." instance=ExtResource("6_dnnuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12757, 0, 1.97958)
+
+[node name="StolicaMoja2" parent="." instance=ExtResource("7_7fyrb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.254828, 0, 3.13746)
+
+[node name="StolicaWroga2" parent="." instance=ExtResource("8_8in8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3608, 0, 2.88646)
+
+[node name="wrogiRobot" parent="." instance=ExtResource("9_vcpsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30629, 0, 2.08605)
+
+[node name="robot2" parent="." instance=ExtResource("10_5xrpn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577992, 1.19209e-07, 3.24828)

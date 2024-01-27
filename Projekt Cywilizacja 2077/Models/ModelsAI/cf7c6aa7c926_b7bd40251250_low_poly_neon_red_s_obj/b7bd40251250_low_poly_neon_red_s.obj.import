@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cf1qk01veilmr"
+path="res://.godot/imported/b7bd40251250_low_poly_neon_red_s.obj-e5c135d2097c26ae259620237eb8c094.mesh"
+
+[deps]
+
+files=["res://.godot/imported/b7bd40251250_low_poly_neon_red_s.obj-e5c135d2097c26ae259620237eb8c094.mesh"]
+
+source_file="res://Models/ModelsAI/cf7c6aa7c926_b7bd40251250_low_poly_neon_red_s_obj/b7bd40251250_low_poly_neon_red_s.obj"
+dest_files=["res://.godot/imported/b7bd40251250_low_poly_neon_red_s.obj-e5c135d2097c26ae259620237eb8c094.mesh", "res://.godot/imported/b7bd40251250_low_poly_neon_red_s.obj-e5c135d2097c26ae259620237eb8c094.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

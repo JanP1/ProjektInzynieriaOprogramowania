@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xs7dbv8rtfhx"
+path="res://.godot/imported/0a44f044b934_stylisize_low_poly_.obj-2b246a5aa8a1e3e1c52f4a0697749cad.mesh"
+
+[deps]
+
+files=["res://.godot/imported/0a44f044b934_stylisize_low_poly_.obj-2b246a5aa8a1e3e1c52f4a0697749cad.mesh"]
+
+source_file="res://Models/ModelsAI/1e8078a706d8_0a44f044b934_stylisize_low_poly__obj/0a44f044b934_stylisize_low_poly_.obj"
+dest_files=["res://.godot/imported/0a44f044b934_stylisize_low_poly_.obj-2b246a5aa8a1e3e1c52f4a0697749cad.mesh", "res://.godot/imported/0a44f044b934_stylisize_low_poly_.obj-2b246a5aa8a1e3e1c52f4a0697749cad.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
