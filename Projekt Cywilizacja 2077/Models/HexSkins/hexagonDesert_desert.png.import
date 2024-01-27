@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cygum1pknsq2g"
 path.s3tc="res://.godot/imported/hexagonDesert_desert.png-d5f9ca1884c1bdb1e927e80314daa55a.s3tc.ctex"
+path.etc2="res://.godot/imported/hexagonDesert_desert.png-d5f9ca1884c1bdb1e927e80314daa55a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/HexSkins/hexagonDesert_desert.png"
-dest_files=["res://.godot/imported/hexagonDesert_desert.png-d5f9ca1884c1bdb1e927e80314daa55a.s3tc.ctex"]
+dest_files=["res://.godot/imported/hexagonDesert_desert.png-d5f9ca1884c1bdb1e927e80314daa55a.s3tc.ctex", "res://.godot/imported/hexagonDesert_desert.png-d5f9ca1884c1bdb1e927e80314daa55a.etc2.ctex"]
 
 [params]
 

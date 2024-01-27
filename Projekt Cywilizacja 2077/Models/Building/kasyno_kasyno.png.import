@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://oyc4t8ypjtrt"
 path.s3tc="res://.godot/imported/kasyno_kasyno.png-f08681cf12c844ad682086f1f98a79bb.s3tc.ctex"
+path.etc2="res://.godot/imported/kasyno_kasyno.png-f08681cf12c844ad682086f1f98a79bb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/Building/kasyno_kasyno.png"
-dest_files=["res://.godot/imported/kasyno_kasyno.png-f08681cf12c844ad682086f1f98a79bb.s3tc.ctex"]
+dest_files=["res://.godot/imported/kasyno_kasyno.png-f08681cf12c844ad682086f1f98a79bb.s3tc.ctex", "res://.godot/imported/kasyno_kasyno.png-f08681cf12c844ad682086f1f98a79bb.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci6av6qx2f738"
 path.s3tc="res://.godot/imported/bank_bank_1.png-075d6da89ecd18b75a378ec4385442ec.s3tc.ctex"
+path.etc2="res://.godot/imported/bank_bank_1.png-075d6da89ecd18b75a378ec4385442ec.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/Building/bank_bank_1.png"
-dest_files=["res://.godot/imported/bank_bank_1.png-075d6da89ecd18b75a378ec4385442ec.s3tc.ctex"]
+dest_files=["res://.godot/imported/bank_bank_1.png-075d6da89ecd18b75a378ec4385442ec.s3tc.ctex", "res://.godot/imported/bank_bank_1.png-075d6da89ecd18b75a378ec4385442ec.etc2.ctex"]
 
 [params]
 

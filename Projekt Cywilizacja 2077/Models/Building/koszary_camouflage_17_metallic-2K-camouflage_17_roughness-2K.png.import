@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqtbi3e3yui4l"
 path.s3tc="res://.godot/imported/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png-294620d1bca57219042ff783db246f29.s3tc.ctex"
+path.etc2="res://.godot/imported/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png-294620d1bca57219042ff783db246f29.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/Building/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png"
-dest_files=["res://.godot/imported/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png-294620d1bca57219042ff783db246f29.s3tc.ctex"]
+dest_files=["res://.godot/imported/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png-294620d1bca57219042ff783db246f29.s3tc.ctex", "res://.godot/imported/koszary_camouflage_17_metallic-2K-camouflage_17_roughness-2K.png-294620d1bca57219042ff783db246f29.etc2.ctex"]
 
 [params]
 

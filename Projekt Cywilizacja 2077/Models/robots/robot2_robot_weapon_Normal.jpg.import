@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djcb2s7uydafe"
 path.s3tc="res://.godot/imported/robot2_robot_weapon_Normal.jpg-0f8cf1a82a550e28055c5e5dc248a31e.s3tc.ctex"
+path.etc2="res://.godot/imported/robot2_robot_weapon_Normal.jpg-0f8cf1a82a550e28055c5e5dc248a31e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={}
@@ -13,7 +14,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Models/robots/robot2_robot_weapon_Normal.jpg"
-dest_files=["res://.godot/imported/robot2_robot_weapon_Normal.jpg-0f8cf1a82a550e28055c5e5dc248a31e.s3tc.ctex"]
+dest_files=["res://.godot/imported/robot2_robot_weapon_Normal.jpg-0f8cf1a82a550e28055c5e5dc248a31e.s3tc.ctex", "res://.godot/imported/robot2_robot_weapon_Normal.jpg-0f8cf1a82a550e28055c5e5dc248a31e.etc2.ctex"]
 
 [params]
 
